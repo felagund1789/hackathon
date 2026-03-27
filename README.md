@@ -15,7 +15,7 @@ This hackathon is organized into **role-based tracks** for different team types,
 - 📊 **[Data Science & ML Track](./tracks/data-science-ml-track.md)** - Data analysis, ML models, feature engineering
 - ☁️ **[DevOps & Platform Track](./tracks/devops-platform-track.md)** - Infrastructure as Code, containers, CI/CD
 - 🎨 **[Frontend Developer Track](./tracks/frontend-developer-track.md)** - React, TypeScript, modern UI
-- 🔍 **[QA Tester Track](./tracks/qa-tester-track.md)** - Test automation, quality assurance, end-to-end testing
+- 🔍 **[QA Tester Track](./tracks/qa-tester-track.md)** - AI-assisted testing, test planning, Copilot for QA workflows
 - 🧩 **[Bonus: Copilot SDK Track](./tracks/bonus-copilot-sdk-track.md)** - Build a Copilot SDK application (advanced)
 - ✈️ **[Bonus: Flight Delay Predictor Track](./tracks/bonus-flight-delay-track.md)** - Full-stack ML app (advanced)
 - 🏢 **[Bonus: Cross-Functional Team Sprint](./tracks/bonus-team-sprint-track.md)** - Full team agile sprint, ideation to deployment (4-6 people)
@@ -208,11 +208,11 @@ Build a task dashboard across 5 stages: responsive layout with React Router, sta
 
 ### [Challenge 5: QA & Test Automation](./challenges/challenge-5-qa/) ([Track](./tracks/qa-tester-track.md))
 
-**Team**: QA Engineers, SDETs, Test Automation Engineers
-**Skills**: Playwright, Page Object Model, E2E testing, CI/CD
-**Copilot Focus**: Test generation, Playwright MCP for AI-driven testing
+**Team**: QA Engineers, Quality Assurance Specialists, Manual Testers
+**Skills**: Test planning, test case design, bug reporting (no coding experience required)
+**Copilot Focus**: AI-assisted test generation, Playwright MCP exploration, Copilot-driven debugging
 
-Test the eShop application across 5 stages: debug 3 intentional bugs in the starter LoginPage, build Page Objects for a full shopping flow with parameterized tests, achieve cross-browser and mobile coverage with network resilience, use Playwright MCP for AI-driven test generation, then set up CI with a custom reporter, performance assertions, and flakiness analysis.
+Test the eShop application across 5 stages: explore the app with Copilot and Playwright MCP to build a test plan, use Copilot to debug and generate your first automated tests, expand coverage across browsers with Copilot-generated page objects, compare AI-driven vs human-guided testing approaches, then build reporting and a test strategy document.
 
 ---
 

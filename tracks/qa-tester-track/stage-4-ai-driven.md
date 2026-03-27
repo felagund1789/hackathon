@@ -1,26 +1,44 @@
-# Stage 4: AI-Driven Testing and Hybrid Approach
+# Stage 4: AI-Driven Testing with Playwright MCP
 
 [Back to QA Tester Track](../qa-tester-track.md)
 
 **Difficulty:** ⭐⭐⭐ | **Time:** 60-90 min
 
-Combine AI-driven exploration with traditional test automation.
+You've been guiding Copilot with specific prompts. Now let Copilot take the lead -- use the Playwright MCP server to have it autonomously explore the application and generate tests from what it observes.
 
 ## Tasks
 
-1. **Configure Playwright MCP**: Set up the Playwright MCP server following the guide in `docs/playwright-mcp-guide.md`.
-2. **MCP-generated test**: Ask Copilot with MCP to autonomously navigate the checkout flow, observe the application, and generate a Playwright test script from what it observes.
-3. **Comparison document**: Run both the MCP-generated test and an equivalent manually-written test. Write a short document comparing: reliability (which is more stable?), coverage (which catches more?), maintainability (which is easier to update?).
-4. **Hybrid API+UI test**: Write a test that combines API calls with UI verification in the same spec. Example: add item to basket via UI, verify basket state via direct API call, remove item via API, verify UI updates.
-5. **Data consistency test**: Create a test that adds an item via UI, verifies the backend state via API, removes via API, and checks that the UI reflects the change.
+1. **MCP autonomous exploration**: With the Playwright MCP server running, ask Copilot to explore a flow you haven't tested yet. Try prompts like:
+   - "Navigate to the eShop checkout flow and generate a Playwright test for what you observe."
+   - "Explore the product filtering and sorting on the catalog page. Generate tests for each filter option."
+   Let Copilot drive the browser and produce tests without you specifying selectors or steps.
+
+2. **Compare approaches**: Pick one user flow (e.g., "add item to cart"). You should now have:
+   - A test you guided Copilot to write (from Stage 2 or 3)
+   - A test MCP generated autonomously (from Task 1)
+   Create a short comparison in `docs/ai-testing-comparison.md`. Note differences in: which assertions each test includes, how selectors were chosen, which edge cases each approach caught, and which test feels more reliable.
+
+3. **Refine MCP-generated tests**: MCP-generated tests often need adjustment. Use Copilot Chat to improve them:
+   - "This MCP-generated test hardcodes a product name. Make it work with any product on the page."
+   - "Add better error messages to the assertions so failures are easier to diagnose."
+   - "This test doesn't clean up after itself. Add a teardown step."
+
+4. **Application behavior under edge conditions**: Ask Copilot to help you test what happens when things go wrong. Use prompts like:
+   - "Write a Playwright test that simulates a slow network and checks if the catalog page shows a loading state."
+   - "Write a test that verifies the app handles a server error gracefully when adding to the cart."
+   These are the kinds of scenarios QA testers think of that AI tools often miss on their own.
 
 ## Verification
 
-- MCP-generated test runs and passes
-- Comparison document exists with observations on reliability, coverage, and maintainability
-- Hybrid test exercises both API and UI layers in the same spec
-- Data consistency test verifies round-trip between UI and API
+- At least 2 MCP-generated tests exist and pass
+- `docs/ai-testing-comparison.md` documents the comparison between guided and autonomous approaches
+- MCP-generated tests have been refined based on review
+- At least 1 edge-case test (slow network or error handling) exists and passes
+
+## What Copilot Helps With vs. What Requires Your Judgment
+
+MCP can explore an application and produce tests faster than you can write prompts. But the tests it generates tend to verify what the app *does* rather than what the app *should* do. A test that confirms the current behavior is a snapshot, not a quality check. Your judgment determines whether a behavior is correct, whether an edge case matters, and whether a test would catch a real regression.
 
 ---
 
-Previous: [Stage 3: Cross-Browser, Mobile, and Resilience](stage-3-cross-browser.md) | Next: [Stage 5: Quality Gates, Reporting, and CI](stage-5-quality-gates.md)
+Previous: [Stage 3: Expanding Test Coverage](stage-3-cross-browser.md) | Next: [Stage 5: Reporting, Analysis, and Test Strategy](stage-5-quality-gates.md)

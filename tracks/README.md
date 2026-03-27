@@ -66,9 +66,9 @@ Welcome! This hackathon is organized into **6 core tracks** plus **4 bonus track
 
 ### 🔍 [QA Tester Track](./qa-tester-track.md)
 
-**Best for:** QA Engineers, Test Automation Engineers, Quality Assurance Specialists, SDETs
+**Best for:** QA Engineers, Quality Assurance Specialists, Manual Testers
 
-**Focus:** Test automation with Playwright MCP, testing real-world open-source applications
+**Focus:** Using GitHub Copilot to test a real-world application -- test planning, AI-assisted test generation, and reporting
 
 **Your Challenge:** Challenge 5 - QA & Test Automation
 

@@ -6,7 +6,8 @@ import { BasePage } from './BasePage';
  * Handles all interactions with the login page
  *
  * NOTE: This page object contains 3 intentional bugs.
- * Debug and fix them to get the tests passing consistently.
+ * Use Copilot to help you find and fix them. Try pasting the
+ * error messages from test failures into Copilot Chat.
  */
 export class LoginPage extends BasePage {
   // Locators - update these selectors for your target application

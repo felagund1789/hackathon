@@ -4,25 +4,28 @@
 
 **Difficulty:** ⭐⭐ to ⭐⭐⭐ (progressive stages)
 
-**Focus:** Test automation, quality assurance, and testing best practices with GitHub Copilot
+**Focus:** Using GitHub Copilot to test a real application -- test planning, test generation, debugging, and reporting
 
 ## Who Is This For
 
-- QA Engineers & SDETs
-- Test Automation Engineers
-- Manual testers transitioning to automation
+- QA Engineers and Quality Assurance Specialists
+- Manual testers looking to use AI-assisted testing tools
+- Test leads and QA managers who want to evaluate Copilot for their teams
+
+This track does not assume coding experience. You will use Copilot to generate, explain, and fix test code rather than writing it from scratch. The goal is to learn what Copilot can do for QA workflows, where it shines, and where your testing judgment is still essential.
 
 ## Prerequisites
 
-<!-- TODO: fill in prerequisites (e.g., deploying the demo application) -->
+- Familiarity with manual testing concepts (test cases, expected vs actual results, bug reports)
+- Basic understanding of what automated tests do (you don't need to have written them)
+- Comfort with running terminal commands (copy-paste level is fine)
+- A browser and the ability to inspect web page elements (right-click > Inspect)
 
 ## Technology Stack
 
-- **Application**: .NET 9.0 / ASP.NET Core + .NET Aspire (eShop)
-- **Language**: C# (application and unit tests), TypeScript (E2E tests)
-- **Unit Testing**: xUnit
-- **E2E Testing**: Playwright (TypeScript)
-- **AI Integration**: Playwright MCP Server
+- **Application Under Test**: .NET 9.0 / ASP.NET Core + .NET Aspire (eShop)
+- **Test Framework**: Playwright (TypeScript) -- Copilot writes the code; you guide it
+- **AI Integration**: Playwright MCP Server, GitHub Copilot Chat
 - **Environment**: Docker & DevContainers
 
 ## Getting Started
@@ -31,24 +34,25 @@ Follow the [common setup steps](getting-started.md) first (clean start, custom i
 
 ### Custom Instructions for This Track
 
-**What to include:**
+**What to include in your `.github/copilot-instructions.md`:**
 
-- Testing frameworks in use (Jest, Pytest, Playwright, etc.)
-- Testing standards (AAA pattern, naming conventions)
-- Coverage goals and quality metrics
-- E2E testing approach and patterns
+- That you are a QA tester working with Playwright and TypeScript
+- That the target application is eShop, a .NET Aspire e-commerce reference app
+- Your preferred test structure (describe/it blocks, AAA pattern)
+- That you want Copilot to explain code it generates, not just produce it
+- That test names should describe the user behavior being verified
 
 ### Suggested Agents
 
 **Agents to consider creating:**
 
-- **Test Architect Agent** -- Expert in test strategy, coverage, and automation frameworks
-- **Playwright Expert Agent** -- Specialized in browser automation and E2E testing
-- **Performance Tester Agent** -- Focused on load testing and performance analysis
+- **Test Planner Agent** -- Helps identify test scenarios, edge cases, and risk areas from application pages
+- **Playwright Helper Agent** -- Generates and explains Playwright test code in simple terms
+- **Bug Reporter Agent** -- Helps write clear, structured bug reports from test failures
 
 ### Open the Challenge
 
-Navigate to `challenges/challenge-5-qa/`. Unlike other challenges, you will test an existing application (eShop) rather than building one.
+Navigate to `challenges/challenge-5-qa/`. You will not build an application in this track. Instead, you will test an existing one (eShop) using Copilot as your testing assistant.
 
 #### Setup: Target Application
 
@@ -100,22 +104,23 @@ You will be testing **[eShop](https://github.com/dotnet/eShop)**, a .NET Aspire 
 
 | Stage | Name | Difficulty | Est. Time | Key Deliverable |
 |-------|------|------------|-----------|----------------|
-| 1 | [Setup and Debug Starter Tests](qa-tester-track/stage-1-setup-debug.md) | ⭐⭐ | 60-75 min | Fix 3 bugs in LoginPage, adapt selectors, add test cases |
-| 2 | [Page Object Expansion and Shopping Flow](qa-tester-track/stage-2-page-objects.md) | ⭐⭐ | 60-90 min | CatalogPage, BasketPage, full E2E shopping test, fixtures |
-| 3 | [Cross-Browser, Mobile, and Resilience](qa-tester-track/stage-3-cross-browser.md) | ⭐⭐⭐ | 60-90 min | Tests pass on 3 browsers + mobile, network throttling, visual comparison |
-| 4 | [AI-Driven Testing and Hybrid Approach](qa-tester-track/stage-4-ai-driven.md) | ⭐⭐⭐ | 60-90 min | MCP-generated tests, API+UI hybrid tests, data consistency verification |
-| 5 | [Quality Gates, Reporting, and CI](qa-tester-track/stage-5-quality-gates.md) | ⭐⭐⭐ | 60-90 min | GitHub Actions CI, custom markdown reporter, flakiness analysis, test strategy |
+| 1 | [Application Discovery and Test Planning](qa-tester-track/stage-1-setup-debug.md) | ⭐⭐ | 60-75 min | Copilot-assisted app exploration, documented test plan, MCP walkthrough |
+| 2 | [Your First Automated Tests with Copilot](qa-tester-track/stage-2-page-objects.md) | ⭐⭐ | 60-90 min | Login tests debugged and passing, new test cases generated by Copilot |
+| 3 | [Expanding Test Coverage](qa-tester-track/stage-3-cross-browser.md) | ⭐⭐⭐ | 60-90 min | Shopping flow tests, cross-browser runs, Copilot-generated page objects |
+| 4 | [AI-Driven Testing with Playwright MCP](qa-tester-track/stage-4-ai-driven.md) | ⭐⭐⭐ | 60-90 min | MCP-generated tests, comparison of AI vs manual approaches |
+| 5 | [Reporting, Analysis, and Test Strategy](qa-tester-track/stage-5-quality-gates.md) | ⭐⭐⭐ | 60-90 min | Custom reporter, flakiness analysis, test strategy document |
 
-Copilot generates test boilerplate efficiently, but Stage 1 starts with debugging intentionally broken code, and later stages require cross-browser troubleshooting and test strategy decisions.
+Every stage is designed so Copilot does the heavy lifting on code. Your job is to guide it with good prompts, verify the output makes sense, and apply your QA judgment to decide what to test and whether the tests are actually useful.
 
-> **Short on time?** Skip mobile and visual comparison in Stage 3, do only MCP exploration in Stage 4, and focus on the CI workflow only in Stage 5.
+> **Short on time?** Focus on Stages 1-3. These cover the core Copilot-assisted QA workflow. Stages 4-5 add depth but are not required.
 
 ## Tips for Using Copilot on This Track
 
-- Keep the file under test open when generating test cases -- Copilot reads it as context.
-- Describe the user flow you want to test before asking for Playwright code. A sentence of intent beats a blank prompt.
-- If the MCP tool fails, check the Output panel in VS Code under "GitHub Copilot MCP" for logs.
-- Make sure the application port is forwarded in the DevContainer so the headless browser can reach it.
+- Describe what you want to test in plain English before asking Copilot to write code. "Test that a user can add an item to the cart and see the total update" produces better results than "write a Playwright test."
+- Keep the application's page open alongside VS Code. Use the browser's Inspect tool to find selectors, then paste them into your Copilot prompts.
+- When Copilot generates code you don't understand, ask it to explain. Use prompts like "Explain what this test does step by step" or "Why did you use `waitFor` here?"
+- If a test fails, paste the error message into Copilot Chat and ask it to diagnose the problem. This is one of Copilot's strongest use cases.
+- If the Playwright MCP tool fails, check the Output panel in VS Code under "GitHub Copilot MCP" for logs.
 
 ## Resources
 

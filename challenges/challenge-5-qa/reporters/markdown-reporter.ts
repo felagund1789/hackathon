@@ -1,2 +1,4 @@
 // Custom Playwright reporter skeleton
-// Generate a markdown summary with pass/fail counts, duration, screenshots, and flakiness score
+// Ask Copilot to implement this: "Implement a Playwright custom reporter that
+// generates a markdown file with pass/fail counts, duration per test,
+// links to failure screenshots, and a summary table."

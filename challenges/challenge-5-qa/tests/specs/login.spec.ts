@@ -2,10 +2,12 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 
 /**
- * Example Login Tests
- * 
- * These are template tests - update selectors and assertions
- * to match your target application.
+ * Starter Login Tests
+ *
+ * These tests will fail initially because of bugs in LoginPage.ts.
+ * Use Copilot Chat to diagnose the failures from the error messages.
+ * After fixing the bugs, add new test cases by describing them to Copilot
+ * in plain English (e.g., "Write a test that checks empty email shows an error").
  */
 
 test.describe('Login Functionality', () => {

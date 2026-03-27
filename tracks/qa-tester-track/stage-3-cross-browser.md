@@ -1,29 +1,39 @@
-# Stage 3: Cross-Browser, Mobile, and Resilience
+# Stage 3: Expanding Test Coverage
 
 [Back to QA Tester Track](../qa-tester-track.md)
 
 **Difficulty:** ⭐⭐⭐ | **Time:** 60-90 min
 
-Real-world tests must work across browsers and handle network issues.
+Login tests are passing. Now expand coverage to the core shopping flow and run tests across browsers.
 
 ## Tasks
 
-1. Run the full test suite on Chromium, Firefox, and WebKit. Fix any browser-specific failures.
-2. Add mobile viewport tests using the Pixel 5 and iPhone 12 emulation profiles. Verify responsive behavior: hamburger menu, touch-friendly tap targets, scrollable content.
-3. Network resilience: test application behavior under slow 3G conditions (use Playwright's `route.fulfill` or network throttling). Test graceful handling when an API returns 500.
-4. Visual comparison: screenshot key pages (catalog, product detail, basket) on each browser. Save screenshots for manual comparison of layout differences.
+1. **Generate page objects with Copilot**: Open the `CatalogPage.ts` skeleton in `tests/pages/`. Use Copilot to build it out. Share context by opening the eShop catalog page in your browser, inspecting the key elements, and telling Copilot:
+   - "Here are the elements on the catalog page: [paste selectors]. Create a CatalogPage class following the BasePage pattern in `BasePage.ts`."
+   - Ask Copilot to also generate a `BasketPage.ts` for the shopping cart page.
+
+2. **Build a shopping flow test**: Describe the full user journey to Copilot and ask it to generate a test:
+   - "Write a Playwright test that logs in, browses the catalog, adds a product to the basket, then verifies the basket shows the correct item and quantity."
+   Review the generated test. Does it follow a realistic user flow? Adjust prompts and regenerate if needed.
+
+3. **Run across browsers**: The `playwright.config.ts` already includes Chromium, Firefox, and WebKit. Run `npx playwright test` -- it will execute on all browsers. If tests fail on some browsers but not others, paste the error into Copilot Chat and ask for help diagnosing browser-specific issues.
+
+4. **Mobile viewport testing**: Run tests against the Pixel 5 mobile profile (already configured). Ask Copilot: "The test fails on mobile because the menu is collapsed. How do I handle a hamburger menu in Playwright?" Apply the fix.
+
+5. **Screenshot comparison**: Ask Copilot to add screenshot capture to key test steps (catalog page, basket page). Save them to a `screenshots/` directory. Compare screenshots across browsers manually -- note any layout differences.
 
 ## Verification
 
-- Test report shows all 3 browsers plus mobile passing
-- Slow network test completes within timeout
-- API error handling test verifies user-facing error message
-- Visual comparison screenshots are saved in a `screenshots/` directory
+- `CatalogPage.ts` and `BasketPage.ts` are implemented and follow the `BasePage` pattern
+- Shopping flow test passes end-to-end
+- Tests run on Chromium, Firefox, and WebKit (document any browser-specific fixes)
+- Mobile viewport test passes or has documented workarounds
+- Screenshots saved for at least 2 browsers
 
 ## What Copilot Helps With vs. What Requires Your Judgment
 
-Copilot generates browser configuration and network throttling code well. But debugging why a test passes on Chromium but fails on WebKit (often timing or rendering differences) requires understanding browser-specific behavior. Visual comparison is inherently manual.
+Copilot generates page objects and browser configuration well. But when a test passes on Chromium and fails on WebKit, diagnosing the root cause (timing, rendering, event handling) takes testing experience. Copilot can suggest fixes, but you need to verify they actually solve the problem rather than just masking it.
 
 ---
 
-Previous: [Stage 2: Page Object Expansion and Shopping Flow](stage-2-page-objects.md) | Next: [Stage 4: AI-Driven Testing and Hybrid Approach](stage-4-ai-driven.md)
+Previous: [Stage 2: Your First Automated Tests with Copilot](stage-2-page-objects.md) | Next: [Stage 4: AI-Driven Testing with Playwright MCP](stage-4-ai-driven.md)
