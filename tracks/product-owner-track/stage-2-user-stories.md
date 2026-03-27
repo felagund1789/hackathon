@@ -18,6 +18,11 @@ Writing user stories is easy. Writing good ones is harder. This stage tests whet
 
 5. **Create GitHub Issues** -- Convert your stories into GitHub Issues using the template in [templates/user-story-issue.md](../../challenges/challenge-0-product-planning/templates/user-story-issue.md). Apply labels for epic, priority, and MoSCoW category. Create at least 3 GitHub Milestones and assign each issue to one.
 
+   You can create issues in several ways:
+   - **GitHub.com** -- Create them directly in the Issues tab of your repository.
+   - **Copilot Chat** -- Ask Copilot to help draft issue bodies from your stories file, then paste into GitHub.
+   - **GitHub CLI** -- Run `gh issue create` from the terminal if you prefer the command line.
+
 ## Verification
 
 - All 5 bad stories in [docs/bad-user-stories.md](../../challenges/challenge-0-product-planning/docs/bad-user-stories.md) have a documented problem and corrected rewrite

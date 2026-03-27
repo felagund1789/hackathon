@@ -13,9 +13,14 @@ Each milestone must be independently shippable. Map milestones to GitHub Milesto
 Include a Mermaid Gantt diagram showing all milestones, features, dependencies, and
 critical path.
 
+Your budget from Stage 4 is 16 engineering weeks. Adjust the number of milestones
+and durations below to match your allocation decisions. The sample structure shows
+4 milestones -- add or remove milestones as needed. Every milestone must be
+independently shippable.
+
 ### Milestone 1: Foundation
 
-**Duration:** Weeks 1-3
+**Duration:** Weeks 1-4
 
 | Feature | Priority | Status | Assigned To |
 |---------|----------|--------|-------------|
@@ -23,15 +28,23 @@ critical path.
 
 ### Milestone 2: Core Features
 
-**Duration:** Weeks 4-6
+**Duration:** Weeks 5-9
 
 | Feature | Priority | Status | Assigned To |
 |---------|----------|--------|-------------|
 |         |          |        |             |
 
-### Milestone 3: Polish and Launch
+### Milestone 3: Extended Capabilities
 
-**Duration:** Weeks 7-8
+**Duration:** Weeks 10-13
+
+| Feature | Priority | Status | Assigned To |
+|---------|----------|--------|-------------|
+|         |          |        |             |
+
+### Milestone 4: Polish and Launch
+
+**Duration:** Weeks 14-16
 
 | Feature | Priority | Status | Assigned To |
 |---------|----------|--------|-------------|
