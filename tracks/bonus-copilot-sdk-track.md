@@ -53,20 +53,23 @@ npm install
 npx tsx index.ts
 ```
 
-### 3. Authenticate with Copilot CLI
+### 3. Authenticate
 
-Make sure you are logged in via Copilot CLI before running the SDK:
+The SDK needs a valid GitHub identity to create sessions. Run:
 
 ```bash
-copilot auth login
-copilot --version
+copilot
 ```
+
+and then do a `/login` command in Copilot Chat to login into GitHub Copilot.
 
 The SDK manages the CLI process lifecycle automatically. You do not need to start the CLI server manually.
 
-### 4. Clean Start and Custom Instructions
+### 4. Research the SDK First
 
-Follow the [common setup steps](getting-started.md) for the clean start. Then write custom instructions relevant to building Copilot SDK applications -- include context about `CopilotClient`, session management, custom tool definitions, and the event-based streaming model. Also add context about the release notes domain: PR categorization conventions, changelog formatting, and GitHub Release creation.
+Before writing any code, use the `/research` slash command in Copilot Chat to gather current documentation for `@github/copilot-sdk`. The SDK is new enough that Copilot's built-in training may be incomplete, and researching it upfront gives you accurate material to build your custom instructions from. Phase 1 walks through this in detail -- it is the first task and everything else builds on it.
+
+Also follow the [common setup steps](getting-started.md) for the clean start.
 
 ---
 
@@ -83,7 +86,7 @@ Follow the [common setup steps](getting-started.md) for the clean start. Then wr
 
 - Use `/explain` on the SDK types to understand the session event model before writing handlers.
 - Start with a concrete tool schema ("a tool that fetches merged PRs between two refs") rather than asking Copilot to design the whole architecture at once.
-- Agent mode works well for scaffolding tool registration and event handling in one pass.
+- Agent mode works well for scaffolding tool registration and event handling in one pass -- describe all the tools you need and let it wire up the schemas, handlers, and session registration together.
 - For the changelog formatter, ask Copilot for templates matching established formats like Keep a Changelog -- it gives better output with a known target.
 
 ## Resources

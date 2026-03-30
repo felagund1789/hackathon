@@ -7,7 +7,7 @@
 // - Generates a structured changelog through conversation
 // - Publishes a draft GitHub Release when the user is satisfied
 
-import { CopilotClient } from "@github/copilot-sdk";
+import { CopilotClient, approveAll } from "@github/copilot-sdk";
 import * as readline from "readline";
 
 // TODO: Parse CLI arguments for --repo and --since
@@ -21,6 +21,7 @@ const client = new CopilotClient();
 const session = await client.createSession({
   model: "gpt-4.1",
   streaming: true,
+  onPermissionRequest: approveAll,
 });
 
 // TODO: Define custom tools for the session
