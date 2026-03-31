@@ -1,6 +1,6 @@
 # Hackathon Tracks Overview
 
-Welcome! This hackathon is organized into **6 core tracks** plus **4 bonus tracks** to help you get the most out of GitHub Copilot based on your background and interests.
+Welcome! This hackathon is organized into **6 core tracks** plus **5 bonus tracks** to help you get the most out of GitHub Copilot based on your background and interests.
 
 ## Choose Your Track
 
@@ -128,6 +128,18 @@ Completed your main track? These advanced tracks go deeper.
 
 ---
 
+### 🏦 [Bonus: Legacy MUMPS Modernization](./bonus-mumps-modernization-track.md)
+
+**Best for:** Developers who enjoy reverse-engineering unfamiliar codebases and tackling legacy modernization challenges
+
+**Focus:** Legacy code comprehension, characterization testing, and cross-language translation of a MUMPS banking system
+
+**Your Challenge:** Bonus 5 - MUMPS Core Banking Modernization
+
+**Duration:** 8-12 hours (Solo, Advanced)
+
+---
+
 ## Which Track Should I Choose?
 
 ### Answer These Questions
@@ -142,6 +154,7 @@ Completed your main track? These advanced tracks go deeper.
    - Finished a core track and want more? → Bonus tracks
    - Cross-functional team (PO + devs + QA + DevOps)? → Bonus: Team Sprint
    - Technical team (devs + DevOps, optionally QA, no PO)? → Bonus: Technical Team Sprint
+   - Interested in legacy modernization or obscure languages? → Bonus: MUMPS Modernization
 
 2. **What do you want to learn?**
    - Building REST APIs → Backend Track
@@ -155,6 +168,7 @@ Completed your main track? These advanced tracks go deeper.
    - Full-stack ML apps → Bonus: Flight Delay Track
    - Full team agile sprint → Bonus: Team Sprint
    - Technical team sprint from spec → Bonus: Technical Team Sprint
+   - Legacy code comprehension and translation → Bonus: MUMPS Modernization
 
 3. **How much time do you have?**
    - 4 hours → Choose any track, complete core tasks
@@ -181,6 +195,7 @@ Completed your main track? These advanced tracks go deeper.
 | ✈️ **Bonus: Flight Delay** | ⭐⭐⭐ | 8-12h | Python, scikit-learn, React/Vite | Bonus 2 |
 | 🏢 **Bonus: Team Sprint** | ⭐⭐⭐ | 8h | Full stack, Docker, Azure, Playwright | Bonus 3 |
 | 🥾 **Bonus: Tech Sprint** | ⭐⭐⭐ | 8h | Full stack, Docker, Azure, Playwright | Bonus 4 |
+| 🏦 **Bonus: MUMPS Modernization** | ⭐⭐⭐ | 8-12h | MUMPS, PSL/Java/Python/C#, testing | Bonus 5 |
 
 ## What You'll Learn in Every Track
 

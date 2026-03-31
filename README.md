@@ -2,7 +2,7 @@
 
 ![Hackathon Banner](docs/images/hackathon-banner.jpg)
 
-Welcome to the GitHub Copilot Enterprise 1-Day Hackathon! This repository contains **6 core tracks** and **4 bonus tracks** with hands-on challenges that teach your team how to use GitHub Copilot effectively.
+Welcome to the GitHub Copilot Enterprise 1-Day Hackathon! This repository contains **6 core tracks** and **5 bonus tracks** with hands-on challenges that teach your team how to use GitHub Copilot effectively.
 
 ## Hackathon Overview
 
@@ -20,6 +20,7 @@ This hackathon is organized into **role-based tracks** for different team types,
 - ✈️ **[Bonus: Flight Delay Predictor Track](./tracks/bonus-flight-delay-track.md)** - Full-stack ML app (advanced)
 - 🏢 **[Bonus: Cross-Functional Team Sprint](./tracks/bonus-team-sprint-track.md)** - Full team agile sprint, ideation to deployment (4-6 people)
 - 🥾 **[Bonus: Technical Team Sprint](./tracks/bonus-tech-sprint-track.md)** - Technical team sprint from spec to deployment (2-4 developers)
+- 🏦 **[Bonus: Legacy MUMPS Modernization](./tracks/bonus-mumps-modernization-track.md)** - Reverse-engineer and translate a MUMPS banking system (solo, advanced)
 
 **[View All Tracks & Choose Yours](./tracks/README.md)**
 
@@ -263,6 +264,17 @@ Build CityPulse, a civic engagement platform, from scratch as a cross-functional
 Build TrailMate, a trail management platform for a regional parks authority, from a provided functional specification. Unlike the Cross-Functional Team Sprint, there is no product discovery phase and no business stakeholders. The team reads the spec, writes a technical specification, breaks work into GitHub Issues, and self-organizes across two sprints -- building a REST API, a frontend UI, automated tests, CI/CD pipelines, and deploying to Azure. Ends with a team demo and retrospective.
 
 > This challenge requires a team. It is not designed for solo participants.
+
+---
+
+### [Bonus 5: Legacy MUMPS Modernization](./challenges/bonus-5-mumps-banking/) ([Track](./tracks/bonus-mumps-modernization-track.md))
+
+**Team**: Solo or pair (any developer role)
+**Duration**: 8-12 hours (Advanced)
+**Skills**: Any modern language (PSL, Java, Python, C#, TypeScript), reverse engineering, testing, financial domain knowledge
+**Copilot Focus**: Legacy code comprehension with `/explain`, cross-language translation, characterization test generation, architecture documentation
+
+Reverse-engineer and translate a core banking system written in MUMPS -- a language most developers have never seen. The system handles customer management, deposit accounts, teller transactions, consumer loans, interest calculation, and end-of-day batch processing across 12 routines and ~2,500 lines of code. Understand it, test it, extend it, and translate it to a modern language while preserving every business rule.
 
 ---
 

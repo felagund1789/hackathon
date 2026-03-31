@@ -24,6 +24,9 @@ ENV/
 *~
 .DS_Store
 
+# Compiled files
+*.o
+
 # Build outputs
 dist/
 build/
