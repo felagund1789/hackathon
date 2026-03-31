@@ -16,7 +16,7 @@ Find your role and follow the link for your detailed task list:
 | [Backend Developer](phase-2-sprint-1-build/backend-developer.md) | Trails CRUD API, Condition Reports API, seed data | Working endpoints testable with curl |
 | [Frontend Developer](phase-2-sprint-1-build/frontend-developer.md) | Trail list, trail detail, condition report form, navigation | Pages rendering with data |
 | [QA Engineer](phase-2-sprint-1-build/qa-engineer.md) | E2E tests, API tests, exploratory testing, bug reports | Test suite and filed bugs |
-| [DevOps Engineer](phase-2-sprint-1-build/devops-engineer.md) | Frontend Dockerfile, full docker-compose, CI, IaC | Full stack running in containers |
+| [DevOps Engineer](phase-2-sprint-1-build/devops-engineer.md) | Environment setup, process scripts, CI | Full stack running in the Codespace |
 
 ## Sync Point: Mid-Sprint Standup (at ~3:00, roughly 1.5 hours into Sprint 1)
 
@@ -52,9 +52,8 @@ If anyone is blocked, resolve it immediately. If the frontend developer needs th
 
 **DevOps Engineer:**
 
-- [ ] docker-compose runs the full stack locally
+- [ ] All services start with a single command in the Codespace
 - [ ] CI pipeline runs on PR and reports pass/fail
-- [ ] Infrastructure-as-code started (Terraform or Bicep files created)
 
 ---
 

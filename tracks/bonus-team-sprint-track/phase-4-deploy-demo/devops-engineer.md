@@ -6,17 +6,17 @@
 
 ## Tasks
 
-1. **Verify the full stack** -- Run `docker compose up` from a clean state and confirm all services come up healthy. Check `docker compose ps` shows no containers restarting or exiting.
+1. **Verify the full environment** -- Start all services from a clean Codespace and confirm everything comes up healthy. Check that the backend, frontend, and database are all reachable.
 
-2. **Document the stack** -- Write or finalize `docs/local-setup.md`: how to start the application, required `.env` values, how to reset the database, and how to stop everything cleanly.
+2. **Document the environment** -- Write or finalize `docs/local-setup.md`: how to open the Codespace, how to start the application, required `.env` values, how to reset the database, and how to stop everything cleanly.
 
-3. **Verify logs and health checks** -- Show that `docker compose logs` surfaces useful output for each service. Confirm the CI smoke test is passing in GitHub Actions.
+3. **Verify logs and health checks** -- Show that service logs surface useful output in the terminal. Confirm the CI smoke test is passing in GitHub Actions.
 
-4. **Demo contribution** -- Walk through the infrastructure: the compose file architecture, the reverse proxy routing, the CI pipeline, and a live `docker compose up` showing the full stack starting cleanly.
+4. **Demo contribution** -- Walk through the infrastructure: the devcontainer configuration, the reverse proxy routing, the CI pipeline, and a live startup showing the full stack running in Codespaces.
 
 ## Verification
 
-- [ ] All services healthy on `docker compose ps`
+- [ ] All services running and healthy in the Codespace
 - [ ] `docs/local-setup.md` complete
 - [ ] CI smoke test passing
 - [ ] Demo contribution prepared

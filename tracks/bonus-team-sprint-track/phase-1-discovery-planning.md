@@ -17,7 +17,7 @@ Find your role and follow the link for your detailed task list:
 | [Backend Developer](phase-1-discovery-planning/backend-developer.md) | ~1 hr setup + 30 min planning | Scaffold backend, draft API spec, write custom instructions |
 | [Frontend Developer](phase-1-discovery-planning/frontend-developer.md) | ~1 hr setup + 30 min planning | Scaffold frontend, review Spark prototype, coordinate with backend |
 | [QA Engineer](phase-1-discovery-planning/qa-engineer.md) | ~1 hr setup + 30 min planning | Set up Playwright, write test plan, define test data needs |
-| [DevOps Engineer](phase-1-discovery-planning/devops-engineer.md) | ~1 hr setup + 30 min planning | Dockerfile, docker-compose, CI pipeline, branching strategy |
+| [DevOps Engineer](phase-1-discovery-planning/devops-engineer.md) | ~1 hr setup + 30 min planning | Devcontainer config, CI pipeline, branching strategy |
 | [Business Analyst](phase-1-discovery-planning/business-analyst.md) | ~1 hr + 30 min planning | Refine acceptance criteria, data model, dashboard metrics *(optional role)* |
 
 ## The Spark Handover

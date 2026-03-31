@@ -15,17 +15,17 @@ The agent works end-to-end. Now make it reliable, testable, and deployable.
     - Mock the GitHub API for deterministic results -- you do not want tests hitting the network
     - Aim for >70% coverage on tool and categorization logic
 
-2. **Deployment to Azure**
-    - Compile TypeScript and bundle dependencies for deployment
-    - Deploy to Azure App Service or Azure Container Apps
+2. **Packaging**
+    - Compile TypeScript and bundle dependencies for distribution
+    - Set up a clean `npm run build` that produces a ready-to-run artifact
     - Configure environment variables for `GITHUB_TOKEN` and any MCP server settings
-    - Verify the deployed application works end-to-end with the Copilot CLI backend
-    - Document the deployment steps so other team members can run it
+    - Document the setup steps so other team members can run the agent from a fresh Codespace
+    - Make sure the build output works without dev dependencies installed
 
 ## Verification
 
 - `npm test` passes with >70% coverage on tool implementations and categorization logic
-- The application runs successfully on Azure and can generate release notes for a real repository
+- The application runs successfully in a Codespace and can generate release notes for a real repository
 - Environment variables are configured securely -- no tokens in source code or build artifacts
 
 ---

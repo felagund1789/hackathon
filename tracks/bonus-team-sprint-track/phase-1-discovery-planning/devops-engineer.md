@@ -8,22 +8,22 @@
 
 1. **Set up the repository structure** -- Define branching strategy (trunk-based or feature branches). Write a short doc in `docs/branching-strategy.md` with the team's agreement on PR conventions.
 
-2. **Create the backend Dockerfile** -- Write a multi-stage Dockerfile for the backend. Include a dev stage with hot reload and a production stage.
+2. **Configure the devcontainer** -- Set up `.devcontainer/devcontainer.json` so the Codespace includes all runtimes the team needs (Node.js, Python, PostgreSQL). Add VS Code extensions, port forwarding rules, and any post-create scripts.
 
-3. **Create docker-compose.yml** -- Set up local development with docker-compose that runs the backend (and later the frontend and database).
+3. **Create a start script** -- Write a script (e.g., `scripts/dev.sh`) that starts all services (backend, frontend, database) inside the Codespace. Consider using a process manager like `concurrently` or `overmind` to run everything in one terminal.
 
 4. **Set up GitHub Actions** -- Create a CI workflow (`.github/workflows/ci.yml`) that runs on PRs. Start with a lint step and a placeholder test step.
 
-5. **Write custom instructions** -- Add DevOps context to `.github/copilot-instructions.md`: Docker conventions, compose service names, CI/CD approach, and how the local stack is structured.
+5. **Write custom instructions** -- Add DevOps context to `.github/copilot-instructions.md`: Codespace conventions, service ports, CI/CD approach, and how the local stack is structured.
 
-6. **Create an infra agent** -- Create `.github/agents/infra-engineer.agent.md` with Docker Compose, GitHub Actions, and local networking context. Include the names and ports of each service in the compose file.
+6. **Create an infra agent** -- Create `.github/agents/infra-engineer.agent.md` with devcontainer, GitHub Actions, and environment context. Include the ports each service uses and how to start the stack.
 
 7. **Sprint planning** -- Join the PO's planning session. Confirm infrastructure timeline.
 
 ## Verification
 
-- [ ] Backend Dockerfile working
-- [ ] docker-compose running the backend locally
+- [ ] Codespace starts with all required runtimes and tools
+- [ ] Backend runs inside the Codespace
 - [ ] GitHub Actions CI workflow runs on PRs
 
 ---

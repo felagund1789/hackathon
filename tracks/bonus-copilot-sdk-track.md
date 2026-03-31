@@ -80,7 +80,7 @@ Also follow the [common setup steps](getting-started.md) for the clean start.
 | 1 | [Foundation](bonus-copilot-sdk-track/phase-1-foundation.md) | 2-3 hours | Client setup, streaming, interactive release scope confirmation |
 | 2 | [Core Features](bonus-copilot-sdk-track/phase-2-core-features.md) | 3-4 hours | PR fetching tools, change categorization, changelog generation |
 | 3 | [Advanced Features](bonus-copilot-sdk-track/phase-3-advanced-features.md) | 2-3 hours | MCP integration, release publishing, iterative refinement |
-| 4 | [Production-Ready](bonus-copilot-sdk-track/phase-4-production.md) | 1-2 hours | Testing, packaging, Azure deployment |
+| 4 | [Production-Ready](bonus-copilot-sdk-track/phase-4-production.md) | 1-2 hours | Testing, packaging |
 
 ## Tips for Using Copilot on This Track
 

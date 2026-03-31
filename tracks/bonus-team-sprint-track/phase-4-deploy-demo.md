@@ -17,7 +17,7 @@ Find your role and follow the link for your detailed task list:
 | [Backend Developer](phase-4-deploy-demo/backend-developer.md) | Critical bug fixes, performance check, deployment help | API stable and ready for demo |
 | [Frontend Developer](phase-4-deploy-demo/frontend-developer.md) | Critical UI fixes, visual polish | UI polished for demo |
 | [QA Engineer](phase-4-deploy-demo/qa-engineer.md) | Final regression, production smoke test, test report | Test results ready for demo |
-| [DevOps Engineer](phase-4-deploy-demo/devops-engineer.md) | Verify deployment, write docs, confirm monitoring | Production URL live, deployment documented |
+| [DevOps Engineer](phase-4-deploy-demo/devops-engineer.md) | Verify environment, write docs, demo contribution | Codespace environment documented and running |
 | [Business Analyst](phase-4-deploy-demo/business-analyst.md) | Final walkthrough, known issues, retro notes *(optional role)* | Known issues finalized |
 
 ## Demo Format (last 20-30 minutes)
@@ -31,7 +31,7 @@ The PO leads. Suggested structure:
    - Show the dashboard (if built)
    - Show the public URL
 3. **Architecture overview** (5 min) -- Backend developer describes the API design. Frontend developer walks through the component structure.
-4. **Quality and infrastructure** (3 min) -- QA shows test results. DevOps shows the CI/CD pipeline and Azure deployment.
+4. **Quality and infrastructure** (3 min) -- QA shows test results. DevOps shows the CI/CD pipeline and Codespace environment setup.
 5. **Copilot retrospective** (3 min) -- Each person shares one moment where Copilot made a significant difference and one where they had to correct or override it.
 
 ## Retrospective (last 10 minutes)
@@ -48,7 +48,7 @@ Capture notes in `docs/retrospective.md` or as a GitHub Issue labeled `retrospec
 
 The team is done when:
 
-- [ ] Application is deployed and accessible via a public URL (or localhost if Azure deployment was cut for time)
+- [ ] Application is running and accessible inside the Codespace (use port forwarding to share the URL with the team)
 - [ ] At least the core flow works end-to-end: submit a report, view reports, browse events
 - [ ] Final E2E test suite has been run (results available)
 - [ ] Release notes are written

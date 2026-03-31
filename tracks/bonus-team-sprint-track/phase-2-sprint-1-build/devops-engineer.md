@@ -4,17 +4,17 @@
 
 **Time: Full 3 hours**
 
-Build the infrastructure that will take the application from local development to production.
+Build the infrastructure that will take the application from setup to a smooth development environment inside GitHub Codespaces.
 
 ## Tasks
 
-### Frontend Dockerfile
+### Devcontainer Features
 
-Write a multi-stage Dockerfile for the frontend (build with Node, serve with nginx or similar).
+Extend the devcontainer configuration to include database tooling, linting tools, and any CLI utilities the team needs. Use devcontainer features to add PostgreSQL, Redis, or other services as needed.
 
-### Full docker-compose
+### Start Script for All Services
 
-Update `docker-compose.yml` to run backend, frontend, and a database together. The frontend should proxy API calls to the backend.
+Create a single command that brings up backend, frontend, and database together inside the Codespace. Use a process manager like `concurrently`, `overmind`, or a simple shell script with background processes. The frontend should proxy API calls to the backend.
 
 ### Expand the CI Pipeline
 
@@ -25,14 +25,14 @@ Update the GitHub Actions workflow:
 - Run Playwright E2E tests (can fail for now if the app is not integrated yet)
 - Add linting steps for both services
 
-### Harden the Compose Setup
+### Harden the Dev Environment
 
-Now that backend and frontend are both running, make the compose file reliable for the whole team:
+Now that backend and frontend are both running, make the environment reliable for the whole team:
 
-- Add `healthcheck` blocks to the backend and database services so compose knows when they are ready
-- Add `restart: unless-stopped` to services that should recover from crashes
-- Use named volumes for the database so data survives a `docker compose down`
-- Add a `depends_on` with `condition: service_healthy` so the backend waits for the database
+- Add health check scripts that verify each service is up before tests run
+- Configure port forwarding in the devcontainer so teammates can preview the app
+- Set up a database seed script that runs automatically on Codespace creation
+- Document the startup order and any dependencies between services
 
 ### Environment Configuration
 
@@ -41,20 +41,20 @@ Set up `.env` files for local development. Document which environment variables 
 ## Copilot Tips
 
 ```text
-"Add a healthcheck to a PostgreSQL service in docker-compose.yml
-that uses pg_isready and marks the service healthy after 3 successes."
+"Add a PostgreSQL feature to devcontainer.json and configure
+port forwarding for the backend on port 3000 and frontend on port 5173."
 ```
 
 ```text
-"Create a multi-stage Dockerfile for a React app built with Vite.
-Build stage uses Node 20, production stage uses nginx:alpine."
+"Create a dev startup script using concurrently that runs
+the backend and frontend with hot reload inside a Codespace."
 ```
 
 ## Verification
 
-- [ ] Frontend Dockerfile building successfully
-- [ ] docker-compose running backend, frontend, and database together
-- [ ] Health checks and restart policies in place
+- [ ] Devcontainer includes all required runtimes and tools
+- [ ] All services (backend, frontend, database) start with a single command
+- [ ] Health checks and restart logic in place for dev processes
 - [ ] CI pipeline expanded with test and build steps
 - [ ] `.env.example` committed and `docs/env-vars.md` written
 

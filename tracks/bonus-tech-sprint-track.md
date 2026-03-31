@@ -23,7 +23,7 @@ The track supports teams of 2-4 people. Each person takes one or more roles depe
 | Backend Developer | Yes | API design, business logic, database, server-side tests |
 | Frontend Developer | Yes | UI components, routing, styling, API integration |
 | QA Engineer | No | Test strategy, E2E test automation, bug reporting |
-| DevOps Engineer | Yes | Containers, CI/CD, infrastructure, deployment |
+| DevOps Engineer | Yes | Devcontainer config, CI/CD, environment setup |
 
 There is no Product Owner or Business Analyst in this track. The functional specification is provided upfront. The team self-organizes using GitHub Issues and a shared project board.
 
@@ -44,7 +44,7 @@ Each team member needs skills matching their assigned role:
 - **Backend Dev:** Experience with Node.js/Express or Python/FastAPI
 - **Frontend Dev:** Experience with React, Vue, or Svelte (TypeScript preferred)
 - **QA:** Familiarity with test automation frameworks (Playwright recommended)
-- **DevOps:** Familiarity with Docker, CI/CD concepts, and basic Azure
+- **DevOps:** Familiarity with CI/CD concepts and GitHub Codespaces
 
 All participants need a GitHub account with Copilot access.
 
@@ -56,7 +56,7 @@ The team chooses their stack together. Recommended options:
 - **Frontend:** React with TypeScript and Vite (or Vue/Svelte)
 - **Database:** SQLite for development, PostgreSQL for production (optional)
 - **Testing:** Playwright for E2E, Jest or pytest for unit tests
-- **Infrastructure:** Docker, GitHub Actions, Azure (App Service or Container Apps)
+- **Infrastructure:** GitHub Codespaces (devcontainers), GitHub Actions
 - **Collaboration:** GitHub Issues, GitHub Projects
 
 ## How This Track Works
@@ -104,7 +104,7 @@ Individual team members can also maintain role-specific context in their agent d
 - **API Architect Agent** -- Understands the TrailMate REST API conventions and data model
 - **UI Component Agent** -- Knows the frontend framework, component patterns, and styling approach
 - **Test Engineer Agent** -- Specializes in Playwright E2E tests with page object patterns
-- **Infrastructure Agent** -- Focused on Docker, GitHub Actions, and Azure deployment patterns
+- **Infrastructure Agent** -- Focused on devcontainer configuration, GitHub Actions, and environment setup
 
 Agree on shared agents during the planning phase so everyone benefits from the same project context.
 
@@ -112,7 +112,7 @@ Agree on shared agents during the planning phase so everyone benefits from the s
 
 Navigate to `challenges/bonus-4-tech-sprint/`. Read the [functional specification](../challenges/bonus-4-tech-sprint/docs/functional-spec.md) as a team before starting Phase 1.
 
-A dedicated devcontainer is provided at `.devcontainer/bonus-4-tech-sprint/` with Node.js LTS, Python 3.11, Docker, GitHub CLI, Azure CLI, Terraform, and Playwright.
+A dedicated devcontainer is provided at `.devcontainer/bonus-4-tech-sprint/` with Node.js LTS, Python 3.11, GitHub CLI, and Playwright.
 
 ---
 
@@ -164,10 +164,10 @@ Each phase contains detailed tasks for every role, broken into separate pages. P
 
 | Phase | Link | Focus |
 |-------|------|-------|
-| 1 | [Technical Planning](bonus-tech-sprint-track/phase-1-technical-planning/devops-engineer.md) | Dockerfile, docker-compose, CI pipeline, branching strategy |
-| 2 | [Sprint 1](bonus-tech-sprint-track/phase-2-sprint-1-build/devops-engineer.md) | Frontend Dockerfile, full docker-compose, CI, IaC |
-| 3 | [Sprint 2](bonus-tech-sprint-track/phase-3-sprint-2-integration/devops-engineer.md) | Deploy to Azure, production config, monitoring |
-| 4 | [Ship and Demo](bonus-tech-sprint-track/phase-4-deploy-demo/devops-engineer.md) | Verify deployment, write docs, demo contribution |
+| 1 | [Technical Planning](bonus-tech-sprint-track/phase-1-technical-planning/devops-engineer.md) | Devcontainer config, CI pipeline, branching strategy |
+| 2 | [Sprint 1](bonus-tech-sprint-track/phase-2-sprint-1-build/devops-engineer.md) | Environment setup, process scripts, CI |
+| 3 | [Sprint 2](bonus-tech-sprint-track/phase-3-sprint-2-integration/devops-engineer.md) | Reverse proxy, CI smoke tests, shareable environment |
+| 4 | [Ship and Demo](bonus-tech-sprint-track/phase-4-deploy-demo/devops-engineer.md) | Verify environment, write docs, demo contribution |
 
 ## Tips for Using Copilot on This Track
 

@@ -26,7 +26,7 @@ Find your role and follow the link for your detailed task list:
 | [Backend Developer](phase-3-sprint-2-integration/backend-developer.md) | Bug fixes, search/filter, stats endpoint, auth | At least one advanced feature shipped |
 | [Frontend Developer](phase-3-sprint-2-integration/frontend-developer.md) | Connect to real API, dashboard, responsive design | No more mocked data in the critical path |
 | [QA Engineer](phase-3-sprint-2-integration/qa-engineer.md) | Regression tests, Sprint 2 tests, cross-browser, a11y | Full E2E suite against integrated app |
-| [DevOps Engineer](phase-3-sprint-2-integration/devops-engineer.md) | Deploy to Azure, production config, monitoring, CI/CD | App deployed to a public URL |
+| [DevOps Engineer](phase-3-sprint-2-integration/devops-engineer.md) | Reverse proxy, CI smoke tests, shareable environment | Full stack running reliably in Codespaces |
 | [Business Analyst](phase-3-sprint-2-integration/business-analyst.md) | Acceptance tests, known issues doc *(optional role)* | All features validated, known issues listed |
 
 ## Sync Point: Integration Check (at ~5:30, 1 hour into Sprint 2)
@@ -37,7 +37,7 @@ A brief 5-minute check-in:
 - Are there any deployment blockers?
 - What will be ready for the demo vs. what will not?
 
-This is the last chance to cut scope. If the team is behind, drop the dashboard and authentication. Focus on getting a working report submission flow deployed to Azure.
+This is the last chance to cut scope. If the team is behind, drop the dashboard and authentication. Focus on getting a working report submission flow running end-to-end in the Codespace.
 
 ---
 

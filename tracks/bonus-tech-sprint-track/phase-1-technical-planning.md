@@ -16,7 +16,7 @@ Find your role and follow the link for your detailed task list:
 | [Backend Developer](phase-1-technical-planning/backend-developer.md) | ~1 hr setup + 30 min planning | Scaffold backend, finalize API spec, custom instructions |
 | [Frontend Developer](phase-1-technical-planning/frontend-developer.md) | ~1 hr setup + 30 min planning | Scaffold frontend, design component hierarchy, coordinate with backend |
 | [QA Engineer](phase-1-technical-planning/qa-engineer.md) | ~1 hr setup + 30 min planning | Set up Playwright, write test plan, define test data needs |
-| [DevOps Engineer](phase-1-technical-planning/devops-engineer.md) | ~1 hr setup + 30 min planning | Dockerfile, docker-compose, CI pipeline, branching strategy |
+| [DevOps Engineer](phase-1-technical-planning/devops-engineer.md) | ~1 hr setup + 30 min planning | Devcontainer config, CI pipeline, branching strategy |
 
 ## Before You Start
 
