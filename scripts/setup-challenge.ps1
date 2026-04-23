@@ -24,6 +24,8 @@ param(
 $ErrorActionPreference = "Stop"
 $RepoRoot = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 
+. (Join-Path $PSScriptRoot "_clean-common.ps1")
+
 # Mapping tables
 $ChallengeMap = @{
     "challenge-0-product-planning"    = "challenge-0-product-planning"
@@ -43,6 +45,8 @@ $ChallengeMap = @{
     "bonus-9-backlog-generator"       = "bonus-9-backlog-generator"
     "bonus-10-ops-assistant"          = "bonus-10-ops-assistant"
     "bonus-11-spec-to-ship"           = "bonus-11-spec-to-ship"
+    "bonus-12-cobol-banking"           = "bonus-12-cobol-banking"
+    "challenge-6-agentic-workflows"    = "challenge-6-agentic-workflows"
 }
 
 $TrackMap = @{
@@ -63,6 +67,8 @@ $TrackMap = @{
     "bonus-9-backlog-generator"       = "bonus-backlog-generator-track"
     "bonus-10-ops-assistant"          = "bonus-ops-assistant-track"
     "bonus-11-spec-to-ship"           = "bonus-spec-to-ship-track"
+    "bonus-12-cobol-banking"           = "bonus-cobol-modernization-track"
+    "challenge-6-agentic-workflows"    = "agentic-workflows-track"
 }
 
 # Validate input
@@ -84,78 +90,8 @@ Write-Host "  Track:            tracks/$TrackName.md"
 Write-Host "  DevContainer:     .devcontainer/$Challenge"
 Write-Host ""
 
-# Clean .github (same as clean-start.ps1)
-$InstructionsFile = Join-Path $RepoRoot ".github\copilot-instructions.md"
-if (Test-Path $InstructionsFile) {
-    Set-Content -Path $InstructionsFile -Value "" -NoNewline
-    Write-Host "[OK] Cleared .github/copilot-instructions.md" -ForegroundColor Green
-}
-
-$AgentsDir = Join-Path $RepoRoot ".github\agents"
-if (Test-Path $AgentsDir) {
-    Get-ChildItem -Path $AgentsDir -File -Recurse |
-        Where-Object { $_.Name -ne ".gitkeep" } |
-        Remove-Item -Force
-    Write-Host "[OK] Removed sample agents from .github/agents/" -ForegroundColor Green
-}
-
-$SkillsDir = Join-Path $RepoRoot ".github\skills"
-if (Test-Path $SkillsDir) {
-    Get-ChildItem -Path $SkillsDir -Recurse | Remove-Item -Recurse -Force
-    Write-Host "[OK] Removed sample skills from .github/skills/" -ForegroundColor Green
-}
-
-# Remove Squad GitHub workflows (not participant-facing)
-$WorkflowsDir = Join-Path $RepoRoot ".github\workflows"
-if (Test-Path $WorkflowsDir) {
-    Remove-Item -Path $WorkflowsDir -Recurse -Force
-    Write-Host "[OK] Removed .github/workflows/" -ForegroundColor Green
-}
-
-# Remove .github/prompts (template-only artifact)
-$PromptsDir = Join-Path $RepoRoot ".github\prompts"
-if (Test-Path $PromptsDir) {
-    Remove-Item -Path $PromptsDir -Recurse -Force
-    Write-Host "[OK] Removed .github/prompts/" -ForegroundColor Green
-}
-
-# Clean non-participant top-level directories
-
-# Remove .copilot/ (MCP config and Squad skills -- not for participants)
-$CopilotDir = Join-Path $RepoRoot ".copilot"
-if (Test-Path $CopilotDir) {
-    Remove-Item -Path $CopilotDir -Recurse -Force
-    Write-Host "[OK] Removed .copilot/" -ForegroundColor Green
-}
-
-# Remove .squad/ (Squad orchestration state -- not for participants)
-$SquadDir = Join-Path $RepoRoot ".squad"
-if (Test-Path $SquadDir) {
-    Remove-Item -Path $SquadDir -Recurse -Force
-    Write-Host "[OK] Removed .squad/" -ForegroundColor Green
-}
-
-# Remove .playwright-mcp/ (debug logs -- not for participants)
-$PlaywrightDir = Join-Path $RepoRoot ".playwright-mcp"
-if (Test-Path $PlaywrightDir) {
-    Remove-Item -Path $PlaywrightDir -Recurse -Force
-    Write-Host "[OK] Removed .playwright-mcp/" -ForegroundColor Green
-}
-
-# Remove .gitattributes (Squad merge drivers -- not needed)
-$GitattributesFile = Join-Path $RepoRoot ".gitattributes"
-if (Test-Path $GitattributesFile) {
-    Remove-Item -Path $GitattributesFile -Force
-    Write-Host "[OK] Removed .gitattributes" -ForegroundColor Green
-}
-
-try {
-    $RemoteUrl = git -C $RepoRoot remote get-url origin 2>$null
-    if ($RemoteUrl) {
-        git -C $RepoRoot remote remove origin
-        Write-Host "[OK] Removed git remote 'origin'" -ForegroundColor Green
-    }
-} catch {}
+# Clean .github and non-participant artifacts
+Invoke-CleanGitHubAndMeta
 
 # Remove unrelated challenge folders
 $ChallengesDir = Join-Path $RepoRoot "challenges"

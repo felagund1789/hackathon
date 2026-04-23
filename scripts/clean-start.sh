@@ -21,93 +21,15 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
+# shellcheck source=_clean-common.sh
+source "$REPO_ROOT/scripts/_clean-common.sh"
+
 echo "=== Hackathon Clean Start ==="
 echo ""
 
-# 1. Empty copilot-instructions.md
-INSTRUCTIONS_FILE="$REPO_ROOT/.github/copilot-instructions.md"
-if [ -f "$INSTRUCTIONS_FILE" ]; then
-    > "$INSTRUCTIONS_FILE"
-    echo "[OK] Cleared .github/copilot-instructions.md"
-else
-    echo "[SKIP] .github/copilot-instructions.md not found"
-fi
+clean_github_and_meta
 
-# 2. Remove custom agents (keep .gitkeep)
-AGENTS_DIR="$REPO_ROOT/.github/agents"
-if [ -d "$AGENTS_DIR" ]; then
-    find "$AGENTS_DIR" -type f ! -name '.gitkeep' -delete
-    echo "[OK] Removed custom agents from .github/agents/"
-else
-    echo "[SKIP] .github/agents/ not found"
-fi
-
-# 3. Remove custom skills
-SKILLS_DIR="$REPO_ROOT/.github/skills"
-if [ -d "$SKILLS_DIR" ]; then
-    rm -rf "$SKILLS_DIR"/*
-    echo "[OK] Removed custom skills from .github/skills/"
-else
-    echo "[SKIP] .github/skills/ not found"
-fi
-
-# 4. Remove Squad GitHub workflows
-WORKFLOWS_DIR="$REPO_ROOT/.github/workflows"
-if [ -d "$WORKFLOWS_DIR" ]; then
-    rm -rf "$WORKFLOWS_DIR"
-    echo "[OK] Removed .github/workflows/"
-else
-    echo "[SKIP] .github/workflows/ not found"
-fi
-
-# 5. Remove .github/prompts
-PROMPTS_DIR="$REPO_ROOT/.github/prompts"
-if [ -d "$PROMPTS_DIR" ]; then
-    rm -rf "$PROMPTS_DIR"
-    echo "[OK] Removed .github/prompts/"
-else
-    echo "[SKIP] .github/prompts/ not found"
-fi
-
-# 6. Remove non-participant top-level directories and files
-if [ -d "$REPO_ROOT/.copilot" ]; then
-    rm -rf "$REPO_ROOT/.copilot"
-    echo "[OK] Removed .copilot/"
-else
-    echo "[SKIP] .copilot/ not found"
-fi
-
-if [ -d "$REPO_ROOT/.squad" ]; then
-    rm -rf "$REPO_ROOT/.squad"
-    echo "[OK] Removed .squad/"
-else
-    echo "[SKIP] .squad/ not found"
-fi
-
-if [ -d "$REPO_ROOT/.playwright-mcp" ]; then
-    rm -rf "$REPO_ROOT/.playwright-mcp"
-    echo "[OK] Removed .playwright-mcp/"
-else
-    echo "[SKIP] .playwright-mcp/ not found"
-fi
-
-if [ -f "$REPO_ROOT/.gitattributes" ]; then
-    rm -f "$REPO_ROOT/.gitattributes"
-    echo "[OK] Removed .gitattributes"
-else
-    echo "[SKIP] .gitattributes not found"
-fi
-
-# 7. Remove git remote origin
-if git -C "$REPO_ROOT" remote get-url origin &>/dev/null; then
-    REMOTE_URL=$(git -C "$REPO_ROOT" remote get-url origin)
-    git -C "$REPO_ROOT" remote remove origin
-    echo "[OK] Removed git remote 'origin' (was: $REMOTE_URL)"
-else
-    echo "[SKIP] No git remote 'origin' found"
-fi
-
-# 8. Stage and commit the clean state
+# Stage and commit the clean state
 git -C "$REPO_ROOT" add -A
 git -C "$REPO_ROOT" commit -m "Clean start: reset for hackathon" --quiet
 echo "[OK] Committed clean state to local repo"

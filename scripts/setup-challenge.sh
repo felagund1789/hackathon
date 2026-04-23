@@ -23,6 +23,9 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
+# shellcheck source=_clean-common.sh
+source "$REPO_ROOT/scripts/_clean-common.sh"
+
 # ── Mapping tables ──────────────────────────────────────────────────
 # Each devcontainer folder name maps to:
 #   CHALLENGE_DIR  -- folder under challenges/
@@ -49,6 +52,7 @@ declare -A CHALLENGE_MAP=(
   [bonus-9-backlog-generator]="bonus-9-backlog-generator"
   [bonus-10-ops-assistant]="bonus-10-ops-assistant"
   [bonus-11-spec-to-ship]="bonus-11-spec-to-ship"
+  [bonus-12-cobol-banking]="bonus-12-cobol-banking"
   [challenge-6-agentic-workflows]="challenge-6-agentic-workflows"
 )
 
@@ -70,6 +74,7 @@ declare -A TRACK_MAP=(
   [bonus-9-backlog-generator]="bonus-backlog-generator-track"
   [bonus-10-ops-assistant]="bonus-ops-assistant-track"
   [bonus-11-spec-to-ship]="bonus-spec-to-ship-track"
+  [bonus-12-cobol-banking]="bonus-cobol-modernization-track"
   [challenge-6-agentic-workflows]="agentic-workflows-track"
 )
 
@@ -103,70 +108,9 @@ echo "  Track:            tracks/$TRACK_NAME.md"
 echo "  DevContainer:     .devcontainer/$CHALLENGE_KEY"
 echo ""
 
-# ── Clean .github (same as clean-start.sh) ──────────────────────────
+# ── Clean .github and non-participant artifacts ─────────────────────
 
-INSTRUCTIONS_FILE="$REPO_ROOT/.github/copilot-instructions.md"
-if [[ -f "$INSTRUCTIONS_FILE" ]]; then
-  > "$INSTRUCTIONS_FILE"
-  echo "[OK] Cleared .github/copilot-instructions.md"
-fi
-
-AGENTS_DIR="$REPO_ROOT/.github/agents"
-if [[ -d "$AGENTS_DIR" ]]; then
-  find "$AGENTS_DIR" -type f ! -name '.gitkeep' -delete 2>/dev/null || true
-  echo "[OK] Removed sample agents from .github/agents/"
-fi
-
-SKILLS_DIR="$REPO_ROOT/.github/skills"
-if [[ -d "$SKILLS_DIR" ]]; then
-  rm -rf "${SKILLS_DIR:?}"/* 2>/dev/null || true
-  echo "[OK] Removed sample skills from .github/skills/"
-fi
-
-# Remove Squad GitHub workflows (not participant-facing)
-WORKFLOWS_DIR="$REPO_ROOT/.github/workflows"
-if [[ -d "$WORKFLOWS_DIR" ]]; then
-  rm -rf "${WORKFLOWS_DIR:?}"
-  echo "[OK] Removed .github/workflows/"
-fi
-
-# Remove .github/prompts (template-only artifact)
-PROMPTS_DIR="$REPO_ROOT/.github/prompts"
-if [[ -d "$PROMPTS_DIR" ]]; then
-  rm -rf "${PROMPTS_DIR:?}"
-  echo "[OK] Removed .github/prompts/"
-fi
-
-# ── Clean non-participant top-level directories ─────────────────────
-
-# Remove .copilot/ (MCP config and Squad skills -- not for participants)
-if [[ -d "$REPO_ROOT/.copilot" ]]; then
-  rm -rf "$REPO_ROOT/.copilot"
-  echo "[OK] Removed .copilot/"
-fi
-
-# Remove .squad/ (Squad orchestration state -- not for participants)
-if [[ -d "$REPO_ROOT/.squad" ]]; then
-  rm -rf "$REPO_ROOT/.squad"
-  echo "[OK] Removed .squad/"
-fi
-
-# Remove .playwright-mcp/ (debug logs -- not for participants)
-if [[ -d "$REPO_ROOT/.playwright-mcp" ]]; then
-  rm -rf "$REPO_ROOT/.playwright-mcp"
-  echo "[OK] Removed .playwright-mcp/"
-fi
-
-# Remove .gitattributes (Squad merge drivers -- not needed)
-if [[ -f "$REPO_ROOT/.gitattributes" ]]; then
-  rm -f "$REPO_ROOT/.gitattributes"
-  echo "[OK] Removed .gitattributes"
-fi
-
-if git -C "$REPO_ROOT" remote get-url origin &>/dev/null; then
-  git -C "$REPO_ROOT" remote remove origin
-  echo "[OK] Removed git remote 'origin'"
-fi
+clean_github_and_meta
 
 # ── Remove unrelated challenge folders ──────────────────────────────
 
