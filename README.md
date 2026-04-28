@@ -2,11 +2,11 @@
 
 ![Hackathon Banner](docs/images/hackathon-banner.jpg)
 
-Welcome to the GitHub Copilot Enterprise 1-Day Hackathon! This repository contains **7 core tracks** and **12 bonus tracks** with hands-on challenges that teach your team how to use GitHub Copilot effectively.
+Welcome to the GitHub Copilot Enterprise 1-Day Hackathon! This repository contains **19 challenge tracks** with hands-on work that teaches your team how to use GitHub Copilot effectively.
 
 ## Hackathon Overview
 
-This hackathon is organized into **role-based tracks** for different team types, plus **bonus tracks** for advanced and cross-functional teams:
+This hackathon is organized into **role-based tracks** for different team types, plus **challenge 7-18 tracks** for advanced, cross-functional, and specialized work:
 
 ### Choose Your Track
 
@@ -16,18 +16,18 @@ This hackathon is organized into **role-based tracks** for different team types,
 - ☁️ **[DevOps & Platform Track](./tracks/devops-platform-track.md)** - Infrastructure as Code, containers, CI/CD
 - 🎨 **[Frontend Developer Track](./tracks/frontend-developer-track.md)** - React, TypeScript, modern UI
 - 🔍 **[QA Tester Track](./tracks/qa-tester-track.md)** - AI-assisted testing, test planning, Copilot for QA workflows
-- 🧩 **[Bonus: Copilot SDK Track](./tracks/bonus-copilot-sdk-track.md)** - Build a Copilot SDK application (advanced)
-- ✈️ **[Bonus: Flight Delay Predictor Track](./tracks/bonus-flight-delay-track.md)** - Full-stack ML app (advanced)
-- 🏢 **[Bonus: Cross-Functional Team Sprint](./tracks/bonus-team-sprint-track.md)** - Full team agile sprint, ideation to deployment (4-6 people)
-- 🥾 **[Bonus: Technical Team Sprint](./tracks/bonus-tech-sprint-track.md)** - Technical team sprint from spec to deployment (2-4 developers)
-- 🏦 **[Bonus: Legacy MUMPS Modernization](./tracks/bonus-mumps-modernization-track.md)** - Reverse-engineer and translate a MUMPS banking system (solo, advanced)
-- 🔄 **[Bonus: Legacy Code Modernization](./tracks/bonus-legacy-modernization-track.md)** - Reverse-engineer and modernize an undocumented Java application
-- 📄 **[Bonus: Living Documentation](./tracks/bonus-living-docs-track.md)** - Automate javadoc, diagrams, changelogs, and PR doc reviews
-- 🔩 **[Bonus: Pipeline Factory](./tracks/bonus-pipeline-factory-track.md)** - Build CI/CD pipelines, debug broken deployments, generate runbooks
-- 📝 **[Bonus: Backlog Generator](./tracks/bonus-backlog-generator-track.md)** - Convert requirement specs into structured backlogs with MCP
-- 🖥️ **[Bonus: Ops Assistant](./tracks/bonus-ops-assistant-track.md)** - Build AI-assisted log analysis, incident routing, and ops tooling
-- 🚀 **[Bonus: Spec-to-Ship Accelerator](./tracks/bonus-spec-to-ship-track.md)** - Full lifecycle from functional spec to deployed code
-- 🏗️ **[Bonus: COBOL Banking Modernization](./tracks/bonus-cobol-modernization-track.md)** - Reverse-engineer and modernize a COBOL banking system into a full-stack web app
+- 🧩 **[Challenge 7: Copilot SDK Track](./tracks/challenge-7-copilot-sdk-track.md)** - Build a Copilot SDK application (advanced)
+- ✈️ **[Challenge 8: Flight Delay Predictor Track](./tracks/challenge-8-flight-delay-track.md)** - Full-stack ML app (advanced)
+- 🏢 **[Challenge 9: Cross-Functional Team Sprint](./tracks/challenge-9-team-sprint-track.md)** - Full team agile sprint, ideation to deployment (4-6 people)
+- 🥾 **[Challenge 10: Technical Team Sprint](./tracks/challenge-10-tech-sprint-track.md)** - Technical team sprint from spec to deployment (2-4 developers)
+- 🏦 **[Challenge 11: Legacy MUMPS Modernization](./tracks/challenge-11-mumps-modernization-track.md)** - Reverse-engineer and translate a MUMPS banking system (solo, advanced)
+- 🔄 **[Challenge 12: Legacy Code Modernization](./tracks/challenge-12-legacy-modernization-track.md)** - Reverse-engineer and modernize an undocumented Java application
+- 📄 **[Challenge 13: Living Documentation](./tracks/challenge-13-living-docs-track.md)** - Automate javadoc, diagrams, changelogs, and PR doc reviews
+- 🔩 **[Challenge 14: Pipeline Factory](./tracks/challenge-14-pipeline-factory-track.md)** - Build CI/CD pipelines, debug broken deployments, generate runbooks
+- 📝 **[Challenge 15: Backlog Generator](./tracks/challenge-15-backlog-generator-track.md)** - Convert requirement specs into structured backlogs with MCP
+- 🖥️ **[Challenge 16: Ops Assistant](./tracks/challenge-16-ops-assistant-track.md)** - Build AI-assisted log analysis, incident routing, and ops tooling
+- 🚀 **[Challenge 17: Spec-to-Ship Accelerator](./tracks/challenge-17-spec-to-ship-track.md)** - Full lifecycle from functional spec to deployed code
+- 🏗️ **[Challenge 18: COBOL Banking Modernization](./tracks/challenge-18-cobol-modernization-track.md)** - Reverse-engineer and modernize a COBOL banking system into a full-stack web app
 - 🤖 **[Agentic Workflows Track](./tracks/agentic-workflows-track.md)** - Build AI-powered repository automation with GitHub Agentic Workflows
 
 **[View All Tracks & Choose Yours](./tracks/README.md)**
@@ -51,7 +51,7 @@ python -m pip install -r requirements-docs.txt
 mkdocs build --strict
 ```
 
-The site uses the linked markdown under `docs/` as its source, with navigation ordered around challenge selection, setup, core tracks, bonus tracks, and shared reference docs.
+The site uses the linked markdown under `docs/` as its source, with navigation ordered around challenge selection, setup, challenge tracks, and shared reference docs.
 
 The GitHub Pages deployment workflow builds the same site from `mkdocs.yml`.
 
@@ -180,7 +180,7 @@ Throughout these challenges, you'll master:
 
 **Tip:** Instead of choosing challenges individually, we recommend following a [role-based track](./tracks/README.md) for a structured learning experience!
 
-All 7 challenges are available, and each track has a dedicated challenge:
+All 19 challenges are available, and each track has a dedicated challenge:
 
 ### [Challenge 0: Product Planning -- TaskFlow v2.0](./challenges/challenge-0-product-planning/) ([Track](./tracks/product-owner-track.md))
 
@@ -242,7 +242,7 @@ Test the eShop application across 5 stages: explore the app with Copilot and Pla
 
 ---
 
-### [Bonus 1: Copilot SDK -- Release Notes Agent](./challenges/bonus-1-copilot-sdk/) ([Track](./tracks/bonus-copilot-sdk-track.md))
+### [Challenge 7: Copilot SDK -- Release Notes Agent](./challenges/challenge-7-copilot-sdk/) ([Track](./tracks/challenge-7-copilot-sdk-track.md))
 
 **Team**: Experienced developers (any role) who finished a standard track
 **Duration**: 8-12 hours (Advanced)
@@ -251,14 +251,14 @@ Test the eShop application across 5 stages: explore the app with Copilot and Pla
 
 Build a Release Notes Agent powered by the GitHub Copilot SDK. The agent fetches merged PRs, categorizes changes, generates a structured changelog through iterative conversation, and publishes a draft GitHub Release -- all using custom tools, streaming responses, and multi-turn sessions.
 
-> ⚠️ **Bonus challenge** -- significantly harder and longer than standard challenges.
+> ⚠️ **Challenge 7 is significantly harder and longer than the standard challenges.**
 
 ---
 
-### [Bonus 2: Full-Stack Flight Delay Predictor](./challenges/bonus-2-flight-delay/) ([Track](./tracks/bonus-flight-delay-track.md))
+### [Challenge 8: Full-Stack Flight Delay Predictor](./challenges/challenge-8-flight-delay/) ([Track](./tracks/challenge-8-flight-delay-track.md))
 
 **Team**: Full-Stack Developers, Advanced Participants
-**Duration**: 8-12 hours (extended bonus challenge)
+**Duration**: 8-12 hours (extended challenge)
 **Skills**: Python, pandas, scikit-learn, Flask/FastAPI, TypeScript, frontend frameworks
 **Copilot Focus**: End-to-end development -- data science in notebooks, API scaffolding, frontend generation, cross-domain debugging
 
@@ -266,10 +266,10 @@ Build a complete application that predicts flight delay probability. Explore a r
 
 ---
 
-### [Bonus 3: Cross-Functional Team Sprint (CityPulse)](./challenges/bonus-3-team-sprint/) ([Track](./tracks/bonus-team-sprint-track.md))
+### [Challenge 9: Cross-Functional Team Sprint (CityPulse)](./challenges/challenge-9-team-sprint/) ([Track](./tracks/challenge-9-team-sprint-track.md))
 
 **Team**: Cross-functional team of 4-6 (Product Owner, Backend Dev, Frontend Dev, QA, DevOps, optional BA)
-**Duration**: 8 hours (team bonus challenge)
+**Duration**: 8 hours (team challenge)
 **Skills**: GitHub Spark, GitHub Issues/Projects, Express.js/FastAPI, React/Vue, Playwright, Docker, Azure, Terraform
 **Copilot Focus**: Every role uses Copilot -- PO for user stories and planning, developers for code generation, QA for test automation, DevOps for infrastructure
 
@@ -279,10 +279,10 @@ Build CityPulse, a civic engagement platform, from scratch as a cross-functional
 
 ---
 
-### [Bonus 4: Technical Team Sprint (TrailMate)](./challenges/bonus-4-tech-sprint/) ([Track](./tracks/bonus-tech-sprint-track.md))
+### [Challenge 10: Technical Team Sprint (TrailMate)](./challenges/challenge-10-tech-sprint/) ([Track](./tracks/challenge-10-tech-sprint-track.md))
 
 **Team**: Technical team of 2-4 (Backend Dev, Frontend Dev, DevOps required; QA optional -- no PO or BA)
-**Duration**: 8 hours (team bonus challenge)
+**Duration**: 8 hours (team challenge)
 **Skills**: Express.js/FastAPI, React/Vue, Playwright, Docker, Azure, Terraform, GitHub Issues/Projects
 **Copilot Focus**: Every technical role uses Copilot -- developers for code generation, QA for test automation, DevOps for infrastructure
 
@@ -292,7 +292,7 @@ Build TrailMate, a trail management platform for a regional parks authority, fro
 
 ---
 
-### [Bonus 5: Legacy MUMPS Modernization](./challenges/bonus-5-mumps-banking/) ([Track](./tracks/bonus-mumps-modernization-track.md))
+### [Challenge 11: Legacy MUMPS Modernization](./challenges/challenge-11-mumps-banking/) ([Track](./tracks/challenge-11-mumps-modernization-track.md))
 
 **Team**: Solo or pair (any developer role)
 **Duration**: 8-12 hours (Advanced)
@@ -303,7 +303,7 @@ Reverse-engineer and translate a core banking system written in MUMPS -- a langu
 
 ---
 
-### [Bonus 6: Legacy Code Modernization](./challenges/bonus-6-legacy-modernization/) ([Track](./tracks/bonus-legacy-modernization-track.md))
+### [Challenge 12: Legacy Code Modernization](./challenges/challenge-12-legacy-modernization/) ([Track](./tracks/challenge-12-legacy-modernization-track.md))
 
 **Team**: Solo or pair (Java developers)
 **Duration**: 6-8 hours
@@ -314,7 +314,7 @@ Reverse-engineer and modernize the Acme Bank Account Manager -- an undocumented 
 
 ---
 
-### [Bonus 7: Living Documentation](./challenges/bonus-7-living-docs/) ([Track](./tracks/bonus-living-docs-track.md))
+### [Challenge 13: Living Documentation](./challenges/challenge-13-living-docs/) ([Track](./tracks/challenge-13-living-docs-track.md))
 
 **Team**: Solo or pair (Java developers, tech leads)
 **Duration**: 6-8 hours
@@ -325,7 +325,7 @@ Automate the documentation of the Widget Corp Inventory Manager -- a Java applic
 
 ---
 
-### [Bonus 8: Pipeline Factory](./challenges/bonus-8-pipeline-factory/) ([Track](./tracks/bonus-pipeline-factory-track.md))
+### [Challenge 14: Pipeline Factory](./challenges/challenge-14-pipeline-factory/) ([Track](./tracks/challenge-14-pipeline-factory-track.md))
 
 **Team**: Solo or pair (DevOps, platform engineers, developers)
 **Duration**: 6-8 hours
@@ -336,7 +336,7 @@ Build CI/CD pipelines for TaskBoard, a kanban app that currently deploys via a s
 
 ---
 
-### [Bonus 9: Backlog Generator](./challenges/bonus-9-backlog-generator/) ([Track](./tracks/bonus-backlog-generator-track.md))
+### [Challenge 15: Backlog Generator](./challenges/challenge-15-backlog-generator/) ([Track](./tracks/challenge-15-backlog-generator-track.md))
 
 **Team**: Solo or pair (product owners, tech leads, scrum masters)
 **Duration**: 6-8 hours (no code required)
@@ -347,7 +347,7 @@ Convert three use case specifications of increasing complexity (Password Reset, 
 
 ---
 
-### [Bonus 10: Ops Assistant](./challenges/bonus-10-ops-assistant/) ([Track](./tracks/bonus-ops-assistant-track.md))
+### [Challenge 16: Ops Assistant](./challenges/challenge-16-ops-assistant/) ([Track](./tracks/challenge-16-ops-assistant-track.md))
 
 **Team**: Solo or pair (support engineers, SREs, ops teams)
 **Duration**: 6-8 hours
@@ -358,7 +358,7 @@ Build AI-assisted operations tooling for the Order Gateway -- a critical e-comme
 
 ---
 
-### [Bonus 11: Spec-to-Ship Accelerator](./challenges/bonus-11-spec-to-ship/) ([Track](./tracks/bonus-spec-to-ship-track.md))
+### [Challenge 17: Spec-to-Ship Accelerator](./challenges/challenge-17-spec-to-ship/) ([Track](./tracks/challenge-17-spec-to-ship-track.md))
 
 **Team**: Solo or pair (tech leads, senior developers)
 **Duration**: 6-8 hours
@@ -369,7 +369,7 @@ Compress the full development lifecycle for a billing module on an existing mult
 
 ---
 
-### [Bonus 12: COBOL Banking Modernization](./challenges/bonus-12-cobol-banking/) ([Track](./tracks/bonus-cobol-modernization-track.md))
+### [Challenge 18: COBOL Banking Modernization](./challenges/challenge-18-cobol-banking/) ([Track](./tracks/challenge-18-cobol-modernization-track.md))
 
 **Team**: Solo or pair (any developer role)
 **Duration**: 8-12 hours (Advanced)

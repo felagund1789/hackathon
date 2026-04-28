@@ -23,6 +23,6 @@
 ## Project Context
 
 - **Project:** gh-copilot-for-enterprise
-- **Description:** GitHub Copilot Enterprise Hackathon -- challenge-based learning platform with 7 core tracks + 11 bonus tracks, devcontainer configs, multi-language starter code, and strict content/structure rules
+- **Description:** GitHub Copilot Enterprise Hackathon -- challenge-based learning platform with 19 numbered challenges (Challenge 0 through Challenge 18), devcontainer configs, multi-language starter code, and strict content/structure rules
 - **Owner:** Marco Olivo
 - **Created:** 2026-04-14

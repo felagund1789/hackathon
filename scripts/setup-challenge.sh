@@ -14,7 +14,7 @@
 #
 # Examples:
 #   ./scripts/setup-challenge.sh challenge-1-backend
-#   ./scripts/setup-challenge.sh bonus-5-mumps-banking
+#   ./scripts/setup-challenge.sh challenge-11-mumps-banking
 #
 # When called from a devcontainer's postCreateCommand the name is
 # passed automatically -- users don't need to do anything.
@@ -28,8 +28,9 @@ source "$REPO_ROOT/scripts/_clean-common.sh"
 
 # ── Mapping tables ──────────────────────────────────────────────────
 # Each devcontainer folder name maps to:
-#   CHALLENGE_DIR  -- folder under challenges/
-#   TRACK_NAME     -- base name for the .md file and subfolder under tracks/
+#   CHALLENGE_DIR   -- folder under challenges/
+#   TRACK_FILE_NAME -- base name for the .md file under tracks/
+#   TRACK_DIR_NAME  -- subfolder under tracks/ for the phase docs
 #
 # Entries where the devcontainer name differs from the challenge folder
 # or where the track name follows a different convention are spelled out.
@@ -41,41 +42,63 @@ declare -A CHALLENGE_MAP=(
   [challenge-3-devops]="challenge-3-devops"
   [challenge-4-frontend]="challenge-4-frontend"
   [challenge-5-qa]="challenge-5-qa"
-  [bonus-1-copilot-sdk]="bonus-1-copilot-sdk"
-  [bonus-2-flight-delay]="bonus-2-flight-delay"
-  [bonus-3-team-sprint]="bonus-3-team-sprint"
-  [bonus-4-tech-sprint]="bonus-4-tech-sprint"
-  [bonus-5-mumps-banking]="bonus-5-mumps-banking"
-  [bonus-6-legacy-modernization]="bonus-6-legacy-modernization"
-  [bonus-7-living-docs]="bonus-7-living-docs"
-  [bonus-8-pipeline-factory]="bonus-8-pipeline-factory"
-  [bonus-9-backlog-generator]="bonus-9-backlog-generator"
-  [bonus-10-ops-assistant]="bonus-10-ops-assistant"
-  [bonus-11-spec-to-ship]="bonus-11-spec-to-ship"
-  [bonus-12-cobol-banking]="bonus-12-cobol-banking"
   [challenge-6-agentic-workflows]="challenge-6-agentic-workflows"
+  [challenge-7-copilot-sdk]="challenge-7-copilot-sdk"
+  [challenge-8-flight-delay]="challenge-8-flight-delay"
+  [challenge-9-team-sprint]="challenge-9-team-sprint"
+  [challenge-10-tech-sprint]="challenge-10-tech-sprint"
+  [challenge-11-mumps-banking]="challenge-11-mumps-banking"
+  [challenge-12-legacy-modernization]="challenge-12-legacy-modernization"
+  [challenge-13-living-docs]="challenge-13-living-docs"
+  [challenge-14-pipeline-factory]="challenge-14-pipeline-factory"
+  [challenge-15-backlog-generator]="challenge-15-backlog-generator"
+  [challenge-16-ops-assistant]="challenge-16-ops-assistant"
+  [challenge-17-spec-to-ship]="challenge-17-spec-to-ship"
+  [challenge-18-cobol-banking]="challenge-18-cobol-banking"
 )
 
-declare -A TRACK_MAP=(
+declare -A TRACK_FILE_MAP=(
   [challenge-0-product-planning]="product-owner-track"
   [challenge-1-backend]="backend-developer-track"
   [challenge-2-data-science]="data-science-ml-track"
   [challenge-3-devops]="devops-platform-track"
   [challenge-4-frontend]="frontend-developer-track"
   [challenge-5-qa]="qa-tester-track"
-  [bonus-1-copilot-sdk]="bonus-copilot-sdk-track"
-  [bonus-2-flight-delay]="bonus-flight-delay-track"
-  [bonus-3-team-sprint]="bonus-team-sprint-track"
-  [bonus-4-tech-sprint]="bonus-tech-sprint-track"
-  [bonus-5-mumps-banking]="bonus-mumps-modernization-track"
-  [bonus-6-legacy-modernization]="bonus-legacy-modernization-track"
-  [bonus-7-living-docs]="bonus-living-docs-track"
-  [bonus-8-pipeline-factory]="bonus-pipeline-factory-track"
-  [bonus-9-backlog-generator]="bonus-backlog-generator-track"
-  [bonus-10-ops-assistant]="bonus-ops-assistant-track"
-  [bonus-11-spec-to-ship]="bonus-spec-to-ship-track"
-  [bonus-12-cobol-banking]="bonus-cobol-modernization-track"
   [challenge-6-agentic-workflows]="agentic-workflows-track"
+  [challenge-7-copilot-sdk]="challenge-7-copilot-sdk-track"
+  [challenge-8-flight-delay]="challenge-8-flight-delay-track"
+  [challenge-9-team-sprint]="challenge-9-team-sprint-track"
+  [challenge-10-tech-sprint]="challenge-10-tech-sprint-track"
+  [challenge-11-mumps-banking]="challenge-11-mumps-modernization-track"
+  [challenge-12-legacy-modernization]="challenge-12-legacy-modernization-track"
+  [challenge-13-living-docs]="challenge-13-living-docs-track"
+  [challenge-14-pipeline-factory]="challenge-14-pipeline-factory-track"
+  [challenge-15-backlog-generator]="challenge-15-backlog-generator-track"
+  [challenge-16-ops-assistant]="challenge-16-ops-assistant-track"
+  [challenge-17-spec-to-ship]="challenge-17-spec-to-ship-track"
+  [challenge-18-cobol-banking]="challenge-18-cobol-modernization-track"
+)
+
+declare -A TRACK_DIR_MAP=(
+  [challenge-0-product-planning]="product-owner-track"
+  [challenge-1-backend]="backend-developer-track"
+  [challenge-2-data-science]="data-science-ml-track"
+  [challenge-3-devops]="devops-platform-track"
+  [challenge-4-frontend]="frontend-developer-track"
+  [challenge-5-qa]="qa-tester-track"
+  [challenge-6-agentic-workflows]="agentic-workflows-track"
+  [challenge-7-copilot-sdk]="challenge-7-copilot-sdk-track"
+  [challenge-8-flight-delay]="challenge-8-flight-delay-track"
+  [challenge-9-team-sprint]="challenge-9-team-sprint-track"
+  [challenge-10-tech-sprint]="challenge-10-tech-sprint-track"
+  [challenge-11-mumps-banking]="challenge-11-mumps-modernization-track"
+  [challenge-12-legacy-modernization]="challenge-12-legacy-modernization-track"
+  [challenge-13-living-docs]="challenge-13-living-docs-track"
+  [challenge-14-pipeline-factory]="challenge-14-pipeline-factory-track"
+  [challenge-15-backlog-generator]="challenge-15-backlog-generator-track"
+  [challenge-16-ops-assistant]="challenge-16-ops-assistant-track"
+  [challenge-17-spec-to-ship]="challenge-17-spec-to-ship-track"
+  [challenge-18-cobol-banking]="challenge-18-cobol-modernization-track"
 )
 
 # ── Validate input ──────────────────────────────────────────────────
@@ -99,12 +122,14 @@ if [[ -z "${CHALLENGE_MAP[$CHALLENGE_KEY]+x}" ]]; then
 fi
 
 CHALLENGE_DIR="${CHALLENGE_MAP[$CHALLENGE_KEY]}"
-TRACK_NAME="${TRACK_MAP[$CHALLENGE_KEY]}"
+TRACK_FILE_NAME="${TRACK_FILE_MAP[$CHALLENGE_KEY]}"
+TRACK_DIR_NAME="${TRACK_DIR_MAP[$CHALLENGE_KEY]}"
 
 echo "=== Challenge Setup: $CHALLENGE_KEY ==="
 echo ""
 echo "  Challenge folder: challenges/$CHALLENGE_DIR"
-echo "  Track:            tracks/$TRACK_NAME.md"
+echo "  Track file:       tracks/$TRACK_FILE_NAME.md"
+echo "  Track folder:     tracks/$TRACK_DIR_NAME"
 echo "  DevContainer:     .devcontainer/$CHALLENGE_KEY"
 echo ""
 
@@ -130,14 +155,14 @@ done
 # tracks and are a contributor guide, respectively.
 KEEP_TRACK_FILES=(
   "getting-started.md"
-  "${TRACK_NAME}.md"
+  "${TRACK_FILE_NAME}.md"
 )
 
 for item in "$REPO_ROOT"/tracks/*; do
   item_name="$(basename "$item")"
 
   # Check if it's the track subfolder we need
-  if [[ "$item_name" == "$TRACK_NAME" && -d "$item" ]]; then
+  if [[ "$item_name" == "$TRACK_DIR_NAME" && -d "$item" ]]; then
     continue
   fi
 
@@ -196,7 +221,7 @@ has been removed so you can focus on the task at hand.
 
 ## Your Track
 
-**[Start here: tracks/${TRACK_NAME}.md](tracks/${TRACK_NAME}.md)**
+**[Start here: tracks/${TRACK_FILE_NAME}.md](tracks/${TRACK_FILE_NAME}.md)**
 
 If this is your first time, read [Getting Started](tracks/getting-started.md) first.
 
@@ -223,5 +248,5 @@ echo ""
 echo "Done. Your workspace is ready for: $CHALLENGE_KEY"
 echo ""
 echo "Next steps:"
-echo "  1. Read tracks/$TRACK_NAME.md for the full challenge walkthrough"
+echo "  1. Read tracks/$TRACK_FILE_NAME.md for the full challenge walkthrough"
 echo "  2. Start with tracks/getting-started.md if this is your first time"

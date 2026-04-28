@@ -10,7 +10,7 @@ meaningful results from agentic workflows. You have two options:
 
 ### Option A: Use an Existing Challenge Repository
 
-If you completed another challenge (e.g., challenge-1 Web API, bonus-4 TrailMate),
+If you completed another challenge (e.g., challenge-1 Web API, challenge-10 TrailMate),
 push that code to a new GitHub repository and add agentic workflows on top.
 
 ### Option B: Fork a Public Repository

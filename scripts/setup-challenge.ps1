@@ -13,7 +13,7 @@
 #
 # Examples:
 #   .\scripts\setup-challenge.ps1 -Challenge challenge-1-backend
-#   .\scripts\setup-challenge.ps1 -Challenge bonus-5-mumps-banking
+#   .\scripts\setup-challenge.ps1 -Challenge challenge-11-mumps-banking
 #
 
 param(
@@ -34,41 +34,63 @@ $ChallengeMap = @{
     "challenge-3-devops"              = "challenge-3-devops"
     "challenge-4-frontend"            = "challenge-4-frontend"
     "challenge-5-qa"                  = "challenge-5-qa"
-    "bonus-1-copilot-sdk"             = "bonus-1-copilot-sdk"
-    "bonus-2-flight-delay"            = "bonus-2-flight-delay"
-    "bonus-3-team-sprint"             = "bonus-3-team-sprint"
-    "bonus-4-tech-sprint"             = "bonus-4-tech-sprint"
-    "bonus-5-mumps-banking"           = "bonus-5-mumps-banking"
-    "bonus-6-legacy-modernization"    = "bonus-6-legacy-modernization"
-    "bonus-7-living-docs"             = "bonus-7-living-docs"
-    "bonus-8-pipeline-factory"        = "bonus-8-pipeline-factory"
-    "bonus-9-backlog-generator"       = "bonus-9-backlog-generator"
-    "bonus-10-ops-assistant"          = "bonus-10-ops-assistant"
-    "bonus-11-spec-to-ship"           = "bonus-11-spec-to-ship"
-    "bonus-12-cobol-banking"           = "bonus-12-cobol-banking"
-    "challenge-6-agentic-workflows"    = "challenge-6-agentic-workflows"
+    "challenge-6-agentic-workflows"   = "challenge-6-agentic-workflows"
+    "challenge-7-copilot-sdk"         = "challenge-7-copilot-sdk"
+    "challenge-8-flight-delay"        = "challenge-8-flight-delay"
+    "challenge-9-team-sprint"         = "challenge-9-team-sprint"
+    "challenge-10-tech-sprint"        = "challenge-10-tech-sprint"
+    "challenge-11-mumps-banking"      = "challenge-11-mumps-banking"
+    "challenge-12-legacy-modernization" = "challenge-12-legacy-modernization"
+    "challenge-13-living-docs"        = "challenge-13-living-docs"
+    "challenge-14-pipeline-factory"   = "challenge-14-pipeline-factory"
+    "challenge-15-backlog-generator"  = "challenge-15-backlog-generator"
+    "challenge-16-ops-assistant"      = "challenge-16-ops-assistant"
+    "challenge-17-spec-to-ship"       = "challenge-17-spec-to-ship"
+    "challenge-18-cobol-banking"      = "challenge-18-cobol-banking"
 }
 
-$TrackMap = @{
+$TrackFileMap = @{
     "challenge-0-product-planning"    = "product-owner-track"
     "challenge-1-backend"             = "backend-developer-track"
     "challenge-2-data-science"        = "data-science-ml-track"
     "challenge-3-devops"              = "devops-platform-track"
     "challenge-4-frontend"            = "frontend-developer-track"
     "challenge-5-qa"                  = "qa-tester-track"
-    "bonus-1-copilot-sdk"             = "bonus-copilot-sdk-track"
-    "bonus-2-flight-delay"            = "bonus-flight-delay-track"
-    "bonus-3-team-sprint"             = "bonus-team-sprint-track"
-    "bonus-4-tech-sprint"             = "bonus-tech-sprint-track"
-    "bonus-5-mumps-banking"           = "bonus-mumps-modernization-track"
-    "bonus-6-legacy-modernization"    = "bonus-legacy-modernization-track"
-    "bonus-7-living-docs"             = "bonus-living-docs-track"
-    "bonus-8-pipeline-factory"        = "bonus-pipeline-factory-track"
-    "bonus-9-backlog-generator"       = "bonus-backlog-generator-track"
-    "bonus-10-ops-assistant"          = "bonus-ops-assistant-track"
-    "bonus-11-spec-to-ship"           = "bonus-spec-to-ship-track"
-    "bonus-12-cobol-banking"           = "bonus-cobol-modernization-track"
-    "challenge-6-agentic-workflows"    = "agentic-workflows-track"
+    "challenge-6-agentic-workflows"   = "agentic-workflows-track"
+    "challenge-7-copilot-sdk"         = "challenge-7-copilot-sdk-track"
+    "challenge-8-flight-delay"        = "challenge-8-flight-delay-track"
+    "challenge-9-team-sprint"         = "challenge-9-team-sprint-track"
+    "challenge-10-tech-sprint"        = "challenge-10-tech-sprint-track"
+    "challenge-11-mumps-banking"      = "challenge-11-mumps-modernization-track"
+    "challenge-12-legacy-modernization" = "challenge-12-legacy-modernization-track"
+    "challenge-13-living-docs"        = "challenge-13-living-docs-track"
+    "challenge-14-pipeline-factory"   = "challenge-14-pipeline-factory-track"
+    "challenge-15-backlog-generator"  = "challenge-15-backlog-generator-track"
+    "challenge-16-ops-assistant"      = "challenge-16-ops-assistant-track"
+    "challenge-17-spec-to-ship"       = "challenge-17-spec-to-ship-track"
+    "challenge-18-cobol-banking"      = "challenge-18-cobol-modernization-track"
+}
+
+$TrackDirMap = @{
+    "challenge-0-product-planning"    = "product-owner-track"
+    "challenge-1-backend"             = "backend-developer-track"
+    "challenge-2-data-science"        = "data-science-ml-track"
+    "challenge-3-devops"              = "devops-platform-track"
+    "challenge-4-frontend"            = "frontend-developer-track"
+    "challenge-5-qa"                  = "qa-tester-track"
+    "challenge-6-agentic-workflows"   = "agentic-workflows-track"
+    "challenge-7-copilot-sdk"         = "challenge-7-copilot-sdk-track"
+    "challenge-8-flight-delay"        = "challenge-8-flight-delay-track"
+    "challenge-9-team-sprint"         = "challenge-9-team-sprint-track"
+    "challenge-10-tech-sprint"        = "challenge-10-tech-sprint-track"
+    "challenge-11-mumps-banking"      = "challenge-11-mumps-modernization-track"
+    "challenge-12-legacy-modernization" = "challenge-12-legacy-modernization-track"
+    "challenge-13-living-docs"        = "challenge-13-living-docs-track"
+    "challenge-14-pipeline-factory"   = "challenge-14-pipeline-factory-track"
+    "challenge-15-backlog-generator"  = "challenge-15-backlog-generator-track"
+    "challenge-16-ops-assistant"      = "challenge-16-ops-assistant-track"
+    "challenge-17-spec-to-ship"       = "challenge-17-spec-to-ship-track"
+    "challenge-18-cobol-banking"      = "challenge-18-cobol-modernization-track"
 }
 
 # Validate input
@@ -81,12 +103,14 @@ if (-not $ChallengeMap.ContainsKey($Challenge)) {
 }
 
 $ChallengeDir = $ChallengeMap[$Challenge]
-$TrackName = $TrackMap[$Challenge]
+$TrackFileName = $TrackFileMap[$Challenge]
+$TrackDirName = $TrackDirMap[$Challenge]
 
 Write-Host "=== Challenge Setup: $Challenge ===" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "  Challenge folder: challenges/$ChallengeDir"
-Write-Host "  Track:            tracks/$TrackName.md"
+Write-Host "  Track file:       tracks/$TrackFileName.md"
+Write-Host "  Track folder:     tracks/$TrackDirName"
 Write-Host "  DevContainer:     .devcontainer/$Challenge"
 Write-Host ""
 
@@ -103,14 +127,14 @@ Get-ChildItem -Path $ChallengesDir -Directory | ForEach-Object {
 }
 
 # Remove unrelated track files and folders
-$KeepTrackFiles = @("getting-started.md", "$TrackName.md")
+$KeepTrackFiles = @("getting-started.md", "$TrackFileName.md")
 $TracksDir = Join-Path $RepoRoot "tracks"
 
 Get-ChildItem -Path $TracksDir | ForEach-Object {
     $ItemName = $_.Name
 
     # Keep the track subfolder
-    if ($ItemName -eq $TrackName -and $_.PSIsContainer) { return }
+    if ($ItemName -eq $TrackDirName -and $_.PSIsContainer) { return }
 
     # Keep shared files
     if ($KeepTrackFiles -contains $ItemName) { return }
@@ -159,7 +183,7 @@ has been removed so you can focus on the task at hand.
 
 ## Your Track
 
-**[Start here: tracks/$TrackName.md](tracks/$TrackName.md)**
+**[Start here: tracks/$TrackFileName.md](tracks/$TrackFileName.md)**
 
 If this is your first time, read [Getting Started](tracks/getting-started.md) first.
 
@@ -184,5 +208,5 @@ Write-Host ""
 Write-Host "Done. Your workspace is ready for: $Challenge" -ForegroundColor Green
 Write-Host ""
 Write-Host "Next steps:"
-Write-Host "  1. Read tracks/$TrackName.md for the full challenge walkthrough"
+Write-Host "  1. Read tracks/$TrackFileName.md for the full challenge walkthrough"
 Write-Host "  2. Start with tracks/getting-started.md if this is your first time"

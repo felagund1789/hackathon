@@ -16,3 +16,5 @@
 ## Learnings
 
 📌 Team update (2026-04-28): The docs site can add a curated entry layer for ordering and navigation, but the publishing path should stay lightweight and share one strict MkDocs build path with CI and GitHub Pages. -- decided by Scribe
+
+📌 Correction note (2026-04-28): The repo now uses a single numbered challenge sequence through Challenge 18. Any older references to bonus tracks or bonus challenges in this history are historical only and should not be used for current work.

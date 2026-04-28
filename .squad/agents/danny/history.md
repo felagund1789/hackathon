@@ -12,3 +12,5 @@
 - Sync rules: track ↔ challenge ↔ devcontainer ↔ README must stay aligned
 
 ## Learnings
+
+📌 Correction note (2026-04-28): The repo now uses a single numbered challenge sequence through Challenge 18. Any older references to bonus tracks or bonus challenges in this history are historical only and should not be used for current work.

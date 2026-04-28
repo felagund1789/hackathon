@@ -27,8 +27,7 @@
 
 This repo is a **GitHub Copilot Enterprise Hackathon** -- a challenge-based learning experience for enterprise customers. It has:
 
-- **7 core tracks** (Product Owner, Backend, Data Science, DevOps, Frontend, QA, Agentic Workflows) each mapped to a challenge folder
-- **11 bonus tracks** (SDK, Flight Delay, Team Sprint, Tech Sprint, MUMPS, Legacy Modernization, Living Docs, Pipeline Factory, Backlog Generator, Ops Assistant, Spec-to-Ship)
+- **19 numbered challenges** (Challenge 0 through Challenge 18) grouped into track experiences and mapped to challenge folders
 - **Per-challenge devcontainer configs** under `.devcontainer/` with tooling specific to each challenge
 - **Track files** under `tracks/` with a strict section order defined in `tracks/TRACK_STRUCTURE.md`
 - **Stage files** under `tracks/<track-name>/` -- one per stage, with Tasks, Verification, and navigation links

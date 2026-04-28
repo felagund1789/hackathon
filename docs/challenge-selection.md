@@ -6,7 +6,7 @@ Use this page to choose a challenge in a clear order. The detailed instructions 
 
 Start with a core track if you are working solo or in a role-based group and want the standard 6-8 hour format.
 
-Choose a bonus track if one of these is true:
+Choose one of the challenge 7-18 tracks if one of these is true:
 
 - You already finished a core track and want a harder follow-up.
 - You are running a team exercise instead of an individual track.
@@ -26,16 +26,16 @@ Choose a bonus track if one of these is true:
 
 If more than one track looks plausible, pick the one that best matches the work people actually do day to day.
 
-## Step 3: Choose a Bonus Track Only When It Fits the Group
+## Step 3: Choose a Challenge 7-18 Track When It Fits the Group
 
-These are the main bonus choices by situation:
+These are the main challenge 7-18 choices by situation:
 
-- Building with the Copilot runtime itself: [Copilot SDK Track](tracks/bonus-copilot-sdk-track.md)
-- Full-stack ML application: [Flight Delay Predictor Track](tracks/bonus-flight-delay-track.md)
-- Cross-functional team sprint: [Cross-Functional Team Sprint](tracks/bonus-team-sprint-track.md)
-- Technical delivery sprint without product roles: [Technical Team Sprint](tracks/bonus-tech-sprint-track.md)
-- Legacy modernization: [COBOL Banking Modernization](tracks/bonus-cobol-modernization-track.md), [Legacy MUMPS Modernization](tracks/bonus-mumps-modernization-track.md), or [Legacy Code Modernization](tracks/bonus-legacy-modernization-track.md)
-- Documentation, pipelines, backlog, or operations workflows: [Living Documentation](tracks/bonus-living-docs-track.md), [Pipeline Factory](tracks/bonus-pipeline-factory-track.md), [Backlog Generator](tracks/bonus-backlog-generator-track.md), [Ops Assistant](tracks/bonus-ops-assistant-track.md), or [Spec-to-Ship Accelerator](tracks/bonus-spec-to-ship-track.md)
+- Building with the Copilot runtime itself: [Copilot SDK Track](tracks/challenge-7-copilot-sdk-track.md)
+- Full-stack ML application: [Flight Delay Predictor Track](tracks/challenge-8-flight-delay-track.md)
+- Cross-functional team sprint: [Cross-Functional Team Sprint](tracks/challenge-9-team-sprint-track.md)
+- Technical delivery sprint without product roles: [Technical Team Sprint](tracks/challenge-10-tech-sprint-track.md)
+- Legacy modernization: [COBOL Banking Modernization](tracks/challenge-18-cobol-modernization-track.md), [Legacy MUMPS Modernization](tracks/challenge-11-mumps-modernization-track.md), or [Legacy Code Modernization](tracks/challenge-12-legacy-modernization-track.md)
+- Documentation, pipelines, backlog, or operations workflows: [Living Documentation](tracks/challenge-13-living-docs-track.md), [Pipeline Factory](tracks/challenge-14-pipeline-factory-track.md), [Backlog Generator](tracks/challenge-15-backlog-generator-track.md), [Ops Assistant](tracks/challenge-16-ops-assistant-track.md), or [Spec-to-Ship Accelerator](tracks/challenge-17-spec-to-ship-track.md)
 
 ## Step 4: Do the Shared Setup Before Opening the Challenge
 

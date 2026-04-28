@@ -1,6 +1,6 @@
 # Hackathon Tracks Overview
 
-Welcome! This hackathon is organized into **7 core tracks** plus **12 bonus tracks** to help you get the most out of GitHub Copilot based on your background and interests.
+Welcome! This hackathon is organized into **19 challenge tracks** to help you get the most out of GitHub Copilot based on your background and interests.
 
 ## Choose Your Track
 
@@ -88,149 +88,149 @@ Welcome! This hackathon is organized into **7 core tracks** plus **12 bonus trac
 
 ---
 
-## Bonus Tracks
+## Challenge 7-18 Tracks
 
 Completed your main track? These advanced tracks go deeper.
 
-### 🧩 [Bonus: Copilot SDK Track](./bonus-copilot-sdk-track.md)
+### 🧩 [Challenge 7: Copilot SDK Track](./challenge-7-copilot-sdk-track.md)
 
 **Best for:** Experienced developers who want to embed Copilot's agent runtime in custom apps
 
 **Focus:** Building a Release Notes Agent using the GitHub Copilot SDK
 
-**Your Challenge:** Bonus 1 - Copilot SDK
+**Your Challenge:** Challenge 7 - Copilot SDK
 
 **Duration:** 8-12 hours (Advanced)
 
 ---
 
-### ✈️ [Bonus: Flight Delay Predictor Track](./bonus-flight-delay-track.md)
+### ✈️ [Challenge 8: Flight Delay Predictor Track](./challenge-8-flight-delay-track.md)
 
 **Best for:** Full-stack developers who want to combine ML, API, and UI skills
 
 **Focus:** End-to-end application -- data science, backend API, and frontend UI
 
-**Your Challenge:** Bonus 2 - Flight Delay Predictor
+**Your Challenge:** Challenge 8 - Flight Delay Predictor
 
 **Duration:** 8-12 hours (Advanced)
 
 ---
 
-### 🏢 [Bonus: Cross-Functional Team Sprint](./bonus-team-sprint-track.md)
+### 🏢 [Challenge 9: Cross-Functional Team Sprint](./challenge-9-team-sprint-track.md)
 
 **Best for:** Teams of 4-6 people from different roles (PO, developers, QA, DevOps) who want to build a complete application together
 
 **Focus:** End-to-end agile sprint -- ideation with GitHub Spark, parallel development, deployment to Azure
 
-**Your Challenge:** Bonus 3 - CityPulse Team Sprint
+**Your Challenge:** Challenge 9 - CityPulse Team Sprint
 
 **Duration:** 8-10 hours (Team, Advanced)
 
 ---
 
-### 🥾 [Bonus: Technical Team Sprint](./bonus-tech-sprint-track.md)
+### 🥾 [Challenge 10: Technical Team Sprint](./challenge-10-tech-sprint-track.md)
 
 **Best for:** Teams of 2-4 developers/engineers who want to build a complete application from a provided specification, without business stakeholders
 
 **Focus:** Technical sprint -- from specification to production deployment, self-organized team
 
-**Your Challenge:** Bonus 4 - TrailMate Technical Sprint
+**Your Challenge:** Challenge 10 - TrailMate Technical Sprint
 
 **Duration:** 8-10 hours (Team, Advanced)
 
 ---
 
-### 🏦 [Bonus: Legacy MUMPS Modernization](./bonus-mumps-modernization-track.md)
+### 🏦 [Challenge 11: Legacy MUMPS Modernization](./challenge-11-mumps-modernization-track.md)
 
 **Best for:** Developers who enjoy reverse-engineering unfamiliar codebases and tackling legacy modernization challenges
 
 **Focus:** Legacy code comprehension, characterization testing, and cross-language translation of a MUMPS banking system
 
-**Your Challenge:** Bonus 5 - MUMPS Core Banking Modernization
+**Your Challenge:** Challenge 11 - MUMPS Core Banking Modernization
 
 **Duration:** 8-12 hours (Solo, Advanced)
 
 ---
 
-### 🔄 [Bonus: Legacy Code Modernization](./bonus-legacy-modernization-track.md)
+### 🔄 [Challenge 12: Legacy Code Modernization](./challenge-12-legacy-modernization-track.md)
 
 **Best for:** Developers who inherit undocumented Java applications and need to recover business knowledge, fix security issues, and migrate to modern frameworks
 
 **Focus:** Reverse-engineering legacy Java code, security auditing, characterization testing, and Spring Boot migration
 
-**Your Challenge:** Bonus 6 - Acme Bank Legacy Modernization
+**Your Challenge:** Challenge 12 - Acme Bank Legacy Modernization
 
 **Duration:** 6-8 hours (Solo/Pair)
 
 ---
 
-### 📄 [Bonus: Living Documentation](./bonus-living-docs-track.md)
+### 📄 [Challenge 13: Living Documentation](./challenge-13-living-docs-track.md)
 
 **Best for:** Teams where documentation is always out of date and maintaining it is a manual burden nobody enjoys
 
 **Focus:** Automating javadoc, architecture diagrams, changelogs, stakeholder summaries, and PR documentation reviews
 
-**Your Challenge:** Bonus 7 - Widget Corp Living Documentation
+**Your Challenge:** Challenge 13 - Widget Corp Living Documentation
 
 **Duration:** 6-8 hours (Solo/Pair)
 
 ---
 
-### 🔩 [Bonus: Pipeline Factory](./bonus-pipeline-factory-track.md)
+### 🔩 [Challenge 14: Pipeline Factory](./challenge-14-pipeline-factory-track.md)
 
 **Best for:** DevOps engineers and developers who build and maintain CI/CD pipelines, or teams that still deploy manually
 
 **Focus:** GitHub Actions pipeline creation, debugging broken deployments, reusable workflows, and incident runbooks
 
-**Your Challenge:** Bonus 8 - TaskBoard Pipeline Factory
+**Your Challenge:** Challenge 14 - TaskBoard Pipeline Factory
 
 **Duration:** 6-8 hours (Solo/Pair)
 
 ---
 
-### 📝 [Bonus: Backlog Generator](./bonus-backlog-generator-track.md)
+### 📝 [Challenge 15: Backlog Generator](./challenge-15-backlog-generator-track.md)
 
 **Best for:** Product owners, tech leads, and scrum masters who manually convert requirement documents into structured backlogs
 
 **Focus:** Automating spec-to-backlog conversion using Copilot prompts, agents, and the Atlassian MCP server
 
-**Your Challenge:** Bonus 9 - Spec-to-Backlog Automation
+**Your Challenge:** Challenge 15 - Spec-to-Backlog Automation
 
 **Duration:** 6-8 hours (Solo/Pair, No Code Required)
 
 ---
 
-### 🖥️ [Bonus: Ops Assistant](./bonus-ops-assistant-track.md)
+### 🖥️ [Challenge 16: Ops Assistant](./challenge-16-ops-assistant-track.md)
 
 **Best for:** Support teams, L1/L2 ops, and SREs who triage production incidents by manually reading logs
 
 **Focus:** AI-assisted log analysis, incident routing, troubleshooting runbooks, and deployment automation
 
-**Your Challenge:** Bonus 10 - Order Gateway Ops Assistant
+**Your Challenge:** Challenge 16 - Order Gateway Ops Assistant
 
 **Duration:** 6-8 hours (Solo/Pair)
 
 ---
 
-### 🚀 [Bonus: Spec-to-Ship Accelerator](./bonus-spec-to-ship-track.md)
+### 🚀 [Challenge 17: Spec-to-Ship Accelerator](./challenge-17-spec-to-ship-track.md)
 
 **Best for:** Tech leads and senior developers who manage the full lifecycle from requirements to deployed code
 
 **Focus:** End-to-end Copilot-assisted pipeline -- spec to backlog to technical analysis to code to tests to CI
 
-**Your Challenge:** Bonus 11 - Billing Module Spec-to-Ship
+**Your Challenge:** Challenge 17 - Billing Module Spec-to-Ship
 
 **Duration:** 6-8 hours (Solo/Pair)
 
 ---
 
-### 🏗️ [Bonus: COBOL Banking Modernization](./bonus-cobol-modernization-track.md)
+### 🏗️ [Challenge 18: COBOL Banking Modernization](./challenge-18-cobol-modernization-track.md)
 
 **Best for:** Developers dealing with COBOL modernization or anyone who wants to tackle a full legacy-to-modern-web transformation
 
 **Focus:** Reverse-engineering a COBOL banking system, building characterization tests, and modernizing it into a React + Node.js/Java web application using Claude Code
 
-**Your Challenge:** Bonus 12 - COBOL Core Banking Modernization
+**Your Challenge:** Challenge 18 - COBOL Core Banking Modernization
 
 **Duration:** 8-12 hours (Solo, Advanced)
 
@@ -247,18 +247,18 @@ Completed your main track? These advanced tracks go deeper.
    - Frontend/UI Developer → Frontend Track
    - QA/Test Engineer → QA Tester Track
    - Product Owner/BA/PM → Product Owner & BA Track
-   - Finished a core track and want more? → Bonus tracks
-   - Cross-functional team (PO + devs + QA + DevOps)? → Bonus: Team Sprint
-   - Technical team (devs + DevOps, optionally QA, no PO)? → Bonus: Technical Team Sprint
+   - Finished a core track and want more? → Challenge 7-18 tracks
+   - Cross-functional team (PO + devs + QA + DevOps)? → Challenge 9: Team Sprint
+   - Technical team (devs + DevOps, optionally QA, no PO)? → Challenge 10: Technical Team Sprint
    - Want to automate repository maintenance with AI? → Agentic Workflows Track
-   - Interested in legacy modernization or obscure languages? → Bonus: MUMPS Modernization
-   - Modernizing COBOL into a full-stack web app? → Bonus: COBOL Banking Modernization
-   - Inheriting undocumented Java code? → Bonus: Legacy Code Modernization
-   - Documentation is always out of date? → Bonus: Living Documentation
-   - Manual builds and deployments? → Bonus: Pipeline Factory
-   - Manually creating backlogs from specs? → Bonus: Backlog Generator
-   - Support team triaging incidents from logs? → Bonus: Ops Assistant
-   - Full lifecycle from spec to deployment? → Bonus: Spec-to-Ship Accelerator
+   - Interested in legacy modernization or obscure languages? → Challenge 11: MUMPS Modernization
+   - Modernizing COBOL into a full-stack web app? → Challenge 18: COBOL Banking Modernization
+   - Inheriting undocumented Java code? → Challenge 12: Legacy Code Modernization
+   - Documentation is always out of date? → Challenge 13: Living Documentation
+   - Manual builds and deployments? → Challenge 14: Pipeline Factory
+   - Manually creating backlogs from specs? → Challenge 15: Backlog Generator
+   - Support team triaging incidents from logs? → Challenge 16: Ops Assistant
+   - Full lifecycle from spec to deployment? → Challenge 17: Spec-to-Ship Accelerator
 
 2. **What do you want to learn?**
    - Building REST APIs → Backend Track
@@ -268,18 +268,18 @@ Completed your main track? These advanced tracks go deeper.
    - Test automation → QA Tester Track
    - Product planning & documentation → Product Owner & BA Track
    - Full applications (API + UI) → Combine Backend + Frontend Tracks
-   - Building with the Copilot SDK → Bonus: Copilot SDK Track
-   - Full-stack ML apps → Bonus: Flight Delay Track
-   - Full team agile sprint → Bonus: Team Sprint
-   - Technical team sprint from spec → Bonus: Technical Team Sprint
+   - Building with the Copilot SDK → Challenge 7: Copilot SDK Track
+   - Full-stack ML apps → Challenge 8: Flight Delay Track
+   - Full team agile sprint → Challenge 9: Team Sprint
+   - Technical team sprint from spec → Challenge 10: Technical Team Sprint
    - AI-powered repository automation → Agentic Workflows Track
-   - Legacy code comprehension and translation → Bonus: MUMPS Modernization
-   - Modernizing undocumented Java code → Bonus: Legacy Code Modernization
-   - Automating documentation → Bonus: Living Documentation
-   - CI/CD pipeline automation → Bonus: Pipeline Factory
-   - Sprint planning and backlog creation → Bonus: Backlog Generator
-   - Operations support and incident triage → Bonus: Ops Assistant
-   - End-to-end spec-to-ship workflow → Bonus: Spec-to-Ship Accelerator
+   - Legacy code comprehension and translation → Challenge 11: MUMPS Modernization
+   - Modernizing undocumented Java code → Challenge 12: Legacy Code Modernization
+   - Automating documentation → Challenge 13: Living Documentation
+   - CI/CD pipeline automation → Challenge 14: Pipeline Factory
+   - Sprint planning and backlog creation → Challenge 15: Backlog Generator
+   - Operations support and incident triage → Challenge 16: Ops Assistant
+   - End-to-end spec-to-ship workflow → Challenge 17: Spec-to-Ship Accelerator
 
 3. **How much time do you have?**
    - 4 hours → Choose any track, complete core tasks
@@ -302,18 +302,18 @@ Completed your main track? These advanced tracks go deeper.
 | ☁️ **DevOps** | ⭐ -- ⭐⭐⭐ | 6-8h | Terraform, Docker, K8s | Challenge 3 |
 | 🎨 **Frontend** | ⭐ -- ⭐⭐⭐ | 6-8h | React, TypeScript | Challenge 4 |
 | 🔍 **QA Tester** | ⭐ -- ⭐⭐⭐ | 6-8h | Playwright, xUnit, .NET Aspire | Challenge 5 |
-| 🧩 **Bonus: Copilot SDK** | ⭐⭐⭐ | 8-12h | Node.js, TypeScript, Copilot SDK | Bonus 1 |
-| ✈️ **Bonus: Flight Delay** | ⭐⭐⭐ | 8-12h | Python, scikit-learn, React/Vite | Bonus 2 |
-| 🏢 **Bonus: Team Sprint** | ⭐⭐⭐ | 8h | Full stack, Docker, Azure, Playwright | Bonus 3 |
-| 🥾 **Bonus: Tech Sprint** | ⭐⭐⭐ | 8h | Full stack, Docker, Azure, Playwright | Bonus 4 |
-| 🏦 **Bonus: MUMPS Modernization** | ⭐⭐⭐ | 8-12h | MUMPS, PSL/Java/Python/C#, testing | Bonus 5 |
-| 🔄 **Bonus: Legacy Modernization** | ⭐⭐⭐ | 6-8h | Java 8/17, Spring Boot 1.x/3.x, Maven | Bonus 6 |
-| 📄 **Bonus: Living Documentation** | ⭐⭐ | 6-8h | Java, Mermaid, Custom Prompts/Agents | Bonus 7 |
-| 🔩 **Bonus: Pipeline Factory** | ⭐⭐ | 6-8h | Node.js, GitHub Actions, Shell | Bonus 8 |
-| 📝 **Bonus: Backlog Generator** | ⭐⭐ | 6-8h | Prompts, Agents, Atlassian MCP | Bonus 9 |
-| 🖥️ **Bonus: Ops Assistant** | ⭐⭐ | 6-8h | Prompts, Agents, Node.js | Bonus 10 |
-| 🚀 **Bonus: Spec-to-Ship** | ⭐⭐⭐ | 6-8h | Node.js, Prompts, Agents, GitHub Actions | Bonus 11 |
-| 🏗️ **Bonus: COBOL Modernization** | ⭐⭐⭐ | 8-12h | COBOL, Node.js/Java, React, testing | Bonus 12 |
+| 🧩 **Challenge 7: Copilot SDK** | ⭐⭐⭐ | 8-12h | Node.js, TypeScript, Copilot SDK | Challenge 7 |
+| ✈️ **Challenge 8: Flight Delay** | ⭐⭐⭐ | 8-12h | Python, scikit-learn, React/Vite | Challenge 8 |
+| 🏢 **Challenge 9: Team Sprint** | ⭐⭐⭐ | 8h | Full stack, Docker, Azure, Playwright | Challenge 9 |
+| 🥾 **Challenge 10: Tech Sprint** | ⭐⭐⭐ | 8h | Full stack, Docker, Azure, Playwright | Challenge 10 |
+| 🏦 **Challenge 11: MUMPS Modernization** | ⭐⭐⭐ | 8-12h | MUMPS, PSL/Java/Python/C#, testing | Challenge 11 |
+| 🔄 **Challenge 12: Legacy Modernization** | ⭐⭐⭐ | 6-8h | Java 8/17, Spring Boot 1.x/3.x, Maven | Challenge 12 |
+| 📄 **Challenge 13: Living Documentation** | ⭐⭐ | 6-8h | Java, Mermaid, Custom Prompts/Agents | Challenge 13 |
+| 🔩 **Challenge 14: Pipeline Factory** | ⭐⭐ | 6-8h | Node.js, GitHub Actions, Shell | Challenge 14 |
+| 📝 **Challenge 15: Backlog Generator** | ⭐⭐ | 6-8h | Prompts, Agents, Atlassian MCP | Challenge 15 |
+| 🖥️ **Challenge 16: Ops Assistant** | ⭐⭐ | 6-8h | Prompts, Agents, Node.js | Challenge 16 |
+| 🚀 **Challenge 17: Spec-to-Ship** | ⭐⭐⭐ | 6-8h | Node.js, Prompts, Agents, GitHub Actions | Challenge 17 |
+| 🏗️ **Challenge 18: COBOL Modernization** | ⭐⭐⭐ | 8-12h | COBOL, Node.js/Java, React, testing | Challenge 18 |
 
 ## What You'll Learn in Every Track
 
@@ -413,7 +413,7 @@ Each track includes:
 - Recommended schedule
 - Domain-specific Copilot tips
 - Success metrics
-- Bonus challenges
+- Additional challenges
 
 Plus access to:
 
@@ -459,7 +459,7 @@ Track your progress across any track:
 ### Next Steps
 
 1. **Complete the track** - Finish required challenges
-2. **Try bonus challenges** - Go deeper in your domain
+2. **Try more challenges** - Go deeper in your domain
 3. **Explore another track** - Broaden your skills
 4. **Apply to real work** - Use Copilot in your projects
 5. **Share learnings** - Help others in your organization
@@ -487,8 +487,8 @@ Track your progress across any track:
 - [DevOps & Platform Track](./devops-platform-track.md)
 - [Frontend Developer Track](./frontend-developer-track.md)
 - [QA Tester Track](./qa-tester-track.md)
-- [Bonus: Copilot SDK Track](./bonus-copilot-sdk-track.md)
-- [Bonus: Flight Delay Predictor Track](./bonus-flight-delay-track.md)
+- [Challenge 7: Copilot SDK Track](./challenge-7-copilot-sdk-track.md)
+- [Challenge 8: Flight Delay Predictor Track](./challenge-8-flight-delay-track.md)
 
 ### General Resources
 

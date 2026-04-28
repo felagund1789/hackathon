@@ -6,4 +6,4 @@ Use these entry points:
 
 1. Go to [Challenge Selection](../challenge-selection.md) to pick a track.
 2. Complete [Getting Started](../tracks/getting-started.md) before opening a challenge.
-3. Use the [Track Catalog](../tracks/README.md) to browse the full set of core and bonus tracks.
+3. Use the [Track Catalog](../tracks/README.md) to browse the full set of challenge tracks.

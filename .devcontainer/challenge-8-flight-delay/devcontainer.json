@@ -1,0 +1,38 @@
+{
+	"name": "Challenge 8 - Flight Delay Predictor",
+	"image": "mcr.microsoft.com/devcontainers/python:3.11",
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "lts"
+		},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"GitHub.copilot",
+				"GitHub.copilot-chat",
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"ms-toolsai.jupyter",
+				"dbaeumer.vscode-eslint",
+				"humao.rest-client"
+			]
+		}
+	},
+	"forwardPorts": [5173, 8000],
+	"portsAttributes": {
+		"5173": {
+			"label": "Vite Dev Server",
+			"protocol": "http",
+			"onAutoForward": "openBrowser"
+		},
+		"8000": {
+			"label": "Python API",
+			"protocol": "http",
+			"onAutoForward": "notify"
+		}
+	},
+	"postCreateCommand": "bash scripts/setup-challenge.sh challenge-8-flight-delay && python3 -m pip install -r challenges/challenge-8-flight-delay/requirements.txt && cd challenges/challenge-8-flight-delay/client && npm install",
+	"remoteUser": "vscode"
+}

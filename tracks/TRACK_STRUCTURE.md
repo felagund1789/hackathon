@@ -53,7 +53,7 @@ Sections marked **(required)** must appear in every track. Sections marked **(if
 
 ## Stage File Format
 
-Each stage lives in `tracks/<track-name>/stage-N-<slug>.md` (or `phase-N-<slug>.md` for bonus tracks).
+Each stage lives in `tracks/<track-name>/stage-N-<slug>.md`. Some extended tracks still use `phase-N-<slug>.md`.
 
 ```text
 1. # Stage N: Name

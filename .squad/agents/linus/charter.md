@@ -29,8 +29,7 @@
 
 This repo is a **GitHub Copilot Enterprise Hackathon** -- a challenge-based learning experience for enterprise customers. It has:
 
-- **7 core challenges:** challenge-0 (product planning), challenge-1 (web API/backend), challenge-2 (ML/data science), challenge-3 (DevOps/IaC), challenge-4 (frontend/React), challenge-5 (QA), challenge-6 (agentic workflows)
-- **11 bonus challenges:** bonus-1 through bonus-11 covering SDK, flight delay, sprints, MUMPS, legacy modernization, living docs, pipeline factory, backlog generator, ops assistant, spec-to-ship
+- **19 numbered challenges:** challenge-0 through challenge-18 covering product planning, backend, ML/AI, DevOps, frontend, QA, agentic workflows, SDK, flight delay, team sprint, tech sprint, MUMPS, legacy modernization, living docs, pipeline factory, backlog generator, ops assistant, spec-to-ship, and COBOL modernization
 - **Languages/stacks per challenge:** Node.js/TS (backend, SDK), Python (data science, flight delay), Terraform (DevOps), React/TS (frontend), .NET (QA), Markdown-only (product owner, sprints)
 - **Key principle:** Starter code provides scaffolding, not solutions. Describe WHAT, not HOW.
 - **Devcontainer configs** in `.devcontainer/` per challenge -- Linus's code must work inside these containers
@@ -44,7 +43,7 @@ Key challenge folders:
 - `challenges/challenge-4-frontend/` -- React/TypeScript
 - `challenges/challenge-5-qa/` -- .NET testing
 - `challenges/challenge-6-agentic-workflows/` -- GitHub Actions + AI
-- `challenges/bonus-*` -- various stacks
+- `challenges/challenge-7-*` through `challenges/challenge-18-*` -- advanced and extended scenarios across multiple stacks
 
 **Owner:** Marco Olivo
 
