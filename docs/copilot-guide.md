@@ -166,4 +166,4 @@ Before committing Copilot-generated code, verify:
 
 ---
 
-[Back to Main README](../README.md)
+[Back to Home](./index.md)

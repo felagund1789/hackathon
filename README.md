@@ -38,6 +38,23 @@ Each track provides a curated path through the challenges based on your role, wi
 
 **6-8 hours** per track.
 
+## Documentation Site
+
+The repository can publish its markdown guides as an MkDocs site through GitHub Pages.
+
+For a local docs build:
+
+```bash
+python -m venv .venv-docs
+. .venv-docs/bin/activate
+python -m pip install -r requirements-docs.txt
+mkdocs build --strict
+```
+
+The site uses the linked markdown under `docs/` as its source, with navigation ordered around challenge selection, setup, core tracks, bonus tracks, and shared reference docs.
+
+The GitHub Pages deployment workflow builds the same site from `mkdocs.yml`.
+
 ## Getting Started
 
 ### Step 1: Choose Your Track

@@ -1,0 +1,44 @@
+site_name: GitHub Copilot Enterprise Hackathon
+site_description: Guided challenge documentation for the GitHub Copilot Enterprise Hackathon repository.
+repo_url: https://github.com/martaldsantos/gh-copilot-for-enterprise
+docs_dir: docs
+site_dir: site
+
+exclude_docs: |
+  .venv-docs/**
+
+theme:
+  name: mkdocs
+
+nav:
+  - Home: index.md
+  - Challenge Selection: challenge-selection.md
+  - Getting Started: tracks/getting-started.md
+  - Track Catalog: tracks/README.md
+  - Core Tracks:
+      - Product Owner and BA: tracks/product-owner-track.md
+      - Backend Developer: tracks/backend-developer-track.md
+      - Data Science and ML: tracks/data-science-ml-track.md
+      - DevOps and Platform: tracks/devops-platform-track.md
+      - Frontend Developer: tracks/frontend-developer-track.md
+      - QA Tester: tracks/qa-tester-track.md
+      - Agentic Workflows: tracks/agentic-workflows-track.md
+  - Bonus Tracks:
+      - Copilot SDK: tracks/bonus-copilot-sdk-track.md
+      - Flight Delay Predictor: tracks/bonus-flight-delay-track.md
+      - Cross-Functional Team Sprint: tracks/bonus-team-sprint-track.md
+      - Technical Team Sprint: tracks/bonus-tech-sprint-track.md
+      - Legacy MUMPS Modernization: tracks/bonus-mumps-modernization-track.md
+      - Legacy Code Modernization: tracks/bonus-legacy-modernization-track.md
+      - Living Documentation: tracks/bonus-living-docs-track.md
+      - Pipeline Factory: tracks/bonus-pipeline-factory-track.md
+      - Backlog Generator: tracks/bonus-backlog-generator-track.md
+      - Ops Assistant: tracks/bonus-ops-assistant-track.md
+      - Spec-to-Ship Accelerator: tracks/bonus-spec-to-ship-track.md
+      - COBOL Banking Modernization: tracks/bonus-cobol-modernization-track.md
+  - Reference:
+      - Copilot Guide: copilot-guide.md
+      - Prompt Engineering: prompt-engineering.md
+      - MCP Servers: mcp-servers.md
+      - Facilitator Guide: FACILITATOR_GUIDE.md
+      - Troubleshooting: TROUBLESHOOTING.md

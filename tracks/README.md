@@ -332,9 +332,9 @@ Plus track-specific skills!
 
 ### IMPORTANT: Create a Fresh Repository
 
-> **Critical:** Do NOT work directly in this hackathon repository! See the **[Setup Instructions in the main README](../README.md#%EF%B8%8F-important-create-your-own-repository)** for why this matters and how to set up your workspace properly.
+> **Critical:** Do NOT work directly in this hackathon repository! See [Getting Started](./getting-started.md) for the setup flow and workspace preparation steps.
 
-**[Follow the Setup Instructions](../README.md#step-2-set-up-environment)** - includes an interactive setup script!
+**[Follow the Setup Instructions](./getting-started.md)** - includes an interactive setup script.
 
 ---
 
@@ -348,7 +348,7 @@ Each track lists required knowledge and tools.
 
 ### 3. Set Up Your Workspace
 
-Follow the **[Setup Instructions](../README.md#step-2-set-up-environment)** to create your fresh repository.
+Follow the **[Setup Instructions](./getting-started.md)** to create your fresh repository.
 
 ### 4. Follow the Track Guide
 
@@ -492,9 +492,9 @@ Track your progress across any track:
 
 ### General Resources
 
-- [Main README](../README.md)
+- [Documentation Home](../docs/index.md)
 - [Facilitator Guide](../FACILITATOR_GUIDE.md)
-- [Documentation](../docs/)
+- [Documentation Home](../docs/index.md)
 
 ---
 

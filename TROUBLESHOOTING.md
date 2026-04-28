@@ -576,4 +576,4 @@ Troubleshooting is part of learning.
 
 Most issues have simple solutions. Stay calm and debug systematically!
 
-[Back to Main](./README.md) | [Tracks](./tracks/README.md)
+[Back to Main](./docs/index.md) | [Tracks](./tracks/README.md)

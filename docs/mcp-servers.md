@@ -828,4 +828,4 @@ describe('MCP Server', () => {
 
 ---
 
-[Back to Main README](../README.md) | [Prompt Engineering](./prompt-engineering.md)
+[Back to Home](./index.md) | [Prompt Engineering](./prompt-engineering.md)

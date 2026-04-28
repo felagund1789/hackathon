@@ -9,3 +9,4 @@ Reusable patterns and heuristics learned through work. NOT transcripts — each 
 ## Patterns
 
 <!-- Append entries below. Format: **Pattern:** description. **Context:** when it applies. -->
+**Pattern:** For repo documentation publishing, keep the local verification command identical to CI and Pages: `mkdocs build --strict`. **Context:** Use this when adding or changing MkDocs config, docs navigation, or the Pages deployment workflow so content, config, and deployment stay aligned.

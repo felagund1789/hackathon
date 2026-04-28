@@ -64,7 +64,7 @@ A dedicated devcontainer is provided at `.devcontainer/bonus-9-backlog-generator
 
 ### Atlassian MCP Server (Optional)
 
-If your team uses Atlassian Cloud (Jira / Confluence), you can connect Copilot to it via the Atlassian Rovo MCP Server. See the [MCP Servers Guide](../docs/mcp-servers.md#atlassian-rovo-mcp-server-jira--confluence) for setup instructions. This enables Phase 3 of the challenge, where you push generated backlog items directly to Jira.
+If your team uses Atlassian Cloud (Jira / Confluence), you can connect Copilot to it via the Atlassian Rovo MCP Server. See the [MCP Servers Guide](../docs/mcp-servers.md#atlassian-rovo-mcp-server-jira-confluence) for setup instructions. This enables Phase 3 of the challenge, where you push generated backlog items directly to Jira.
 
 ---
 
@@ -91,7 +91,7 @@ Phases 1 and 2 are the core. Phase 3 requires an Atlassian Cloud account. Phase 
 
 ## Resources
 
-- [Atlassian Rovo MCP Server](../docs/mcp-servers.md#atlassian-rovo-mcp-server-jira--confluence)
+- [Atlassian Rovo MCP Server](../docs/mcp-servers.md#atlassian-rovo-mcp-server-jira-confluence)
 - [INVEST Criteria for User Stories](https://www.agilealliance.org/glossary/invest/)
 - [Copilot Guide](../docs/copilot-guide.md)
 - [Prompt Engineering Guide](../docs/prompt-engineering.md)

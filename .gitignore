@@ -10,6 +10,7 @@ pip-delete-this-directory.txt
 venv/
 env/
 ENV/
+.venv-docs/
 
 # IDEs
 .vscode/*
@@ -30,6 +31,7 @@ ENV/
 # Build outputs
 dist/
 build/
+site/
 target/
 *.class
 *.jar

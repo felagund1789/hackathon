@@ -13,3 +13,5 @@
 - Azure-only constraint
 
 ## Learnings
+
+📌 Team update (2026-04-28): MkDocs and GitHub Pages changes should be validated with `mkdocs build --strict`, and docs link or navigation fixes count as release-blocking if they break the curated site flow. -- decided by Scribe

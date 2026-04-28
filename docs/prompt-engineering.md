@@ -425,4 +425,4 @@ Iterate > One-shot
 
 ---
 
-[Back to Main README](../README.md) | [MCP Servers](./mcp-servers.md)
+[Back to Home](./index.md) | [MCP Servers](./mcp-servers.md)

@@ -1,9 +1,10 @@
 ---
-updated_at: 2026-04-14T13:38:01.617Z
-focus_area: Team onboarding and repo maintenance
-active_issues: []
+updated_at: 2026-04-28T00:00:00Z
+focus_area: Docs publishing, GitHub Pages rollout, and repo maintenance
+active_issues:
+	- MkDocs and GitHub Pages documentation publishing
 ---
 
 # What We're Focused On
 
-Team just hired. Onboarding agents to the GitHub Copilot Enterprise Hackathon repo. The project has 7 core + 11 bonus tracks, per-challenge devcontainers, strict markdown structure rules, and sync requirements. Team is ready for maintenance tasks: new tracks, challenge updates, structural fixes, and quality enforcement.
+Current work is centered on publishing the repo's markdown guidance through MkDocs and GitHub Pages without drifting from the existing track and reference sources. The active slice includes docs navigation, Pages automation, strict MkDocs validation, and the repo hygiene needed to keep local builds aligned with CI.

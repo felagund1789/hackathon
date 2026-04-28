@@ -11,6 +11,8 @@ Agent Scribe initialized and ready for work.
 
 📌 Team initialized on 2026-04-14
 
+📌 Logged 2026-04-28 session for MkDocs and GitHub Pages work, merged the related decision inbox, and captured reusable memory for strict docs build parity between local validation and CI.
+
 ## Learnings
 
 Initial setup complete.

@@ -14,3 +14,5 @@
 ## Learnings
 
 - Added step 5 to both clean-start scripts (`.sh` and `.ps1`): after wiping `.github/` contents and removing the remote, the scripts now run `git add -A` and `git commit` to give participants a committed baseline. Previously the cleanup left uncommitted changes floating in the working tree, which is messy for people unfamiliar with git. The commit message is "Clean start: reset for hackathon". Updated header comments and closing output to match.
+
+📌 Team update (2026-04-28): Docs publishing is expected to use a dedicated GitHub Pages workflow with the same `mkdocs build --strict` command used locally. Treat MkDocs validation as part of the deployment contract, not an optional local check. -- decided by Scribe
