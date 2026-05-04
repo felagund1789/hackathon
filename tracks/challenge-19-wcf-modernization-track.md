@@ -63,6 +63,39 @@ Navigate to `challenges/challenge-19-wcf-banking/`. Read `docs/system-context.md
 
 A dedicated devcontainer is provided at `.devcontainer/challenge-19-wcf-banking/` with .NET 8 SDK, CoreWCF dependencies, and the VS Code C# extension.
 
+### Running the WCF Service
+
+From the challenge root, restore and start the service:
+
+```bash
+dotnet restore
+dotnet run --project src/Meridian.Banking.Service
+```
+
+The service starts on `http://localhost:5000`. The root path returns 404 -- that is expected. The service only handles SOAP requests at these paths:
+
+- `http://localhost:5000/AccountService`
+- `http://localhost:5000/LoanService`
+- `http://localhost:5000/TransactionService`
+
+To verify it is running, fetch the WSDL for any endpoint (quote the URL so the shell does not expand `?`):
+
+```bash
+curl 'http://localhost:5000/AccountService?wsdl'
+```
+
+A successful response returns an XML document starting with `<wsdl:definitions ...>`. A 400 or empty response means the service is not up yet or the URL was not quoted correctly.
+
+### Using the Console Client
+
+A demo client is included at `src/Meridian.Banking.Client`. With the service running in one terminal, open a second terminal and run:
+
+```bash
+dotnet run --project src/Meridian.Banking.Client
+```
+
+It sends a real SOAP request to `GetCustomerProfile` for customer ID 1001 and prints the raw HTTP status and response body. This is a quick sanity check that the service is accepting SOAP messages correctly. The client uses raw HTTP rather than a generated proxy, so you can also read its source to see what a well-formed SOAP envelope looks like for this service.
+
 ---
 
 ## Phases
