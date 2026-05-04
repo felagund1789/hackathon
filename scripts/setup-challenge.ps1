@@ -47,6 +47,7 @@ $ChallengeMap = @{
     "challenge-16-ops-assistant"      = "challenge-16-ops-assistant"
     "challenge-17-spec-to-ship"       = "challenge-17-spec-to-ship"
     "challenge-18-cobol-banking"      = "challenge-18-cobol-banking"
+    "challenge-19-wcf-banking"        = "challenge-19-wcf-banking"
 }
 
 $TrackFileMap = @{
@@ -69,6 +70,7 @@ $TrackFileMap = @{
     "challenge-16-ops-assistant"      = "challenge-16-ops-assistant-track"
     "challenge-17-spec-to-ship"       = "challenge-17-spec-to-ship-track"
     "challenge-18-cobol-banking"      = "challenge-18-cobol-modernization-track"
+    "challenge-19-wcf-banking"        = "challenge-19-wcf-modernization-track"
 }
 
 $TrackDirMap = @{
@@ -91,6 +93,7 @@ $TrackDirMap = @{
     "challenge-16-ops-assistant"      = "challenge-16-ops-assistant-track"
     "challenge-17-spec-to-ship"       = "challenge-17-spec-to-ship-track"
     "challenge-18-cobol-banking"      = "challenge-18-cobol-modernization-track"
+    "challenge-19-wcf-banking"        = "challenge-19-wcf-modernization-track"
 }
 
 # Validate input
