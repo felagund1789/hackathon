@@ -1,0 +1,9 @@
+{
+    "powershell.pester.useLegacyCodeLens": false,
+    "powershell.pester.outputVerbosity": "Diagnostic",
+    "editor.formatOnSave": true,
+    "[powershell]": {
+        "editor.defaultFormatter": "ms-vscode.powershell",
+        "editor.tabSize": 4
+    }
+}

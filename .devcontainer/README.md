@@ -55,6 +55,13 @@ Select the configuration that matches the challenge you are working on.
 - **Tools:** Node.js LTS, Python 3.11, GitHub CLI, `gh-aw` extension
 - **Extensions:** Markdown lint, YAML, Mermaid
 
+### [Challenge 20: PowerShell Automation](./challenge-20-powershell-automation/)
+
+**For:** Sysadmins and IT Pros writing PowerShell to manage Windows environments or Azure resources.
+
+- **Tools:** PowerShell 7 (Linux), Azure CLI, GitHub CLI, Pester 5, PSScriptAnalyzer, Az module
+- **Extensions:** PowerShell, Pester Test Explorer
+
 ## How to Use
 
 1. **Copy the Folder**: Copy the contents of the specific challenge folder (e.g., `.devcontainer/challenge-1-backend/`) into the `.devcontainer/` folder of your own repository.

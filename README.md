@@ -30,6 +30,7 @@ This hackathon is organized into **19 challenge tracks** covering all skill leve
 - 🚀 **[Challenge 17: Spec-to-Ship Accelerator](./tracks/challenge-17-spec-to-ship-track.md)** - Full lifecycle from functional spec to deployed code
 - 🏗️ **[Challenge 18: COBOL Banking Modernization](./tracks/challenge-18-cobol-modernization-track.md)** - Reverse-engineer and modernize a COBOL banking system into a full-stack web app
 - 🔧 **[Challenge 19: WCF Banking Modernization](./tracks/challenge-19-wcf-modernization-track.md)** - Understand a legacy WCF SOAP banking service and migrate it to a REST API
+- 💻 **[Challenge 20: PowerShell Automation](./tracks/challenge-20-powershell-automation-track.md)** - Fix, test, document, and package PowerShell scripts for real sysadmin work
 
 **[View All Tracks & Choose Yours](./tracks/README.md)**
 
@@ -389,6 +390,17 @@ Reverse-engineer and modernize a core banking system written in COBOL -- the lan
 **Copilot Focus**: SOAP service contract comprehension, fault contract analysis, REST migration, characterization testing
 
 Reverse-engineer a legacy WCF banking service (Meridian Savings Bank) built circa 2010-2012, now running on CoreWCF and .NET 8. Understand the service contracts, data contracts, and fault conditions, then port the business logic to a REST API using ASP.NET Core Web API. The service has real bugs to find and real decisions to make about whether to preserve or fix them during migration.
+
+---
+
+### [Challenge 20: PowerShell Automation](./challenges/challenge-20-powershell-automation/) ([Track](./tracks/challenge-20-powershell-automation-track.md))
+
+**Team**: Solo (sysadmin or IT Pro)
+**Duration**: 4-6 hours (Intermediate)
+**Skills**: PowerShell 7+, Pester 5, PSScriptAnalyzer, Az module, GitHub Actions
+**Copilot Focus**: Script comprehension, bug detection, error handling, test generation, module packaging, CI pipeline creation
+
+Take three inherited PowerShell scripts from the fictional Contoso IT team -- a stale account finder, a disk cleanup tool, and an Azure resource tagger -- and bring them up to production standard. Use Copilot to understand the code, fix bugs, add error handling and logging, write Pester tests, run static analysis, and wire everything into a GitHub Actions CI pipeline.
 
 ---
 

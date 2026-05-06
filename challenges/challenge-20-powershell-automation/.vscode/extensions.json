@@ -1,0 +1,13 @@
+{
+    "recommendations": {
+        "extensions.ignoreRecommendations": false
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-vscode.powershell",
+            "github.copilot",
+            "github.copilot-chat",
+            "pspester.pester-test"
+        ]
+    }
+}

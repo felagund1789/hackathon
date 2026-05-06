@@ -248,6 +248,18 @@ Completed your main track? These advanced tracks go deeper.
 
 ---
 
+### 💻 [Challenge 20: PowerShell Automation](./challenge-20-powershell-automation-track.md)
+
+**Best for:** Sysadmins, IT Pros, and infrastructure engineers who write PowerShell to manage Windows environments or Azure resources
+
+**Focus:** Using Copilot to understand, fix, test, document, and package PowerShell scripts -- covering error handling, Pester testing, PSScriptAnalyzer, and GitHub Actions CI
+
+**Your Challenge:** Challenge 20 - Contoso IT PowerShell Automation
+
+**Duration:** 4-6 hours (Solo)
+
+---
+
 ## Which Track Should I Choose?
 
 ### Answer These Questions
@@ -259,7 +271,8 @@ Completed your main track? These advanced tracks go deeper.
    - Frontend/UI Developer → Frontend Track
    - QA/Test Engineer → QA Tester Track
    - Product Owner/BA/PM → Product Owner & BA Track
-   - Finished a core track and want more? → Challenge 7-18 tracks
+   - Finished a core track and want more? → Challenge 7-20 tracks
+   - Sysadmin or IT Pro writing PowerShell? → Challenge 20: PowerShell Automation
    - Cross-functional team (PO + devs + QA + DevOps)? → Challenge 9: Team Sprint
    - Technical team (devs + DevOps, optionally QA, no PO)? → Challenge 10: Technical Team Sprint
    - Want to automate repository maintenance with AI? → Agentic Workflows Track
@@ -292,6 +305,7 @@ Completed your main track? These advanced tracks go deeper.
    - Sprint planning and backlog creation → Challenge 15: Backlog Generator
    - Operations support and incident triage → Challenge 16: Ops Assistant
    - End-to-end spec-to-ship workflow → Challenge 17: Spec-to-Ship Accelerator
+   - PowerShell scripting and automation → Challenge 20: PowerShell Automation
 
 3. **How much time do you have?**
    - 4 hours → Choose any track, complete core tasks
@@ -326,6 +340,7 @@ Completed your main track? These advanced tracks go deeper.
 | 🖥️ **Challenge 16: Ops Assistant** | ⭐⭐ | 6-8h | Prompts, Agents, Node.js | Challenge 16 |
 | 🚀 **Challenge 17: Spec-to-Ship** | ⭐⭐⭐ | 6-8h | Node.js, Prompts, Agents, GitHub Actions | Challenge 17 |
 | 🏗️ **Challenge 18: COBOL Modernization** | ⭐⭐⭐ | 8-12h | COBOL, Node.js/Java, React, testing | Challenge 18 |
+| 💻 **Challenge 20: PowerShell Automation** | ⭐⭐ -- ⭐⭐⭐ | 4-6h | PowerShell, Pester, PSScriptAnalyzer, GitHub Actions | Challenge 20 |
 
 ## What You'll Learn in Every Track
 
