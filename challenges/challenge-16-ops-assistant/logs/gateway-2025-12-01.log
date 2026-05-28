@@ -1,0 +1,245 @@
+[2025-12-01T00:00:12.334Z] INFO  [req-a1b2c3] Order Gateway started on port 8080
+[2025-12-01T00:00:12.441Z] INFO  [req-a1b2c3] Database connection pool initialized (20 connections)
+[2025-12-01T00:00:12.558Z] INFO  [req-a1b2c3] SMTP relay connection established (smtp-relay.internal:587)
+[2025-12-01T00:00:12.670Z] INFO  [req-a1b2c3] Health check endpoint registered at /health
+[2025-12-01T00:01:05.112Z] INFO  [req-d4e5f6] GET /api/orders - 200 (14ms)
+[2025-12-01T00:03:22.891Z] INFO  [req-g7h8i9] POST /api/orders - 201 (45ms) - Order ORD-88471 created
+[2025-12-01T00:05:44.003Z] INFO  [req-j0k1l2] GET /api/orders/ORD-88471 - 200 (8ms)
+[2025-12-01T00:12:33.210Z] INFO  [req-m3n4o5] GET /health - 200 (2ms)
+[2025-12-01T00:15:01.445Z] INFO  [req-p6q7r8] POST /api/orders - 201 (38ms) - Order ORD-88472 created
+[2025-12-01T00:15:01.892Z] INFO  [req-p6q7r8] Sending order confirmation email to customer dave@example.com
+[2025-12-01T00:15:02.101Z] INFO  [req-p6q7r8] Email sent successfully (order confirmation ORD-88472)
+[2025-12-01T00:30:11.667Z] INFO  [req-s9t0u1] GET /api/orders - 200 (11ms)
+[2025-12-01T01:00:00.005Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T01:00:00.234Z] INFO  [scheduler] Metrics: active_connections=4, orders_last_hour=12, avg_response_time=22ms
+[2025-12-01T01:15:44.890Z] INFO  [req-v2w3x4] POST /api/orders - 201 (52ms) - Order ORD-88473 created
+[2025-12-01T01:15:45.120Z] INFO  [req-v2w3x4] Sending order confirmation email to customer maria@example.com
+[2025-12-01T01:15:45.334Z] INFO  [req-v2w3x4] Email sent successfully (order confirmation ORD-88473)
+[2025-12-01T02:00:00.003Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T02:00:00.198Z] INFO  [scheduler] Metrics: active_connections=3, orders_last_hour=8, avg_response_time=19ms
+[2025-12-01T02:30:55.443Z] INFO  [req-y5z6a7] GET /api/orders?status=PENDING - 200 (16ms)
+[2025-12-01T03:00:00.001Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T03:00:00.187Z] INFO  [scheduler] Metrics: active_connections=2, orders_last_hour=3, avg_response_time=15ms
+[2025-12-01T03:45:12.001Z] INFO  [req-b8c9d0] GET /health - 200 (1ms)
+[2025-12-01T04:00:00.002Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T04:00:00.211Z] INFO  [scheduler] Metrics: active_connections=2, orders_last_hour=1, avg_response_time=12ms
+[2025-12-01T05:00:00.004Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T05:00:00.195Z] INFO  [scheduler] Metrics: active_connections=2, orders_last_hour=0, avg_response_time=0ms
+[2025-12-01T06:00:00.003Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T06:00:00.201Z] INFO  [scheduler] Metrics: active_connections=3, orders_last_hour=2, avg_response_time=18ms
+[2025-12-01T06:22:10.556Z] INFO  [req-e1f2g3] POST /api/orders - 201 (41ms) - Order ORD-88474 created
+[2025-12-01T07:00:00.002Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T07:00:00.215Z] INFO  [scheduler] Metrics: active_connections=5, orders_last_hour=7, avg_response_time=25ms
+[2025-12-01T07:30:00.011Z] INFO  [req-h4i5j6] GET /health - 200 (2ms)
+[2025-12-01T08:05:33.221Z] INFO  [req-k7l8m9] POST /api/orders - 201 (55ms) - Order ORD-88475 created
+[2025-12-01T08:05:33.890Z] INFO  [req-k7l8m9] Processing payment for ORD-88475 (amount: $312.50)
+[2025-12-01T08:05:34.102Z] INFO  [req-k7l8m9] Payment processed successfully (txn: pay_3Rk9X2mLpN)
+[2025-12-01T08:12:44.331Z] INFO  [req-n0o1p2] POST /api/orders - 201 (48ms) - Order ORD-88476 created
+[2025-12-01T08:12:44.780Z] INFO  [req-n0o1p2] Processing payment for ORD-88476 (amount: $89.99)
+[2025-12-01T08:12:44.995Z] INFO  [req-n0o1p2] Payment processed successfully (txn: pay_7Yt4W1qHsM)
+[2025-12-01T08:30:22.110Z] INFO  [req-q3r4s5] GET /api/orders - 200 (13ms)
+[2025-12-01T09:00:00.004Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T09:00:00.223Z] INFO  [scheduler] Metrics: active_connections=8, orders_last_hour=15, avg_response_time=31ms
+[2025-12-01T09:14:55.667Z] INFO  [req-t6u7v8] POST /api/orders - 201 (62ms) - Order ORD-88477 created
+[2025-12-01T09:14:55.998Z] INFO  [req-t6u7v8] Processing payment for ORD-88477 (amount: $445.00)
+[2025-12-01T09:15:26.001Z] WARN  [req-t6u7v8] Payment gateway timeout after 30000ms (provider: stripe, region: eu-west-1)
+[2025-12-01T09:15:26.005Z] INFO  [req-t6u7v8] Retrying payment for ORD-88477 (attempt 2/3)
+[2025-12-01T09:15:56.012Z] WARN  [req-t6u7v8] Payment gateway timeout after 30000ms (provider: stripe, region: eu-west-1)
+[2025-12-01T09:15:56.015Z] INFO  [req-t6u7v8] Retrying payment for ORD-88477 (attempt 3/3)
+[2025-12-01T09:16:26.019Z] ERROR [req-t6u7v8] Payment gateway timeout after 30000ms (provider: stripe, region: eu-west-1) - all retries exhausted
+[2025-12-01T09:16:26.022Z] ERROR [req-t6u7v8] Order ORD-88477 payment failed: PAYMENT_TIMEOUT - marking order as PAYMENT_FAILED
+[2025-12-01T09:16:26.035Z] WARN  [req-t6u7v8] Sending payment failure notification to customer support queue
+[2025-12-01T09:18:03.440Z] INFO  [req-w9x0y1] POST /api/orders - 201 (58ms) - Order ORD-88478 created
+[2025-12-01T09:18:03.891Z] INFO  [req-w9x0y1] Processing payment for ORD-88478 (amount: $67.50)
+[2025-12-01T09:18:33.895Z] WARN  [req-w9x0y1] Payment gateway timeout after 30000ms (provider: stripe, region: eu-west-1)
+[2025-12-01T09:18:33.898Z] INFO  [req-w9x0y1] Retrying payment for ORD-88478 (attempt 2/3)
+[2025-12-01T09:19:03.901Z] WARN  [req-w9x0y1] Payment gateway timeout after 30000ms (provider: stripe, region: eu-west-1)
+[2025-12-01T09:19:03.904Z] INFO  [req-w9x0y1] Retrying payment for ORD-88478 (attempt 3/3)
+[2025-12-01T09:19:33.908Z] ERROR [req-w9x0y1] Payment gateway timeout after 30000ms (provider: stripe, region: eu-west-1) - all retries exhausted
+[2025-12-01T09:19:33.911Z] ERROR [req-w9x0y1] Order ORD-88478 payment failed: PAYMENT_TIMEOUT - marking order as PAYMENT_FAILED
+[2025-12-01T09:19:33.920Z] WARN  [req-w9x0y1] Sending payment failure notification to customer support queue
+[2025-12-01T09:22:15.334Z] INFO  [req-z2a3b4] POST /api/orders - 201 (51ms) - Order ORD-88479 created
+[2025-12-01T09:22:15.780Z] INFO  [req-z2a3b4] Processing payment for ORD-88479 (amount: $199.00)
+[2025-12-01T09:22:45.783Z] WARN  [req-z2a3b4] Payment gateway timeout after 30000ms (provider: stripe, region: eu-west-1)
+[2025-12-01T09:22:45.786Z] INFO  [req-z2a3b4] Retrying payment for ORD-88479 (attempt 2/3)
+[2025-12-01T09:23:15.790Z] WARN  [req-z2a3b4] Payment gateway timeout after 30000ms (provider: stripe, region: eu-west-1)
+[2025-12-01T09:23:15.793Z] INFO  [req-z2a3b4] Retrying payment for ORD-88479 (attempt 3/3)
+[2025-12-01T09:23:45.797Z] ERROR [req-z2a3b4] Payment gateway timeout after 30000ms (provider: stripe, region: eu-west-1) - all retries exhausted
+[2025-12-01T09:23:45.800Z] ERROR [req-z2a3b4] Order ORD-88479 payment failed: PAYMENT_TIMEOUT - marking order as PAYMENT_FAILED
+[2025-12-01T09:23:45.810Z] WARN  [req-z2a3b4] Sending payment failure notification to customer support queue
+[2025-12-01T09:25:00.112Z] WARN  [payment-monitor] Payment success rate dropped below threshold: 0% (last 15 minutes). Provider status: stripe eu-west-1 DEGRADED
+[2025-12-01T09:30:12.440Z] INFO  [req-c5d6e7] POST /api/orders - 201 (44ms) - Order ORD-88480 created
+[2025-12-01T09:30:12.891Z] INFO  [req-c5d6e7] Processing payment for ORD-88480 (amount: $125.00)
+[2025-12-01T09:30:13.102Z] INFO  [req-c5d6e7] Payment processed successfully (txn: pay_9Bm2K5nRtP)
+[2025-12-01T09:30:13.110Z] INFO  [payment-monitor] Payment success rate recovering: 100% (last 5 minutes)
+[2025-12-01T09:45:00.223Z] INFO  [req-f8g9h0] GET /api/orders?status=PAYMENT_FAILED - 200 (9ms)
+[2025-12-01T10:00:00.004Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T10:00:00.231Z] INFO  [scheduler] Metrics: active_connections=9, orders_last_hour=22, avg_response_time=38ms
+[2025-12-01T10:15:33.112Z] INFO  [req-i1j2k3] POST /api/orders - 201 (47ms) - Order ORD-88481 created
+[2025-12-01T10:15:33.560Z] INFO  [req-i1j2k3] Processing payment for ORD-88481 (amount: $78.25)
+[2025-12-01T10:15:33.801Z] INFO  [req-i1j2k3] Payment processed successfully (txn: pay_1Xn8L3oStQ)
+[2025-12-01T10:15:34.005Z] INFO  [req-i1j2k3] Notifying warehouse API for fulfillment (ORD-88481)
+[2025-12-01T10:15:34.210Z] INFO  [req-i1j2k3] Warehouse acknowledged order ORD-88481 for picking
+[2025-12-01T10:22:45.890Z] INFO  [req-l4m5n6] POST /api/orders - 201 (50ms) - Order ORD-88482 created
+[2025-12-01T10:22:46.332Z] INFO  [req-l4m5n6] Processing payment for ORD-88482 (amount: $234.99)
+[2025-12-01T10:22:46.558Z] INFO  [req-l4m5n6] Payment processed successfully (txn: pay_4Cp7M9pUvR)
+[2025-12-01T10:22:46.780Z] INFO  [req-l4m5n6] Notifying warehouse API for fulfillment (ORD-88482)
+[2025-12-01T10:22:49.785Z] WARN  [req-l4m5n6] Warehouse API request timeout after 3000ms (endpoint: warehouse-api.internal:8443/fulfill)
+[2025-12-01T10:22:49.790Z] INFO  [req-l4m5n6] Retrying warehouse notification for ORD-88482 (attempt 2/3)
+[2025-12-01T10:22:52.795Z] WARN  [req-l4m5n6] Warehouse API request timeout after 3000ms (endpoint: warehouse-api.internal:8443/fulfill)
+[2025-12-01T10:22:52.798Z] INFO  [req-l4m5n6] Retrying warehouse notification for ORD-88482 (attempt 3/3)
+[2025-12-01T10:22:55.802Z] ERROR [req-l4m5n6] Warehouse API unreachable after 3 attempts (endpoint: warehouse-api.internal:8443/fulfill) - connection refused
+[2025-12-01T10:22:55.805Z] ERROR [req-l4m5n6] Order ORD-88482 fulfillment notification failed - order queued for manual fulfillment
+[2025-12-01T10:22:55.810Z] WARN  [req-l4m5n6] Adding ORD-88482 to fulfillment retry queue (next attempt in 5 minutes)
+[2025-12-01T10:27:55.815Z] INFO  [fulfillment-retry] Retrying warehouse notification for ORD-88482
+[2025-12-01T10:27:58.820Z] ERROR [fulfillment-retry] Warehouse API still unreachable (endpoint: warehouse-api.internal:8443/fulfill) - connection refused
+[2025-12-01T10:27:58.825Z] WARN  [fulfillment-retry] ORD-88482 fulfillment retry failed - next attempt in 15 minutes
+[2025-12-01T10:30:00.112Z] INFO  [req-o7p8q9] GET /api/orders - 200 (15ms)
+[2025-12-01T10:42:58.830Z] INFO  [fulfillment-retry] Retrying warehouse notification for ORD-88482
+[2025-12-01T10:42:59.102Z] INFO  [fulfillment-retry] Warehouse API responded - ORD-88482 fulfillment acknowledged
+[2025-12-01T10:42:59.105Z] INFO  [fulfillment-retry] Warehouse connectivity restored. Clearing retry queue.
+[2025-12-01T11:00:00.003Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T11:00:00.218Z] INFO  [scheduler] Metrics: active_connections=11, orders_last_hour=28, avg_response_time=34ms
+[2025-12-01T11:05:22.441Z] INFO  [req-r0s1t2] POST /api/orders - 201 (56ms) - Order ORD-88483 created
+[2025-12-01T11:05:22.890Z] INFO  [req-r0s1t2] Processing payment for ORD-88483 (amount: $520.00)
+[2025-12-01T11:05:23.110Z] INFO  [req-r0s1t2] Payment processed successfully (txn: pay_6Fq1N4rWxS)
+[2025-12-01T11:30:14.558Z] INFO  [req-u3v4w5] GET /api/orders/ORD-88480 - 200 (7ms)
+[2025-12-01T12:00:00.002Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T12:00:00.225Z] INFO  [scheduler] Metrics: active_connections=14, orders_last_hour=35, avg_response_time=42ms
+[2025-12-01T12:15:33.770Z] INFO  [req-x6y7z8] POST /api/orders - 201 (61ms) - Order ORD-88484 created
+[2025-12-01T12:22:11.334Z] INFO  [req-a9b0c1] GET /api/orders?customer=alice - 200 (12ms)
+[2025-12-01T12:45:00.005Z] INFO  [req-d2e3f4] GET /health - 200 (1ms)
+[2025-12-01T13:00:00.003Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T13:00:00.210Z] INFO  [scheduler] Metrics: active_connections=16, orders_last_hour=41, avg_response_time=48ms
+[2025-12-01T13:05:44.112Z] INFO  [req-g5h6i7] POST /api/orders - 201 (65ms) - Order ORD-88485 created
+[2025-12-01T13:05:44.560Z] INFO  [req-g5h6i7] Processing payment for ORD-88485 (amount: $1,250.00)
+[2025-12-01T13:05:44.890Z] INFO  [req-g5h6i7] Payment processed successfully (txn: pay_8Hs3O6sYzT)
+[2025-12-01T13:12:33.445Z] INFO  [req-j8k9l0] GET /api/orders - 200 (18ms)
+[2025-12-01T13:30:00.112Z] INFO  [req-m1n2o3] GET /health - 200 (2ms)
+[2025-12-01T13:44:22.667Z] WARN  [req-p4q5r6] POST /api/orders/ORD-88485/ship - database lock wait timeout exceeded (table: orders, lock_wait: 5012ms)
+[2025-12-01T13:44:22.670Z] INFO  [req-p4q5r6] Retrying transaction for ORD-88485 status update
+[2025-12-01T13:44:23.112Z] ERROR [req-p4q5r6] Database deadlock detected: transaction 44891 was deadlocked on lock resource orders.id=ORD-88485 with transaction 44892
+[2025-12-01T13:44:23.115Z] ERROR [req-p4q5r6] Deadlock detail: Transaction 44891 (shipment update) waiting for row lock held by Transaction 44892 (payment reconciliation batch)
+[2025-12-01T13:44:23.118Z] ERROR [req-p4q5r6] POST /api/orders/ORD-88485/ship - 500 (5680ms) - Deadlock: could not serialize access
+[2025-12-01T13:44:23.120Z] WARN  [req-p4q5r6] Order ORD-88485 shipment update failed due to deadlock - will retry automatically in 2 seconds
+[2025-12-01T13:44:25.125Z] INFO  [req-p4q5r6] Retry succeeded: ORD-88485 status updated to SHIPPED
+[2025-12-01T14:00:00.004Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T14:00:00.235Z] INFO  [scheduler] Metrics: active_connections=15, orders_last_hour=38, avg_response_time=52ms
+[2025-12-01T14:00:00.240Z] WARN  [scheduler] avg_response_time above warning threshold (50ms)
+[2025-12-01T14:10:55.223Z] INFO  [req-s7t8u9] POST /api/orders - 201 (58ms) - Order ORD-88486 created
+[2025-12-01T14:22:33.556Z] WARN  [req-v0w1x2] GET /api/orders - 200 (89ms) - slow response detected (threshold: 75ms)
+[2025-12-01T14:30:00.112Z] INFO  [req-y3z4a5] GET /health - 200 (2ms)
+[2025-12-01T14:45:12.001Z] INFO  [req-b6c7d8] POST /api/orders - 201 (53ms) - Order ORD-88487 created
+[2025-12-01T15:00:00.003Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T15:00:00.228Z] INFO  [scheduler] Metrics: active_connections=14, orders_last_hour=32, avg_response_time=45ms
+[2025-12-01T15:12:44.334Z] WARN  [req-e9f0g1] POST /api/auth/token - 401 - JWT signature verification failed (kid: key-2025-11, alg: RS256)
+[2025-12-01T15:12:44.337Z] WARN  [req-e9f0g1] Auth failure details: token issued_at=2025-11-30T22:00:00Z, client_ip=203.0.113.42, user_agent="python-requests/2.28.1"
+[2025-12-01T15:13:02.112Z] WARN  [req-h2i3j4] POST /api/auth/token - 401 - JWT signature verification failed (kid: key-2025-11, alg: RS256)
+[2025-12-01T15:13:02.115Z] WARN  [req-h2i3j4] Auth failure details: token issued_at=2025-11-30T22:00:00Z, client_ip=203.0.113.42, user_agent="python-requests/2.28.1"
+[2025-12-01T15:13:15.890Z] WARN  [req-k5l6m7] POST /api/auth/token - 401 - JWT signature verification failed (kid: key-2025-11, alg: RS256)
+[2025-12-01T15:13:15.893Z] WARN  [req-k5l6m7] Auth failure details: token issued_at=2025-11-30T22:00:00Z, client_ip=203.0.113.42, user_agent="python-requests/2.28.1"
+[2025-12-01T15:13:33.445Z] WARN  [req-n8o9p0] POST /api/auth/token - 401 - JWT signature verification failed (kid: key-2025-11, alg: RS256)
+[2025-12-01T15:13:33.448Z] WARN  [req-n8o9p0] Auth failure details: token issued_at=2025-11-30T22:00:00Z, client_ip=203.0.113.42, user_agent="python-requests/2.28.1"
+[2025-12-01T15:13:48.001Z] WARN  [req-q1r2s3] POST /api/auth/token - 401 - JWT signature verification failed (kid: key-2025-11, alg: RS256)
+[2025-12-01T15:13:48.004Z] WARN  [req-q1r2s3] Auth failure details: token issued_at=2025-11-30T22:00:00Z, client_ip=203.0.113.42, user_agent="python-requests/2.28.1"
+[2025-12-01T15:14:01.223Z] WARN  [security-monitor] Repeated authentication failures detected: 5 failures in 77 seconds from IP 203.0.113.42
+[2025-12-01T15:14:01.226Z] WARN  [security-monitor] Pattern: same token reused across all attempts (possible replay attack or misconfigured client)
+[2025-12-01T15:14:01.229Z] WARN  [security-monitor] Recommendation: investigate IP 203.0.113.42 - either misconfigured service or potential brute-force attempt
+[2025-12-01T15:14:05.334Z] WARN  [req-t4u5v6] POST /api/auth/token - 401 - JWT signature verification failed (kid: key-2025-11, alg: RS256)
+[2025-12-01T15:14:05.337Z] WARN  [req-t4u5v6] Auth failure details: token issued_at=2025-11-30T22:00:00Z, client_ip=203.0.113.42, user_agent="python-requests/2.28.1"
+[2025-12-01T15:14:22.556Z] WARN  [req-w7x8y9] POST /api/auth/token - 401 - JWT signature verification failed (kid: key-2025-11, alg: RS256)
+[2025-12-01T15:14:22.559Z] WARN  [req-w7x8y9] Auth failure details: token issued_at=2025-11-30T22:00:00Z, client_ip=203.0.113.42, user_agent="python-requests/2.28.1"
+[2025-12-01T15:14:38.890Z] WARN  [req-z0a1b2] POST /api/auth/token - 401 - JWT signature verification failed (kid: key-2025-11, alg: RS256)
+[2025-12-01T15:14:38.893Z] WARN  [req-z0a1b2] Auth failure details: token issued_at=2025-11-30T22:00:00Z, client_ip=203.0.113.42, user_agent="python-requests/2.28.1"
+[2025-12-01T15:15:00.112Z] WARN  [security-monitor] Rate limit triggered: IP 203.0.113.42 blocked for 300 seconds (8 auth failures in 136 seconds)
+[2025-12-01T15:15:00.115Z] INFO  [security-monitor] Block rule applied: deny 203.0.113.42 until 2025-12-01T15:20:00Z
+[2025-12-01T15:30:22.334Z] INFO  [req-c3d4e5] POST /api/orders - 201 (49ms) - Order ORD-88488 created
+[2025-12-01T15:30:22.780Z] INFO  [req-c3d4e5] Processing payment for ORD-88488 (amount: $54.00)
+[2025-12-01T15:30:22.998Z] INFO  [req-c3d4e5] Payment processed successfully (txn: pay_2Jt5P8uAaU)
+[2025-12-01T16:00:00.003Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T16:00:00.219Z] INFO  [scheduler] Metrics: active_connections=16, orders_last_hour=29, avg_response_time=44ms
+[2025-12-01T16:05:11.445Z] INFO  [req-f6g7h8] GET /api/orders?status=SHIPPED - 200 (14ms)
+[2025-12-01T16:22:33.112Z] INFO  [req-i9j0k1] POST /api/orders - 201 (52ms) - Order ORD-88489 created
+[2025-12-01T16:45:00.005Z] INFO  [req-l2m3n4] GET /health - 200 (2ms)
+[2025-12-01T17:00:00.002Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T17:00:00.215Z] INFO  [scheduler] Metrics: active_connections=18, orders_last_hour=34, avg_response_time=55ms
+[2025-12-01T17:00:00.220Z] WARN  [scheduler] avg_response_time above warning threshold (50ms)
+[2025-12-01T17:15:44.001Z] INFO  [req-o5p6q7] POST /api/orders - 201 (71ms) - Order ORD-88490 created
+[2025-12-01T17:15:44.445Z] INFO  [req-o5p6q7] Processing payment for ORD-88490 (amount: $899.99)
+[2025-12-01T17:15:44.889Z] INFO  [req-o5p6q7] Payment processed successfully (txn: pay_5Lv7R0wCcW)
+[2025-12-01T17:30:22.667Z] INFO  [req-r8s9t0] GET /api/orders - 200 (22ms)
+[2025-12-01T17:45:33.112Z] INFO  [req-u1v2w3] POST /api/orders - 201 (68ms) - Order ORD-88491 created
+[2025-12-01T18:00:00.004Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T18:00:00.229Z] INFO  [scheduler] Metrics: active_connections=19, orders_last_hour=38, avg_response_time=62ms
+[2025-12-01T18:00:00.234Z] WARN  [scheduler] avg_response_time above warning threshold (50ms)
+[2025-12-01T18:00:00.237Z] WARN  [scheduler] active_connections approaching pool limit (19/20)
+[2025-12-01T18:05:11.001Z] INFO  [req-x4y5z6] GET /api/orders - 200 (25ms)
+[2025-12-01T18:12:44.556Z] INFO  [req-a7b8c9] POST /api/orders - 201 (74ms) - Order ORD-88492 created
+[2025-12-01T18:30:00.112Z] INFO  [req-d0e1f2] GET /health - 200 (3ms)
+[2025-12-01T18:45:22.334Z] INFO  [req-g3h4i5] POST /api/orders - 201 (66ms) - Order ORD-88493 created
+[2025-12-01T19:00:00.003Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T19:00:00.221Z] INFO  [scheduler] Metrics: active_connections=19, orders_last_hour=35, avg_response_time=58ms
+[2025-12-01T19:00:00.226Z] WARN  [scheduler] avg_response_time above warning threshold (50ms)
+[2025-12-01T19:00:00.229Z] WARN  [scheduler] active_connections approaching pool limit (19/20)
+[2025-12-01T19:12:33.890Z] INFO  [req-j6k7l8] GET /api/orders/ORD-88490 - 200 (9ms)
+[2025-12-01T19:30:44.112Z] INFO  [req-m9n0o1] POST /api/orders - 201 (78ms) - Order ORD-88494 created
+[2025-12-01T19:30:44.560Z] INFO  [req-m9n0o1] Processing payment for ORD-88494 (amount: $142.75)
+[2025-12-01T19:30:44.890Z] INFO  [req-m9n0o1] Payment processed successfully (txn: pay_9Nx2T4yEeY)
+[2025-12-01T19:45:00.005Z] INFO  [req-p2q3r4] GET /health - 200 (2ms)
+[2025-12-01T20:00:00.002Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T20:00:00.218Z] INFO  [scheduler] Metrics: active_connections=18, orders_last_hour=30, avg_response_time=51ms
+[2025-12-01T20:00:00.222Z] WARN  [scheduler] avg_response_time above warning threshold (50ms)
+[2025-12-01T20:15:33.445Z] INFO  [req-s5t6u7] POST /api/orders - 201 (63ms) - Order ORD-88495 created
+[2025-12-01T20:30:11.001Z] INFO  [req-v8w9x0] GET /api/orders - 200 (19ms)
+[2025-12-01T20:45:44.223Z] INFO  [req-y1z2a3] POST /api/orders - 201 (59ms) - Order ORD-88496 created
+[2025-12-01T21:00:00.003Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T21:00:00.225Z] INFO  [scheduler] Metrics: active_connections=17, orders_last_hour=25, avg_response_time=47ms
+[2025-12-01T21:05:22.112Z] INFO  [req-b4c5d6] POST /api/orders - 201 (55ms) - Order ORD-88497 created
+[2025-12-01T21:05:22.556Z] INFO  [req-b4c5d6] Processing payment for ORD-88497 (amount: $3,445.00)
+[2025-12-01T21:05:22.890Z] INFO  [req-b4c5d6] Payment processed successfully (txn: pay_3Pz4V6aGgA)
+[2025-12-01T21:15:33.667Z] INFO  [req-e7f8g9] GET /api/orders?customer=carol - 200 (11ms)
+[2025-12-01T21:30:00.005Z] INFO  [req-h0i1j2] GET /health - 200 (1ms)
+[2025-12-01T21:44:55.001Z] INFO  [req-k3l4m5] GET /api/orders - 200 (16ms)
+[2025-12-01T21:45:00.112Z] INFO  [req-n6o7p8] GET /api/orders - 200 (2450ms)
+[2025-12-01T21:45:00.115Z] WARN  [req-n6o7p8] Slow query detected: SELECT * FROM orders (no filter, no pagination) - returned 2,341,892 rows
+[2025-12-01T21:45:00.118Z] WARN  [memory-monitor] Heap usage spike: 487MB / 512MB (95.1%)
+[2025-12-01T21:45:00.334Z] WARN  [memory-monitor] GC pause detected: 1200ms (stop-the-world)
+[2025-12-01T21:45:01.556Z] ERROR [memory-monitor] Heap usage critical: 509MB / 512MB (99.4%)
+[2025-12-01T21:45:01.558Z] WARN  [memory-monitor] Emergency GC triggered
+[2025-12-01T21:45:02.890Z] INFO  [req-q9r0s1] GET /api/orders/ORD-88497 - 200 (15ms)
+[2025-12-01T21:45:05.112Z] INFO  [req-t2u3v4] GET /health - 200 (445ms)
+[2025-12-01T21:45:05.115Z] WARN  [req-t2u3v4] Health check response time degraded (445ms, expected <50ms)
+[2025-12-01T21:45:12.334Z] INFO  [req-w5x6y7] GET /api/orders?status=PENDING - timeout after 5000ms
+[2025-12-01T21:45:12.337Z] WARN  [memory-monitor] Heap usage: 511MB / 512MB (99.8%) - approaching OOM
+[2025-12-01T21:45:15.001Z] INFO  [req-z8a9b0] POST /api/orders - timeout after 5000ms
+[2025-12-01T21:45:15.890Z] FATAL [memory-monitor] java.lang.OutOfMemoryError: Java heap space
+[2025-12-01T21:45:15.893Z] FATAL [memory-monitor]   at com.ordergateway.repository.OrderRepository.findAll(OrderRepository.java:45)
+[2025-12-01T21:45:15.895Z] FATAL [memory-monitor]   at com.ordergateway.service.OrderService.listOrders(OrderService.java:82)
+[2025-12-01T21:45:15.897Z] FATAL [memory-monitor]   at com.ordergateway.controller.OrderController.getOrders(OrderController.java:31)
+[2025-12-01T21:45:15.899Z] FATAL [memory-monitor]   at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[2025-12-01T21:45:15.901Z] FATAL [memory-monitor]   at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:897)
+[2025-12-01T21:45:15.903Z] FATAL [memory-monitor]   ... 34 more
+[2025-12-01T21:45:15.910Z] FATAL [process] Service shutting down due to OutOfMemoryError
+[2025-12-01T21:45:15.912Z] FATAL [process] Last known state: active_connections=17, pending_requests=3, heap=511MB/512MB
+[2025-12-01T21:45:15.915Z] INFO  [process] Graceful shutdown initiated - draining connections
+[2025-12-01T21:45:16.001Z] WARN  [process] 3 requests terminated during shutdown (ORD-88498 creation, order list x2)
+[2025-12-01T21:45:16.112Z] INFO  [process] Database connection pool closed (17 connections released)
+[2025-12-01T21:45:16.225Z] INFO  [process] Order Gateway stopped
+[2025-12-01T21:45:16.228Z] INFO  [process] --- SERVICE RESTART INITIATED BY WATCHDOG ---
+[2025-12-01T21:45:21.001Z] INFO  [startup] Order Gateway started on port 8080
+[2025-12-01T21:45:21.112Z] INFO  [startup] Database connection pool initialized (20 connections)
+[2025-12-01T21:45:21.225Z] INFO  [startup] JVM heap: 512MB max (unchanged from pre-crash configuration)
+[2025-12-01T21:45:21.334Z] INFO  [startup] SMTP relay connection established (smtp-relay.internal:587)
+[2025-12-01T21:45:21.445Z] INFO  [startup] Health check endpoint registered at /health
+[2025-12-01T21:45:21.556Z] INFO  [startup] Service recovered after OOM crash - previous uptime: 21h 45m
+[2025-12-01T21:45:30.001Z] INFO  [req-c1d2e3] GET /health - 200 (3ms)
+[2025-12-01T21:45:30.005Z] INFO  [req-c1d2e3] Post-restart health check passed
+[2025-12-01T22:00:00.002Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T22:00:00.198Z] INFO  [scheduler] Metrics: active_connections=4, orders_last_hour=8, avg_response_time=22ms
+[2025-12-01T22:00:00.201Z] INFO  [scheduler] Note: metrics reset after service restart at 21:45:21
+[2025-12-01T22:15:44.556Z] INFO  [req-f4g5h6] POST /api/orders - 201 (42ms) - Order ORD-88498 created
+[2025-12-01T22:30:11.890Z] INFO  [req-i7j8k9] GET /api/orders - 200 (12ms)
+[2025-12-01T23:00:00.003Z] INFO  [scheduler] Running hourly metrics collection
+[2025-12-01T23:00:00.195Z] INFO  [scheduler] Metrics: active_connections=3, orders_last_hour=5, avg_response_time=18ms
+[2025-12-01T23:30:22.112Z] INFO  [req-l0m1n2] POST /api/orders - 201 (39ms) - Order ORD-88499 created
+[2025-12-01T23:45:00.005Z] INFO  [req-o3p4q5] GET /health - 200 (1ms)
