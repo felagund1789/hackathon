@@ -51,13 +51,13 @@ $ChallengeMap = @{
 }
 
 $TrackFileMap = @{
-    "challenge-0-product-planning"    = "product-owner-track"
-    "challenge-1-backend"             = "backend-developer-track"
-    "challenge-2-data-science"        = "data-science-ml-track"
-    "challenge-3-devops"              = "devops-platform-track"
-    "challenge-4-frontend"            = "frontend-developer-track"
-    "challenge-5-qa"                  = "qa-tester-track"
-    "challenge-6-agentic-workflows"   = "agentic-workflows-track"
+    "challenge-0-product-planning"    = "challenge-0-product-planning-track"
+    "challenge-1-backend"             = "challenge-1-web-api-track"
+    "challenge-2-data-science"        = "challenge-2-ml-ai-track"
+    "challenge-3-devops"              = "challenge-3-devops-track"
+    "challenge-4-frontend"            = "challenge-4-frontend-track"
+    "challenge-5-qa"                  = "challenge-5-qa-track"
+    "challenge-6-agentic-workflows"   = "challenge-6-agentic-workflows-track"
     "challenge-7-copilot-sdk"         = "challenge-7-copilot-sdk-track"
     "challenge-8-flight-delay"        = "challenge-8-flight-delay-track"
     "challenge-9-team-sprint"         = "challenge-9-team-sprint-track"
@@ -74,13 +74,13 @@ $TrackFileMap = @{
 }
 
 $TrackDirMap = @{
-    "challenge-0-product-planning"    = "product-owner-track"
-    "challenge-1-backend"             = "backend-developer-track"
-    "challenge-2-data-science"        = "data-science-ml-track"
-    "challenge-3-devops"              = "devops-platform-track"
-    "challenge-4-frontend"            = "frontend-developer-track"
-    "challenge-5-qa"                  = "qa-tester-track"
-    "challenge-6-agentic-workflows"   = "agentic-workflows-track"
+    "challenge-0-product-planning"    = "challenge-0-product-planning-track"
+    "challenge-1-backend"             = "challenge-1-web-api-track"
+    "challenge-2-data-science"        = "challenge-2-ml-ai-track"
+    "challenge-3-devops"              = "challenge-3-devops-track"
+    "challenge-4-frontend"            = "challenge-4-frontend-track"
+    "challenge-5-qa"                  = "challenge-5-qa-track"
+    "challenge-6-agentic-workflows"   = "challenge-6-agentic-workflows-track"
     "challenge-7-copilot-sdk"         = "challenge-7-copilot-sdk-track"
     "challenge-8-flight-delay"        = "challenge-8-flight-delay-track"
     "challenge-9-team-sprint"         = "challenge-9-team-sprint-track"
