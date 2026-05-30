@@ -168,11 +168,33 @@ cleaned up files from other challenges.
 Write-Host "[OK] Updated .devcontainer/README.md" -ForegroundColor Green
 
 # Remove files that are not for participants
-foreach ($RemoveFile in @("FACILITATOR_GUIDE.md", "CONTRIBUTING.md")) {
+foreach ($RemoveFile in @("FACILITATOR_GUIDE.md", "CONTRIBUTING.md", "mkdocs.yml", "requirements-docs.txt", ".markdownlint.json")) {
     $RemovePath = Join-Path $RepoRoot $RemoveFile
     if (Test-Path $RemovePath) {
         Remove-Item -Path $RemovePath -Force
         Write-Host "[CLEAN] Removed $RemoveFile" -ForegroundColor DarkGray
+    }
+}
+
+# Remove docs/ entries that are only useful for facilitators or the MkDocs site.
+# Keep copilot-guide.md, prompt-engineering.md, mcp-servers.md, images/ and
+# TROUBLESHOOTING.md -- those are referenced from the participant README.
+foreach ($RemoveDocs in @("FACILITATOR_GUIDE.md", "challenge-selection.md", "index.md", "docs", "TROUBLESHOOTING.md")) {
+    $DocsTarget = Join-Path $RepoRoot "docs" $RemoveDocs
+    if (Test-Path $DocsTarget) {
+        Remove-Item -Path $DocsTarget -Recurse -Force
+        Write-Host "[CLEAN] Removed docs/$RemoveDocs" -ForegroundColor DarkGray
+    }
+}
+
+# Remove the symlinks that pointed at the full tracks/ and challenges/ trees.
+# After the challenge-specific cleanup above, they would just expose a partial
+# view of the repo that participants don't need.
+foreach ($RemoveLink in @("tracks", "challenges")) {
+    $LinkTarget = Join-Path $RepoRoot "docs" $RemoveLink
+    if (Test-Path $LinkTarget) {
+        Remove-Item -Path $LinkTarget -Recurse -Force
+        Write-Host "[CLEAN] Removed docs/$RemoveLink symlink" -ForegroundColor DarkGray
     }
 }
 
@@ -213,3 +235,8 @@ Write-Host ""
 Write-Host "Next steps:"
 Write-Host "  1. Read tracks/$TrackFileName.md for the full challenge walkthrough"
 Write-Host "  2. Start with tracks/getting-started.md if this is your first time"
+
+# Self-cleanup: the scripts/ folder is only needed to run this setup.
+# Remove it so participants see a clean workspace.
+Remove-Item -Path (Join-Path $RepoRoot "scripts") -Recurse -Force
+Write-Host "[CLEAN] Removed scripts/" -ForegroundColor DarkGray

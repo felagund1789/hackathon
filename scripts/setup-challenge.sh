@@ -207,10 +207,32 @@ echo "[OK] Updated .devcontainer/README.md"
 
 # ── Remove files that are not for participants ─────────────────────
 
-for remove_file in FACILITATOR_GUIDE.md CONTRIBUTING.md; do
+for remove_file in FACILITATOR_GUIDE.md CONTRIBUTING.md mkdocs.yml requirements-docs.txt .markdownlint.json; do
   if [[ -f "$REPO_ROOT/$remove_file" ]]; then
     rm -f "$REPO_ROOT/$remove_file"
     echo "[CLEAN] Removed $remove_file"
+  fi
+done
+
+# Remove docs/ entries that are only useful for facilitators or the MkDocs site.
+# Keep copilot-guide.md, prompt-engineering.md, mcp-servers.md, images/ and
+# TROUBLESHOOTING.md -- those are referenced from the participant README.
+for remove_docs in FACILITATOR_GUIDE.md challenge-selection.md index.md docs TROUBLESHOOTING.md; do
+  target="$REPO_ROOT/docs/$remove_docs"
+  if [[ -e "$target" ]]; then
+    rm -rf "$target"
+    echo "[CLEAN] Removed docs/$remove_docs"
+  fi
+done
+
+# Remove the symlinks that pointed at the full tracks/ and challenges/ trees.
+# After the challenge-specific cleanup above, they would just expose a partial
+# view of the repo that participants don't need.
+for remove_link in tracks challenges; do
+  target="$REPO_ROOT/docs/$remove_link"
+  if [[ -L "$target" || -e "$target" ]]; then
+    rm -rf "$target"
+    echo "[CLEAN] Removed docs/$remove_link symlink"
   fi
 done
 
@@ -253,3 +275,10 @@ echo ""
 echo "Next steps:"
 echo "  1. Read tracks/$TRACK_FILE_NAME.md for the full challenge walkthrough"
 echo "  2. Start with tracks/getting-started.md if this is your first time"
+
+# ── Self-cleanup ─────────────────────────────────────────────────────
+# The scripts/ folder is only needed to run this setup. Remove it so
+# participants see a clean workspace. Bash holds the script's inode open
+# so deleting it while running is safe on POSIX systems.
+rm -rf "$REPO_ROOT/scripts"
+echo "[CLEAN] Removed scripts/"
