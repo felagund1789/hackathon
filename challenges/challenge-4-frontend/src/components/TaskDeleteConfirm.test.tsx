@@ -6,7 +6,7 @@ import { TaskDeleteConfirm } from './TaskDeleteConfirm';
 
 const setup = (onClose = () => {}) => {
   return render(
-    <TaskProvider>
+    <TaskProvider initialTasks={[]}>
       <ToastProvider>
         <TaskDeleteConfirm taskId="task-1" taskTitle="Task to Delete" onClose={onClose} />
       </ToastProvider>

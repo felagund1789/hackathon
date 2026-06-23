@@ -6,7 +6,7 @@ import { TaskCreateForm } from './TaskCreateForm';
 
 const setup = (onClose = () => {}) => {
   return render(
-    <TaskProvider>
+    <TaskProvider initialTasks={[]}>
       <ToastProvider>
         <TaskCreateForm onClose={onClose} />
       </ToastProvider>

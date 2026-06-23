@@ -11,7 +11,7 @@ const setup = () => {
   return render(
     <BrowserRouter>
       <ThemeProvider>
-        <TaskProvider>
+        <TaskProvider initialTasks={[]}>
           <ToastProvider>
             <Header />
           </ToastProvider>
