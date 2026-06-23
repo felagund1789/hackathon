@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { sampleTasks } from '../data/sampleTasks';
-import { TaskStatus, TaskPriority } from '../types/task';
+import { TaskStatus } from '../types/task';
+import { STATUS_LABELS, PRIORITY_LABELS } from '../constants/taskColors';
 
 export function TaskDetailPage(): JSX.Element {
   const { id } = useParams<{ id: string }>();
@@ -21,20 +22,7 @@ export function TaskDetailPage(): JSX.Element {
   }
 
   const getStatusLabel = (status: TaskStatus): string => {
-    switch (status) {
-      case TaskStatus.TODO:
-        return 'To Do';
-      case TaskStatus.IN_PROGRESS:
-        return 'In Progress';
-      case TaskStatus.BLOCKED:
-        return 'Blocked';
-      case TaskStatus.DONE:
-        return 'Done';
-    }
-  };
-
-  const getPriorityLabel = (priority: TaskPriority): string => {
-    return priority.charAt(0).toUpperCase() + priority.slice(1);
+    return STATUS_LABELS[status];
   };
 
   const formatDate = (date: Date): string => {
@@ -63,7 +51,7 @@ export function TaskDetailPage(): JSX.Element {
             </div>
             <div>
               <p className="text-sm text-gray-600 font-medium mb-1">Priority</p>
-              <p className="text-base font-semibold text-gray-900">{getPriorityLabel(task.priority)}</p>
+              <p className="text-base font-semibold text-gray-900">{PRIORITY_LABELS[task.priority]}</p>
             </div>
             <div>
               <p className="text-sm text-gray-600 font-medium mb-1">Assignee</p>

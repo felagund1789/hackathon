@@ -17,10 +17,10 @@ export function Dashboard(): JSX.Element {
 
         {/* Summary Cards */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
-          <SummaryCard count={todoTasks.length} label="Todo" color="cyan" />
-          <SummaryCard count={inProgressTasks.length} label="In Progress" color="blue" />
-          {blockedTasks.length > 0 && <SummaryCard count={blockedTasks.length} label="Blocked" color="magenta" />}
-          <SummaryCard count={doneTasks.length} label="Done" color="green" />
+          <SummaryCard count={todoTasks.length} label="Todo" status={TaskStatus.TODO} />
+          <SummaryCard count={inProgressTasks.length} label="In Progress" status={TaskStatus.IN_PROGRESS} />
+          {blockedTasks.length > 0 && <SummaryCard count={blockedTasks.length} label="Blocked" status={TaskStatus.BLOCKED} />}
+          <SummaryCard count={doneTasks.length} label="Done" status={TaskStatus.DONE} />
         </div>
 
         {/* Recent Tasks */}
