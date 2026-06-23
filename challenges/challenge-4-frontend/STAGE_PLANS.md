@@ -769,7 +769,7 @@ Task creators and task managers who need to quickly add, modify, and remove task
 
 ## Stage 3: Advanced Interactions
 
-**Status:** 🎯 UX Brief Ready for Implementation
+**Status:** ✅ Complete
 
 ### UX Brief
 
@@ -1250,10 +1250,47 @@ Build advanced interactivity features that improve user productivity and experie
 ---
 
 ### A11y Findings
-[Pending Frontend Accessibility Reviewer audit]
+
+Audit completed and findings remediated in Stage 3 implementation:
+
+1. **High:** Modal semantics were missing or inconsistent in help/create/edit/delete dialogs.
+  - Added `role="dialog"`, `aria-modal="true"`, and `aria-labelledby` for all modal surfaces.
+2. **High:** Focus was not consistently trapped inside open dialogs.
+  - Added reusable `useModalFocusTrap` hook for initial focus, `Tab`/`Shift+Tab` loop, `Escape` close behavior, and focus restoration.
+3. **Medium:** Global keyboard shortcuts could trigger while user focus was in interactive controls.
+  - Expanded shortcut guard logic in Header to ignore inputs, textareas, selects, buttons, contenteditable, and interactive ARIA role targets.
+4. **Medium:** Title validation errors in create/edit forms were not fully exposed at field level.
+  - Added `aria-invalid` and `aria-describedby` wiring for title errors in both forms.
+
+Verification outcome:
+
+- Build passes (`npm run build`)
+- Tests pass (`npm test -- --run`, 10 files / 50 tests)
+- Only non-blocking React Router future-flag warnings remain in test output
 
 ### Implementation Notes
-[Record what worked, what didn't, key patterns discovered, testing readiness]
+
+What was implemented for Stage 3:
+
+- Theme switching with persistence and keyboard toggle behavior.
+- Keyboard shortcuts and help modal workflow.
+- Toast lifecycle behavior and action feedback coverage.
+- Accessibility hardening across modal interactions and form validation.
+
+Accessibility implementation details:
+
+- Introduced shared modal focus management via `useModalFocusTrap` to avoid per-component drift.
+- Updated `ShortcutHelpModal`, `TaskCreateForm`, `TaskEditForm`, and `TaskDeleteConfirm` with consistent dialog semantics and focus behavior.
+- Updated Header shortcut handling to avoid conflicts with user typing or interactive widget usage.
+- Added explicit ARIA error linkage in task title fields for create/edit flows.
+
+Testing and readiness:
+
+- Stage 3 implementation validated with full build and full test run.
+- No additional required Stage 3 tasks are pending.
+- Optional follow-up (non-blocking):
+  - Add focused regression tests for modal focus trapping and focus restoration.
+  - Silence React Router future-flag warnings in test configuration.
 
 ---
 
