@@ -7,9 +7,9 @@ interface TaskCardProps {
 }
 
 export function TaskCard({ task }: TaskCardProps): JSX.Element {
-
   const formatDate = (date: Date): string => {
     return new Date(date).toLocaleDateString('en-US', {
+      year: 'numeric',
       month: 'short',
       day: 'numeric',
     });
@@ -20,32 +20,34 @@ export function TaskCard({ task }: TaskCardProps): JSX.Element {
       to={`/tasks/${task.id}`}
       className="block focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
     >
-      <article className="h-24 p-3 sm:p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow flex items-center gap-3 sm:gap-4">
-        {/* Priority Indicator - Left */}
-        <div className={`flex-shrink-0 w-1 h-full rounded-sm ${PRIORITY_COLORS[task.priority]}`} />
-
-        {/* Title and Status - Center-Left */}
-        <div className="flex-1 min-w-0">
-          <h3 className="text-sm sm:text-base font-semibold text-gray-900 line-clamp-1">
+      <article className="bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow p-4 flex flex-col h-full">
+        {/* Title and status */}
+        <div className="flex items-center justify-between gap-2 mb-1">
+          <h3 className="text-base font-semibold text-gray-900 line-clamp-2">
             {task.title}
           </h3>
-          <span className={`inline-block px-2 py-1 text-xs font-medium rounded mt-1 ${STATUS_BADGE_COLORS[task.status]}`}>
+          <span className={`inline-block px-2 py-1 text-sm font-medium rounded ${STATUS_BADGE_COLORS[task.status]}`}>
             {STATUS_LABELS[task.status]}
           </span>
         </div>
 
-        {/* Due Date - Center-Right */}
-        {task.dueDate && (
-          <div className="flex-shrink-0 text-xs text-gray-600 whitespace-nowrap text-right">
-            <div className="font-medium">Due:</div>
-            <div>{formatDate(task.dueDate)}</div>
-          </div>
+        {/* Assignee and Description */}
+        <span className="text-xs text-gray-600 font-medium mb-1">Assignee: {task.assignee}</span>
+
+        {task.description && (
+          <p className="text-sm text-gray-600 mb-1 line-clamp-2 flex-1">
+            {task.description}
+          </p>
         )}
 
-        {/* Assignee - Right */}
-        <div className="flex-shrink-0 text-xs text-gray-600 whitespace-nowrap text-right hidden sm:block">
-          <div className="font-medium">Assignee:</div>
-          <div className="line-clamp-1">{task.assignee}</div>
+        {/* Priority and Due Date - Row 2 */}
+        <div className="flex items-center gap-2">
+          <span className={`inline-block px-2 py-1 text-sm font-medium rounded ${PRIORITY_COLORS[task.priority]}`}>
+            {task.priority.charAt(0).toUpperCase() + task.priority.slice(1)}
+          </span>
+          {task.dueDate && (
+            <span className="text-sm text-gray-600 font-medium">Due: {formatDate(task.dueDate)}</span>
+          )}
         </div>
       </article>
     </Link>

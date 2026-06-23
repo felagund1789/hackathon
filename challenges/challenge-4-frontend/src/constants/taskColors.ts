@@ -5,9 +5,9 @@ import { TaskStatus, TaskPriority } from '../types/task';
  * Used for priority indicator bars on task cards
  */
 export const PRIORITY_COLORS: Record<TaskPriority, string> = {
-  [TaskPriority.HIGH]: 'bg-red-500',
-  [TaskPriority.MEDIUM]: 'bg-yellow-500',
-  [TaskPriority.LOW]: 'bg-green-500',
+  [TaskPriority.HIGH]: 'bg-red-200 text-red-800',
+  [TaskPriority.MEDIUM]: 'bg-yellow-200 text-yellow-800',
+  [TaskPriority.LOW]: 'bg-green-200 text-green-800',
 };
 
 /**
@@ -16,9 +16,9 @@ export const PRIORITY_COLORS: Record<TaskPriority, string> = {
  * Format: "bg-{color}-300 text-{color}-800" for accessibility and readability
  */
 export const STATUS_BADGE_COLORS: Record<TaskStatus, string> = {
-  [TaskStatus.TODO]: 'bg-blue-300 text-blue-800',
-  [TaskStatus.IN_PROGRESS]: 'bg-yellow-300 text-yellow-800',
-  [TaskStatus.BLOCKED]: 'bg-red-300 text-red-800',
+  [TaskStatus.TODO]: 'bg-gray-300 text-gray-800',
+  [TaskStatus.IN_PROGRESS]: 'bg-blue-300 text-blue-800',
+  [TaskStatus.BLOCKED]: 'bg-purple-300 text-purple-800',
   [TaskStatus.DONE]: 'bg-green-300 text-green-800',
 };
 
@@ -28,9 +28,9 @@ export const STATUS_BADGE_COLORS: Record<TaskStatus, string> = {
  * Format: "bg-{color}-300 text-{color}-800" for high contrast (AAA compliance)
  */
 export const SUMMARY_CARD_COLORS: Record<TaskStatus, string> = {
-  [TaskStatus.TODO]: 'bg-blue-300 text-blue-800',
-  [TaskStatus.IN_PROGRESS]: 'bg-yellow-300 text-yellow-800',
-  [TaskStatus.BLOCKED]: 'bg-red-300 text-red-800',
+  [TaskStatus.TODO]: 'bg-gray-300 text-gray-800',
+  [TaskStatus.IN_PROGRESS]: 'bg-blue-300 text-blue-800',
+  [TaskStatus.BLOCKED]: 'bg-purple-300 text-purple-800',
   [TaskStatus.DONE]: 'bg-green-300 text-green-800',
 };
 

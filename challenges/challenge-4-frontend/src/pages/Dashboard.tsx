@@ -13,7 +13,10 @@ export function Dashboard(): JSX.Element {
   return (
     <main className="flex-1 pt-16 md:ml-60 lg:ml-60">
       <div className="p-3 sm:p-6 lg:p-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">Dashboard</h1>
+        <div className="mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
+          <p className="text-gray-600">Welcome to your task management system</p>
+        </div>
 
         {/* Summary Cards */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
