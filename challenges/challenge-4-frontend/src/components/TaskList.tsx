@@ -11,7 +11,7 @@ export function TaskList({ tasks, title }: TaskListProps): JSX.Element {
     <section className="w-full">
       {title && <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">{title}</h2>}
       {tasks.length > 0 ? (
-        <ul className="space-y-3">
+        <ul className="space-y-3 sm:space-y-4">
           {tasks.map((task) => (
             <li key={task.id}>
               <TaskCard task={task} />

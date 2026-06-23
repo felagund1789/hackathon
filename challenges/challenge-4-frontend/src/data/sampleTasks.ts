@@ -1,5 +1,13 @@
 import { Task, TaskStatus, TaskPriority } from '../types/task';
 
+const assignees = [
+  'Alice Johnson',
+  'Bob Smith',
+  'Carol Davis',
+  'Diana Wong',
+  'Evan Martinez',
+];
+
 export const sampleTasks: Task[] = [
   {
     id: '1',
@@ -8,6 +16,7 @@ export const sampleTasks: Task[] = [
     status: TaskStatus.IN_PROGRESS,
     priority: TaskPriority.HIGH,
     dueDate: new Date('2025-01-15'),
+    assignee: assignees[0],
     createdAt: new Date('2025-01-05'),
   },
   {
@@ -17,6 +26,7 @@ export const sampleTasks: Task[] = [
     status: TaskStatus.TODO,
     priority: TaskPriority.HIGH,
     dueDate: new Date('2025-01-10'),
+    assignee: assignees[1],
     createdAt: new Date('2025-01-03'),
   },
   {
@@ -26,6 +36,7 @@ export const sampleTasks: Task[] = [
     status: TaskStatus.DONE,
     priority: TaskPriority.MEDIUM,
     dueDate: new Date('2024-12-28'),
+    assignee: assignees[2],
     createdAt: new Date('2024-12-15'),
   },
   {
@@ -35,15 +46,17 @@ export const sampleTasks: Task[] = [
     status: TaskStatus.IN_PROGRESS,
     priority: TaskPriority.MEDIUM,
     dueDate: new Date('2025-01-20'),
+    assignee: assignees[3],
     createdAt: new Date('2025-01-08'),
   },
   {
     id: '5',
     title: 'Update dependencies',
     description: 'Upgrade React and related packages to latest stable versions',
-    status: TaskStatus.TODO,
+    status: TaskStatus.BLOCKED,
     priority: TaskPriority.LOW,
     dueDate: new Date('2025-02-01'),
+    assignee: assignees[4],
     createdAt: new Date('2025-01-06'),
   },
   {
@@ -53,6 +66,7 @@ export const sampleTasks: Task[] = [
     status: TaskStatus.DONE,
     priority: TaskPriority.HIGH,
     dueDate: new Date('2024-12-31'),
+    assignee: assignees[0],
     createdAt: new Date('2024-12-10'),
   },
   {
@@ -62,6 +76,17 @@ export const sampleTasks: Task[] = [
     status: TaskStatus.TODO,
     priority: TaskPriority.MEDIUM,
     dueDate: new Date('2025-01-25'),
+    assignee: assignees[1],
     createdAt: new Date('2025-01-07'),
+  },
+  {
+    id: '8',
+    title: 'Fix critical bug in payment flow',
+    description: 'Resolve issue causing payment failures on Safari',
+    status: TaskStatus.BLOCKED,
+    priority: TaskPriority.HIGH,
+    dueDate: new Date('2025-01-08'),
+    assignee: assignees[2],
+    createdAt: new Date('2025-01-06'),
   },
 ];

@@ -5,12 +5,14 @@ export interface Task {
   status: TaskStatus;
   priority: TaskPriority;
   dueDate?: Date;
+  assignee: string;
   createdAt: Date;
 }
 
 export enum TaskStatus {
   TODO = 'todo',
   IN_PROGRESS = 'in_progress',
+  BLOCKED = 'blocked',
   DONE = 'done',
 }
 

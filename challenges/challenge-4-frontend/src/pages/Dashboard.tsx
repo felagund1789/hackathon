@@ -1,32 +1,26 @@
 import { TaskList } from '../components/TaskList';
+import { SummaryCard } from '../components/SummaryCard';
 import { sampleTasks } from '../data/sampleTasks';
 import { TaskStatus } from '../types/task';
 
 export function Dashboard(): JSX.Element {
   const recentTasks = sampleTasks.slice(0, 5);
+  const todoTasks = sampleTasks.filter((task) => task.status === TaskStatus.TODO);
   const inProgressTasks = sampleTasks.filter((task) => task.status === TaskStatus.IN_PROGRESS);
+  const blockedTasks = sampleTasks.filter((task) => task.status === TaskStatus.BLOCKED);
+  const doneTasks = sampleTasks.filter((task) => task.status === TaskStatus.DONE);
 
   return (
-    <main className="flex-1 pt-16 md:ml-52 lg:ml-60">
-      <div className="p-4 sm:p-6 lg:p-8">
+    <main className="flex-1 pt-16 md:ml-60 lg:ml-60">
+      <div className="p-3 sm:p-6 lg:p-8">
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">Dashboard</h1>
 
         {/* Summary Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-          <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-            <p className="text-sm text-gray-600 font-medium">Total Tasks</p>
-            <p className="text-2xl font-bold text-gray-900 mt-2">{sampleTasks.length}</p>
-          </div>
-          <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-            <p className="text-sm text-gray-600 font-medium">In Progress</p>
-            <p className="text-2xl font-bold text-blue-600 mt-2">{inProgressTasks.length}</p>
-          </div>
-          <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm sm:col-span-2 lg:col-span-1">
-            <p className="text-sm text-gray-600 font-medium">Completed</p>
-            <p className="text-2xl font-bold text-green-600 mt-2">
-              {sampleTasks.filter((task) => task.status === TaskStatus.DONE).length}
-            </p>
-          </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
+          <SummaryCard count={todoTasks.length} label="Todo" color="cyan" />
+          <SummaryCard count={inProgressTasks.length} label="In Progress" color="blue" />
+          {blockedTasks.length > 0 && <SummaryCard count={blockedTasks.length} label="Blocked" color="magenta" />}
+          <SummaryCard count={doneTasks.length} label="Done" color="green" />
         </div>
 
         {/* Recent Tasks */}

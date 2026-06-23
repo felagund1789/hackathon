@@ -9,22 +9,24 @@ export function TaskCard({ task }: TaskCardProps): JSX.Element {
   const getPriorityColor = (priority: TaskPriority): string => {
     switch (priority) {
       case TaskPriority.HIGH:
-        return 'bg-red-100 text-red-700 border-red-300';
+        return 'bg-red-500';
       case TaskPriority.MEDIUM:
-        return 'bg-yellow-100 text-yellow-700 border-yellow-300';
+        return 'bg-yellow-500';
       case TaskPriority.LOW:
-        return 'bg-green-100 text-green-700 border-green-300';
+        return 'bg-green-500';
     }
   };
 
   const getStatusColor = (status: TaskStatus): string => {
     switch (status) {
       case TaskStatus.TODO:
-        return 'bg-gray-100 text-gray-700 border-gray-300';
+        return 'bg-cyan-100 text-cyan-800';
       case TaskStatus.IN_PROGRESS:
-        return 'bg-blue-100 text-blue-700 border-blue-300';
+        return 'bg-blue-100 text-blue-800';
+      case TaskStatus.BLOCKED:
+        return 'bg-pink-100 text-pink-800';
       case TaskStatus.DONE:
-        return 'bg-green-100 text-green-700 border-green-300';
+        return 'bg-green-100 text-green-800';
     }
   };
 
@@ -34,13 +36,11 @@ export function TaskCard({ task }: TaskCardProps): JSX.Element {
         return 'To Do';
       case TaskStatus.IN_PROGRESS:
         return 'In Progress';
+      case TaskStatus.BLOCKED:
+        return 'Blocked';
       case TaskStatus.DONE:
         return 'Done';
     }
-  };
-
-  const getPriorityLabel = (priority: TaskPriority): string => {
-    return priority.charAt(0).toUpperCase() + priority.slice(1);
   };
 
   const formatDate = (date: Date): string => {
@@ -55,37 +55,32 @@ export function TaskCard({ task }: TaskCardProps): JSX.Element {
       to={`/tasks/${task.id}`}
       className="block focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
     >
-      <article className="p-3 sm:p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
-        <div className="flex items-start gap-2 sm:gap-3">
-          {/* Priority Indicator */}
-          <div className="flex-shrink-0 w-1 h-12 sm:h-16 bg-gradient-to-b from-current to-current rounded-full opacity-70" style={{backgroundColor: task.priority === TaskPriority.HIGH ? '#dc2626' : task.priority === TaskPriority.MEDIUM ? '#eab308' : '#16a34a'}} />
+      <article className="h-24 p-3 sm:p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow flex items-center gap-3 sm:gap-4">
+        {/* Priority Indicator - Left */}
+        <div className={`flex-shrink-0 w-1 h-full rounded-sm ${getPriorityColor(task.priority)}`} />
 
-          {/* Content */}
-          <div className="flex-1 min-w-0">
-            <h3 className="text-sm sm:text-base font-semibold text-gray-900 line-clamp-2">
-              {task.title}
-            </h3>
+        {/* Title and Status - Center-Left */}
+        <div className="flex-1 min-w-0">
+          <h3 className="text-sm sm:text-base font-semibold text-gray-900 line-clamp-1">
+            {task.title}
+          </h3>
+          <span className={`inline-block px-2 py-1 text-xs font-medium rounded mt-1 ${getStatusColor(task.status)}`}>
+            {getStatusLabel(task.status)}
+          </span>
+        </div>
 
-            {/* Metadata */}
-            <div className="mt-2 flex flex-wrap gap-2">
-              {/* Status Badge */}
-              <span className={`inline-block px-2 py-1 text-xs font-medium rounded border ${getStatusColor(task.status)}`}>
-                {getStatusLabel(task.status)}
-              </span>
-
-              {/* Priority Badge */}
-              <span className={`inline-block px-2 py-1 text-xs font-medium rounded border ${getPriorityColor(task.priority)}`}>
-                {getPriorityLabel(task.priority)}
-              </span>
-            </div>
+        {/* Due Date - Center-Right */}
+        {task.dueDate && (
+          <div className="flex-shrink-0 text-xs text-gray-600 whitespace-nowrap text-right">
+            <div className="font-medium">Due:</div>
+            <div>{formatDate(task.dueDate)}</div>
           </div>
+        )}
 
-          {/* Due Date */}
-          {task.dueDate && (
-            <div className="flex-shrink-0 text-xs text-gray-600 whitespace-nowrap">
-              {formatDate(task.dueDate)}
-            </div>
-          )}
+        {/* Assignee - Right */}
+        <div className="flex-shrink-0 text-xs text-gray-600 whitespace-nowrap text-right hidden sm:block">
+          <div className="font-medium">Assignee:</div>
+          <div className="line-clamp-1">{task.assignee}</div>
         </div>
       </article>
     </Link>

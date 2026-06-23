@@ -8,8 +8,8 @@ export function TaskDetailPage(): JSX.Element {
 
   if (!task) {
     return (
-      <main className="flex-1 pt-16 md:ml-52 lg:ml-60">
-        <div className="p-4 sm:p-6 lg:p-8">
+      <main className="flex-1 pt-16 md:ml-60 lg:ml-60">
+        <div className="p-3 sm:p-6 lg:p-8">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Task Not Found</h1>
           <p className="text-gray-600 mb-4">The task you're looking for doesn't exist.</p>
           <Link to="/tasks" className="text-blue-600 hover:text-blue-700 font-medium">
@@ -26,6 +26,8 @@ export function TaskDetailPage(): JSX.Element {
         return 'To Do';
       case TaskStatus.IN_PROGRESS:
         return 'In Progress';
+      case TaskStatus.BLOCKED:
+        return 'Blocked';
       case TaskStatus.DONE:
         return 'Done';
     }
@@ -44,8 +46,8 @@ export function TaskDetailPage(): JSX.Element {
   };
 
   return (
-    <main className="flex-1 pt-16 md:ml-52 lg:ml-60">
-      <div className="p-4 sm:p-6 lg:p-8">
+    <main className="flex-1 pt-16 md:ml-60 lg:ml-60">
+      <div className="p-3 sm:p-6 lg:p-8">
         <Link to="/tasks" className="text-blue-600 hover:text-blue-700 font-medium mb-6 inline-block focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1">
           ← Back to Task List
         </Link>
@@ -62,6 +64,10 @@ export function TaskDetailPage(): JSX.Element {
             <div>
               <p className="text-sm text-gray-600 font-medium mb-1">Priority</p>
               <p className="text-base font-semibold text-gray-900">{getPriorityLabel(task.priority)}</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-600 font-medium mb-1">Assignee</p>
+              <p className="text-base font-semibold text-gray-900">{task.assignee}</p>
             </div>
             {task.dueDate && (
               <div>
