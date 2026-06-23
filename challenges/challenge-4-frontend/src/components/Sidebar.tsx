@@ -28,6 +28,9 @@ export function Sidebar(): JSX.Element {
             </li>
           ))}
         </ul>
+        <p className="text-xs text-gray-500 dark:text-gray-400 mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+          Pro tip: Press <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded text-xs font-mono">Ctrl + /</kbd> anytime to view the keyboard shortcuts.
+        </p>
       </nav>
     </aside>
   );

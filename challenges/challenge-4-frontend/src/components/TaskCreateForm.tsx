@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Task, TaskStatus, TaskPriority } from '../types/task';
 import { useTask } from '../context/TaskContext';
 
@@ -15,6 +15,18 @@ export function TaskCreateForm({ onClose }: TaskCreateFormProps) {
   const [dueDate, setDueDate] = useState('');
   const [assignee, setAssignee] = useState('Alice Johnson');
   const [titleError, setTitleError] = useState('');
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
 
   const assignees = ['Alice Johnson', 'Bob Smith', 'Carol Davis', 'Diana Wong', 'Evan Martinez'];
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TaskList } from '../components/TaskList';
 import { SummaryCard } from '../components/SummaryCard';
 import { Header } from '../components/Header';
@@ -14,12 +14,27 @@ export function Dashboard(): JSX.Element {
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [deletingTaskId, setDeletingTaskId] = useState<string | null>(null);
   const [deletingTaskTitle, setDeletingTaskTitle] = useState('');
+  const [selectedTaskIndex, setSelectedTaskIndex] = useState<number | null>(null);
 
   const recentTasks = state.tasks.slice(0, 5);
   const todoTasks = state.tasks.filter((task) => task.status === TaskStatus.TODO);
   const inProgressTasks = state.tasks.filter((task) => task.status === TaskStatus.IN_PROGRESS);
   const blockedTasks = state.tasks.filter((task) => task.status === TaskStatus.BLOCKED);
   const doneTasks = state.tasks.filter((task) => task.status === TaskStatus.DONE);
+
+  useEffect(() => {
+    if (recentTasks.length === 0) {
+      setSelectedTaskIndex(null);
+      return;
+    }
+
+    setSelectedTaskIndex((current) => {
+      if (current === null || current >= recentTasks.length) {
+        return 0;
+      }
+      return current;
+    });
+  }, [recentTasks.length]);
 
   const handleEdit = (task: Task) => {
     setEditingTask(task);
@@ -29,6 +44,50 @@ export function Dashboard(): JSX.Element {
     setDeletingTaskId(taskId);
     setDeletingTaskTitle(taskTitle);
   };
+
+  // Keyboard navigation: arrow keys, d for delete, e for edit
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Skip if typing in input or textarea
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+
+      const selectedTask = selectedTaskIndex !== null ? recentTasks[selectedTaskIndex] : null;
+
+      // Arrow Up/Down to navigate through recent tasks
+      if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (recentTasks.length === 0) return;
+
+        let newIndex = selectedTaskIndex === null ? 0 : selectedTaskIndex;
+        if (e.key === 'ArrowUp') {
+          newIndex = Math.max(0, newIndex - 1);
+        } else {
+          newIndex = Math.min(recentTasks.length - 1, newIndex + 1);
+        }
+        setSelectedTaskIndex(newIndex);
+        return;
+      }
+
+      // D to delete selected task
+      if (e.key.toLowerCase() === 'd' && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey && selectedTask) {
+        e.preventDefault();
+        handleDelete(selectedTask.id, selectedTask.title);
+        return;
+      }
+
+      // E to edit selected task
+      if (e.key.toLowerCase() === 'e' && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey && selectedTask) {
+        e.preventDefault();
+        handleEdit(selectedTask);
+        return;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedTaskIndex, recentTasks, handleEdit, handleDelete]);
 
   return (
     <>
@@ -49,7 +108,7 @@ export function Dashboard(): JSX.Element {
           </div>
 
           {/* Recent Tasks */}
-          <TaskList tasks={recentTasks} title="Recent Tasks" onEdit={handleEdit} onDelete={handleDelete} />
+          <TaskList tasks={recentTasks} title="Recent Tasks" selectedTaskIndex={selectedTaskIndex} onEdit={handleEdit} onDelete={handleDelete} />
         </div>
       </main>
 

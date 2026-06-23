@@ -4,11 +4,12 @@ import { PRIORITY_COLORS, STATUS_BADGE_COLORS, STATUS_LABELS } from '../constant
 
 interface TaskCardProps {
   task: Task;
+  isSelected?: boolean;
   onEdit?: (task: Task) => void;
   onDelete?: (taskId: string, taskTitle: string) => void;
 }
 
-export function TaskCard({ task, onEdit, onDelete }: TaskCardProps): JSX.Element {
+export function TaskCard({ task, isSelected, onEdit, onDelete }: TaskCardProps): JSX.Element {
   const formatDate = (date: Date): string => {
     return new Date(date).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -30,7 +31,9 @@ export function TaskCard({ task, onEdit, onDelete }: TaskCardProps): JSX.Element
   };
 
   const content = (
-    <article className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-md dark:hover:shadow-lg transition-shadow dark:shadow-black/30 flex flex-col h-full">
+    <article className={`bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-md dark:hover:shadow-lg transition-shadow dark:shadow-black/30 flex flex-col h-full ${
+      isSelected ? 'ring-2 ring-blue-500' : ''
+    }`}>
       {/* Content section with padding */}
       <div className="p-4 flex flex-col flex-1">
         {/* Title and Status */}

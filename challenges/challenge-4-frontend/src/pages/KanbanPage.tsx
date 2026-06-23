@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { TaskCreateForm } from '../components/TaskCreateForm';
@@ -36,6 +36,7 @@ export function KanbanPage(): JSX.Element {
   const [deletingTask, setDeletingTask] = useState<Task | null>(null);
   const [draggingTaskId, setDraggingTaskId] = useState<string | null>(null);
   const [dropTargetStatus, setDropTargetStatus] = useState<TaskStatus | null>(null);
+  const [selectedTaskIndex, setSelectedTaskIndex] = useState<number | null>(null);
 
   const tasksByStatus = useMemo(() => {
     return COLUMN_ORDER.reduce<Record<TaskStatus, Task[]>>(
@@ -51,6 +52,72 @@ export function KanbanPage(): JSX.Element {
       }
     );
   }, [state.tasks]);
+
+  const handleEdit = (task: Task) => {
+    setEditingTask(task);
+  };
+
+  const handleDelete = (task: Task) => {
+    setDeletingTask(task);
+  };
+
+  useEffect(() => {
+    if (state.tasks.length === 0) {
+      setSelectedTaskIndex(null);
+      return;
+    }
+
+    setSelectedTaskIndex((current) => {
+      if (current === null || current >= state.tasks.length) {
+        return 0;
+      }
+      return current;
+    });
+  }, [state.tasks.length]);
+
+  // Keyboard navigation: arrow keys, d for delete, e for edit
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Skip if typing in input or textarea
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+
+      const selectedTask = selectedTaskIndex !== null ? state.tasks[selectedTaskIndex] : null;
+
+      // Arrow Up/Down to navigate through all tasks
+      if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (state.tasks.length === 0) return;
+
+        let newIndex = selectedTaskIndex === null ? 0 : selectedTaskIndex;
+        if (e.key === 'ArrowUp') {
+          newIndex = Math.max(0, newIndex - 1);
+        } else {
+          newIndex = Math.min(state.tasks.length - 1, newIndex + 1);
+        }
+        setSelectedTaskIndex(newIndex);
+        return;
+      }
+
+      // D to delete selected task
+      if (e.key.toLowerCase() === 'd' && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey && selectedTask) {
+        e.preventDefault();
+        handleDelete(selectedTask);
+        return;
+      }
+
+      // E to edit selected task
+      if (e.key.toLowerCase() === 'e' && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey && selectedTask) {
+        e.preventDefault();
+        handleEdit(selectedTask);
+        return;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedTaskIndex, state.tasks, handleEdit, handleDelete]);
 
   const handleDragStart = (event: React.DragEvent<HTMLElement>, taskId: string) => {
     setDraggingTaskId(taskId);
@@ -126,16 +193,18 @@ export function KanbanPage(): JSX.Element {
                         No tasks
                       </p>
                     ) : (
-                      columnTasks.map((task) => (
-                        <article
-                          key={task.id}
-                          draggable
-                          onDragStart={(event) => handleDragStart(event, task.id)}
-                          onDragEnd={handleDragEnd}
-                          className={`bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-3 shadow-sm transition-all cursor-grab active:cursor-grabbing ${
-                            draggingTaskId === task.id ? 'opacity-60 shadow-lg scale-[0.99]' : 'hover:shadow-md'
-                          }`}
-                        >
+                      columnTasks.map((task) => {
+                        const isSelected = selectedTaskIndex !== null && state.tasks[selectedTaskIndex]?.id === task.id;
+                        return (
+                          <article
+                            key={task.id}
+                            draggable
+                            onDragStart={(event) => handleDragStart(event, task.id)}
+                            onDragEnd={handleDragEnd}
+                            className={`bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-3 shadow-sm transition-all cursor-grab active:cursor-grabbing ${
+                              draggingTaskId === task.id ? 'opacity-60 shadow-lg scale-[0.99]' : 'hover:shadow-md'
+                            } ${isSelected ? 'ring-2 ring-blue-500' : ''}`}
+                          >
                           <Link
                             to={`/tasks/${task.id}`}
                             className="block text-sm font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 mb-2"
@@ -173,7 +242,8 @@ export function KanbanPage(): JSX.Element {
                             </button>
                           </div>
                         </article>
-                      ))
+                        );
+                      })
                     )}
                   </div>
                 </div>

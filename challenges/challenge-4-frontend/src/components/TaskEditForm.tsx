@@ -28,6 +28,18 @@ export function TaskEditForm({ task, onClose }: TaskEditFormProps) {
     setAssignee(task.assignee);
   }, [task]);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
   const validateForm = (): boolean => {
     if (title.trim().length < 3) {
       setTitleError('Title must be at least 3 characters');

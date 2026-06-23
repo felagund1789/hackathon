@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTask } from '../context/TaskContext';
 
 interface TaskDeleteConfirmProps {
@@ -9,6 +10,18 @@ interface TaskDeleteConfirmProps {
 
 export function TaskDeleteConfirm({ taskId, taskTitle, onClose, onDeleteComplete }: TaskDeleteConfirmProps) {
   const { deleteTask } = useTask();
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
 
   const handleDelete = () => {
     deleteTask(taskId);

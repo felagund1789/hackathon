@@ -4,19 +4,25 @@ import { TaskCard } from './TaskCard';
 interface TaskListProps {
   tasks: Task[];
   title?: string;
+  selectedTaskIndex?: number | null;
   onEdit?: (task: Task) => void;
   onDelete?: (taskId: string, taskTitle: string) => void;
 }
 
-export function TaskList({ tasks, title, onEdit, onDelete }: TaskListProps): JSX.Element {
+export function TaskList({ tasks, title, selectedTaskIndex, onEdit, onDelete }: TaskListProps): JSX.Element {
   return (
     <section className="w-full">
       {title && <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">{title}</h2>}
       {tasks.length > 0 ? (
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {tasks.map((task) => (
+          {tasks.map((task, index) => (
             <li key={task.id}>
-              <TaskCard task={task} onEdit={onEdit} onDelete={onDelete} />
+              <TaskCard 
+                task={task} 
+                isSelected={selectedTaskIndex === index}
+                onEdit={onEdit} 
+                onDelete={onDelete} 
+              />
             </li>
           ))}
         </ul>
