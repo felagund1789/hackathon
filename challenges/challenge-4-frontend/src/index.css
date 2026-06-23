@@ -3,3 +3,28 @@
 @tailwind utilities;
 
 /* Custom styles can be added below */
+
+@keyframes skeleton-shimmer {
+	0% {
+		opacity: 0.6;
+		transform: translateX(-2%);
+	}
+	50% {
+		opacity: 1;
+		transform: translateX(0%);
+	}
+	100% {
+		opacity: 0.6;
+		transform: translateX(2%);
+	}
+}
+
+.animate-skeleton-shimmer {
+	animation: skeleton-shimmer 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.animate-skeleton-shimmer {
+		animation: none;
+	}
+}

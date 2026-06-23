@@ -1,15 +1,22 @@
 import { Task } from '../types/task';
 import { TaskCard } from './TaskCard';
+import { TaskListSkeleton } from './TaskListSkeleton';
 
 interface TaskListProps {
   tasks: Task[];
   title?: string;
+  isLoading?: boolean;
+  skeletonCount?: number;
   selectedTaskIndex?: number | null;
   onEdit?: (task: Task) => void;
   onDelete?: (taskId: string, taskTitle: string) => void;
 }
 
-export function TaskList({ tasks, title, selectedTaskIndex, onEdit, onDelete }: TaskListProps): JSX.Element {
+export function TaskList({ tasks, title, isLoading = false, skeletonCount = 6, selectedTaskIndex, onEdit, onDelete }: TaskListProps): JSX.Element {
+  if (isLoading) {
+    return <TaskListSkeleton title={title} count={skeletonCount} />;
+  }
+
   return (
     <section className="w-full">
       {title && <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">{title}</h2>}

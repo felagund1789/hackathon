@@ -10,6 +10,7 @@ import { Task, TaskStatus } from '../types/task';
 
 export function Dashboard(): JSX.Element {
   const { state } = useTask();
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [deletingTaskId, setDeletingTaskId] = useState<string | null>(null);
@@ -21,6 +22,14 @@ export function Dashboard(): JSX.Element {
   const inProgressTasks = state.tasks.filter((task) => task.status === TaskStatus.IN_PROGRESS);
   const blockedTasks = state.tasks.filter((task) => task.status === TaskStatus.BLOCKED);
   const doneTasks = state.tasks.filter((task) => task.status === TaskStatus.DONE);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setIsInitialLoading(false);
+    }, 1200);
+
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (recentTasks.length === 0) {
@@ -108,7 +117,15 @@ export function Dashboard(): JSX.Element {
           </div>
 
           {/* Recent Tasks */}
-          <TaskList tasks={recentTasks} title="Recent Tasks" selectedTaskIndex={selectedTaskIndex} onEdit={handleEdit} onDelete={handleDelete} />
+          <TaskList
+            tasks={recentTasks}
+            title="Recent Tasks"
+            isLoading={isInitialLoading}
+            skeletonCount={4}
+            selectedTaskIndex={selectedTaskIndex}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+          />
         </div>
       </main>
 

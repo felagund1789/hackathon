@@ -9,6 +9,7 @@ import { Task } from '../types/task';
 
 export function TaskListPage(): JSX.Element {
   const { state } = useTask();
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [deletingTaskId, setDeletingTaskId] = useState<string | null>(null);
@@ -23,6 +24,14 @@ export function TaskListPage(): JSX.Element {
     setDeletingTaskId(taskId);
     setDeletingTaskTitle(taskTitle);
   };
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setIsInitialLoading(false);
+    }, 1200);
+
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (state.tasks.length === 0) {
@@ -88,7 +97,14 @@ export function TaskListPage(): JSX.Element {
       <main className="flex-1 pt-16 md:ml-60 lg:ml-60">
         <div className="p-3 sm:p-6 lg:p-8">
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8">All Tasks</h1>
-          <TaskList tasks={state.tasks} selectedTaskIndex={selectedTaskIndex} onEdit={handleEdit} onDelete={handleDelete} />
+          <TaskList
+            tasks={state.tasks}
+            isLoading={isInitialLoading}
+            skeletonCount={6}
+            selectedTaskIndex={selectedTaskIndex}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+          />
         </div>
       </main>
 
