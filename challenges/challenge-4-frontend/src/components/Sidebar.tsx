@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 export function Sidebar(): JSX.Element {
   const navItems = [
     { label: 'Dashboard', path: '/' },
+    { label: 'Kanban Board', path: '/kanban' },
     { label: 'All Tasks', path: '/tasks' },
   ];
 

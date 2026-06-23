@@ -40,6 +40,7 @@ export function Header({ onAddClick }: HeaderProps): JSX.Element {
   const getPageLabel = (): string => {
     const path = location.pathname;
     if (path === '/') return 'Dashboard';
+    if (path === '/kanban') return 'Kanban Board';
     if (path === '/tasks') return 'All Tasks';
     if (path.startsWith('/tasks/')) return 'Task Detail';
     return 'Dashboard';
