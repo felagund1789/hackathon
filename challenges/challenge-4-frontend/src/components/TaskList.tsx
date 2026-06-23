@@ -4,18 +4,19 @@ import { TaskCard } from './TaskCard';
 interface TaskListProps {
   tasks: Task[];
   title?: string;
-  columns?: number; // Optional prop to specify the number of columns
+  onEdit?: (task: Task) => void;
+  onDelete?: (taskId: string, taskTitle: string) => void;
 }
 
-export function TaskList({ tasks, title, columns = 2 }: TaskListProps): JSX.Element {
+export function TaskList({ tasks, title, onEdit, onDelete }: TaskListProps): JSX.Element {
   return (
     <section className="w-full">
       {title && <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">{title}</h2>}
       {tasks.length > 0 ? (
-        <ul className={`grid grid-cols-1 md:grid-cols-${columns} gap-4`}>
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {tasks.map((task) => (
             <li key={task.id}>
-              <TaskCard task={task} />
+              <TaskCard task={task} onEdit={onEdit} onDelete={onDelete} />
             </li>
           ))}
         </ul>
