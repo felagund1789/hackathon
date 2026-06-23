@@ -5,6 +5,7 @@ import { TaskCreateForm } from '../components/TaskCreateForm';
 import { TaskDeleteConfirm } from '../components/TaskDeleteConfirm';
 import { TaskEditForm } from '../components/TaskEditForm';
 import { useTask } from '../context/TaskContext';
+import { useToast } from '../context/ToastContext';
 import { PRIORITY_COLORS, PRIORITY_LABELS, STATUS_LABELS } from '../constants/taskColors';
 import { Task, TaskStatus } from '../types/task';
 
@@ -31,6 +32,7 @@ const COLUMN_HEADER_TEXT: Record<TaskStatus, string> = {
 
 export function KanbanPage(): JSX.Element {
   const { state, updateTask } = useTask();
+  const { addToast } = useToast();
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [deletingTask, setDeletingTask] = useState<Task | null>(null);
@@ -140,17 +142,22 @@ export function KanbanPage(): JSX.Element {
     event.preventDefault();
     const taskId = event.dataTransfer.getData('text/task-id') || draggingTaskId;
     if (!taskId) {
+      addToast('Could not move the task. Please try again.', 'error');
       setDropTargetStatus(null);
       return;
     }
 
     const task = state.tasks.find((item) => item.id === taskId);
     if (!task || task.status === targetStatus) {
+      if (!task) {
+        addToast('Could not move the task. Please try again.', 'error');
+      }
       setDropTargetStatus(null);
       return;
     }
 
     updateTask({ ...task, status: targetStatus });
+    addToast(`Moved "${task.title}" to ${STATUS_LABELS[targetStatus]}.`);
     setDropTargetStatus(null);
   };
 

@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useTask } from '../context/TaskContext';
 import { useTheme } from '../context/ThemeContext';
+import { useToast } from '../context/ToastContext';
 import { ShortcutHelpModal } from './ShortcutHelpModal';
 
 interface HeaderProps {
@@ -11,8 +12,23 @@ interface HeaderProps {
 export function Header({ onAddClick }: HeaderProps): JSX.Element {
   const { state, undo } = useTask();
   const { theme, toggleTheme } = useTheme();
+  const { addToast } = useToast();
   const location = useLocation();
   const [showHelpModal, setShowHelpModal] = useState(false);
+
+  const handleThemeToggle = () => {
+    const nextTheme = theme === 'light' ? 'dark' : 'light';
+    toggleTheme();
+    addToast(`Switched to ${nextTheme} mode.`);
+  };
+
+  const handleUndo = () => {
+    if (state.undoStack.length === 0) {
+      return;
+    }
+    undo();
+    addToast('Undid last action.');
+  };
 
   // Handle keyboard shortcuts: Ctrl+Z for undo, T for theme toggle, N for new task, ? for help
   useEffect(() => {
@@ -37,14 +53,14 @@ export function Header({ onAddClick }: HeaderProps): JSX.Element {
       // Ctrl+Z for undo
       if ((e.ctrlKey || e.metaKey) && e.key === 'z' && state.undoStack.length > 0) {
         e.preventDefault();
-        undo();
+        handleUndo();
         return;
       }
 
       // T for theme toggle
       if (e.key.toLowerCase() === 't' && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey) {
         e.preventDefault();
-        toggleTheme();
+        handleThemeToggle();
         return;
       }
 
@@ -66,7 +82,7 @@ export function Header({ onAddClick }: HeaderProps): JSX.Element {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [state.undoStack.length, undo, toggleTheme, onAddClick, showHelpModal]);
+  }, [state.undoStack.length, onAddClick, showHelpModal, theme]);
 
   const getPageLabel = (): string => {
     const path = location.pathname;
@@ -106,7 +122,7 @@ export function Header({ onAddClick }: HeaderProps): JSX.Element {
             ?
           </button>
           <button
-            onClick={toggleTheme}
+            onClick={handleThemeToggle}
             title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode (t)`}
             className="px-3 py-1.5 text-sm font-medium rounded focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
@@ -114,7 +130,7 @@ export function Header({ onAddClick }: HeaderProps): JSX.Element {
             {theme === 'light' ? '🌙' : '☀️'}
           </button>
           <button
-            onClick={undo}
+            onClick={handleUndo}
             disabled={state.undoStack.length === 0}
             title={state.undoStack.length > 0 ? 'Undo (Ctrl+Z)' : 'Nothing to undo'}
             className={`px-3 py-1.5 text-sm font-medium rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${

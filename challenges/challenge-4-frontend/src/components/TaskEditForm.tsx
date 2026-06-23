@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Task, TaskStatus, TaskPriority } from '../types/task';
 import { useTask } from '../context/TaskContext';
+import { useToast } from '../context/ToastContext';
 
 interface TaskEditFormProps {
   task: Task;
@@ -9,6 +10,7 @@ interface TaskEditFormProps {
 
 export function TaskEditForm({ task, onClose }: TaskEditFormProps) {
   const { updateTask, setError, clearError, state } = useTask();
+  const { addToast } = useToast();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState<TaskPriority>(TaskPriority.MEDIUM);
@@ -67,9 +69,11 @@ export function TaskEditForm({ task, onClose }: TaskEditFormProps) {
       };
 
       updateTask(updatedTask);
+      addToast('Task updated successfully.');
       onClose();
     } catch (error) {
       setError('Failed to update task. Please try again.');
+      addToast('Failed to update task. Please try again.', 'error');
     }
   };
 

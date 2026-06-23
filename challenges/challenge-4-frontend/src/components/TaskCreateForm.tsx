@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Task, TaskStatus, TaskPriority } from '../types/task';
 import { useTask } from '../context/TaskContext';
+import { useToast } from '../context/ToastContext';
 
 interface TaskCreateFormProps {
   onClose: () => void;
@@ -8,6 +9,7 @@ interface TaskCreateFormProps {
 
 export function TaskCreateForm({ onClose }: TaskCreateFormProps) {
   const { createTask, setError, clearError, state } = useTask();
+  const { addToast } = useToast();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState<TaskPriority>(TaskPriority.MEDIUM);
@@ -56,9 +58,11 @@ export function TaskCreateForm({ onClose }: TaskCreateFormProps) {
       };
 
       createTask(newTask);
+      addToast('Task created successfully.');
       onClose();
     } catch (error) {
       setError('Failed to create task. Please try again.');
+      addToast('Failed to create task. Please try again.', 'error');
     }
   };
 

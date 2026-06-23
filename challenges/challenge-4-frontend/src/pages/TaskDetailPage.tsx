@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useTask } from '../context/TaskContext';
 import { STATUS_LABELS, PRIORITY_LABELS } from '../constants/taskColors';
+import { Header } from '../components/Header';
 import { TaskEditForm } from '../components/TaskEditForm';
 import { TaskDeleteConfirm } from '../components/TaskDeleteConfirm';
 
@@ -28,15 +29,18 @@ export function TaskDetailPage(): JSX.Element {
 
   if (!task) {
     return (
-      <main className="flex-1 pt-16 md:ml-60 lg:ml-60">
-        <div className="p-3 sm:p-6 lg:p-8">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Task Not Found</h1>
-          <p className="text-gray-600 dark:text-gray-400 mb-4">The task you're looking for doesn't exist.</p>
-          <Link to="/tasks" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium">
-            Back to Task List
-          </Link>
-        </div>
-      </main>
+      <>
+        <Header />
+        <main className="flex-1 pt-16 md:ml-60 lg:ml-60">
+          <div className="p-3 sm:p-6 lg:p-8">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Task Not Found</h1>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">The task you're looking for doesn't exist.</p>
+            <Link to="/tasks" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium">
+              Back to Task List
+            </Link>
+          </div>
+        </main>
+      </>
     );
   }
 
@@ -49,11 +53,13 @@ export function TaskDetailPage(): JSX.Element {
   };
 
   return (
-    <main className="flex-1 pt-16 md:ml-60 lg:ml-60">
-      <div className="p-3 sm:p-6 lg:p-8">
-        <Link to="/tasks" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium mb-6 inline-block focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1">
-          ← Back to Task List
-        </Link>
+    <>
+      <Header />
+      <main className="flex-1 pt-16 md:ml-60 lg:ml-60">
+        <div className="p-3 sm:p-6 lg:p-8">
+          <Link to="/tasks" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium mb-6 inline-block focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1">
+            ← Back to Task List
+          </Link>
 
         <article className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-black/30 flex flex-col">
           <div className="p-6">
@@ -123,7 +129,8 @@ export function TaskDetailPage(): JSX.Element {
             onDeleteComplete={handleDeleteComplete}
           />
         )}
-      </div>
-    </main>
+        </div>
+      </main>
+    </>
   );
 }

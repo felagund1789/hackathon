@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { TaskProvider } from './context/TaskContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { SelectionProvider } from './context/SelectionContext';
-import { Header } from './components/Header';
+import { ToastProvider } from './context/ToastContext';
 import { Sidebar } from './components/Sidebar';
 import { Dashboard } from './pages/Dashboard';
 import { KanbanPage } from './pages/KanbanPage';
@@ -15,18 +15,19 @@ function App(): JSX.Element {
     <ThemeProvider>
       <Router>
         <TaskProvider initialTasks={sampleTasks}>
-          <SelectionProvider>
-            <div className="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors">
-              <Header />
-              <Sidebar />
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/kanban" element={<KanbanPage />} />
-                <Route path="/tasks" element={<TaskListPage />} />
-                <Route path="/tasks/:id" element={<TaskDetailPage />} />
-              </Routes>
-            </div>
-          </SelectionProvider>
+          <ToastProvider>
+            <SelectionProvider>
+              <div className="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors">
+                <Sidebar />
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/kanban" element={<KanbanPage />} />
+                  <Route path="/tasks" element={<TaskListPage />} />
+                  <Route path="/tasks/:id" element={<TaskDetailPage />} />
+                </Routes>
+              </div>
+            </SelectionProvider>
+          </ToastProvider>
         </TaskProvider>
       </Router>
     </ThemeProvider>

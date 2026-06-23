@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useTask } from '../context/TaskContext';
+import { useToast } from '../context/ToastContext';
 
 interface TaskDeleteConfirmProps {
   taskId: string;
@@ -10,6 +11,7 @@ interface TaskDeleteConfirmProps {
 
 export function TaskDeleteConfirm({ taskId, taskTitle, onClose, onDeleteComplete }: TaskDeleteConfirmProps) {
   const { deleteTask } = useTask();
+  const { addToast } = useToast();
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -24,9 +26,14 @@ export function TaskDeleteConfirm({ taskId, taskTitle, onClose, onDeleteComplete
   }, [onClose]);
 
   const handleDelete = () => {
-    deleteTask(taskId);
-    onClose();
-    onDeleteComplete?.();
+    try {
+      deleteTask(taskId);
+      addToast('Task deleted successfully.');
+      onClose();
+      onDeleteComplete?.();
+    } catch (error) {
+      addToast(`Failed to delete task "${taskTitle}".`, 'error');
+    }
   };
 
   return (
