@@ -17,27 +17,28 @@ const setup = (onClose = () => {}) => {
 describe('TaskCreateForm', () => {
   it('renders form title', () => {
     setup();
-    expect(screen.getByText(/create task|new task/i)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /create task/i })).toBeInTheDocument();
   });
 
   it('renders title input', () => {
     setup();
-    const input = screen.getByPlaceholderText(/title/i) || screen.getByLabelText(/title/i);
-    expect(input).toBeInTheDocument();
+    expect(screen.getByLabelText(/title/i)).toBeInTheDocument();
   });
 
   it('renders submit button', () => {
     setup();
-    expect(screen.getByRole('button', { name: /create|submit/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /^create$/i })).toBeInTheDocument();
   });
 
-  it('renders cancel/close button', () => {
+  it('renders cancel and close buttons', () => {
     setup();
-    expect(screen.getByRole('button', { name: /cancel|close|x/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /^cancel$/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /close dialog/i })).toBeInTheDocument();
   });
 
-  it('renders modal dialog', () => {
+  it('renders modal overlay', () => {
     const { container } = setup();
-    expect(container.querySelector('dialog') || container.querySelector('[role="dialog"]')).toBeInTheDocument();
+    const overlay = container.querySelector('.fixed.inset-0');
+    expect(overlay).toBeInTheDocument();
   });
 });

@@ -23,6 +23,7 @@ describe('TaskCard', () => {
         <TaskCard task={mockTask} onEdit={() => {}} onDelete={() => {}} />
       </BrowserRouter>
     );
+
     expect(screen.getByText('Complete Project Report')).toBeInTheDocument();
   });
 
@@ -32,6 +33,7 @@ describe('TaskCard', () => {
         <TaskCard task={mockTask} onEdit={() => {}} onDelete={() => {}} />
       </BrowserRouter>
     );
+
     expect(screen.getByText('Finish the quarterly project report')).toBeInTheDocument();
   });
 
@@ -41,7 +43,8 @@ describe('TaskCard', () => {
         <TaskCard task={mockTask} onEdit={() => {}} onDelete={() => {}} />
       </BrowserRouter>
     );
-    expect(screen.getByText('Alice Johnson')).toBeInTheDocument();
+
+    expect(screen.getByText(/assignee:\s*alice johnson/i)).toBeInTheDocument();
   });
 
   it('shows selected state with ring class when isSelected is true', () => {
@@ -50,6 +53,7 @@ describe('TaskCard', () => {
         <TaskCard task={mockTask} isSelected={true} onEdit={() => {}} onDelete={() => {}} />
       </BrowserRouter>
     );
+
     const article = container.querySelector('article');
     expect(article).toHaveClass('ring-2', 'ring-blue-500');
   });
@@ -57,14 +61,14 @@ describe('TaskCard', () => {
   it('calls onEdit when edit button is clicked', async () => {
     const handleEdit = vi.fn();
     const user = userEvent.setup();
+
     render(
       <BrowserRouter>
         <TaskCard task={mockTask} onEdit={handleEdit} onDelete={() => {}} />
       </BrowserRouter>
     );
 
-    const editButton = screen.getByRole('button', { name: /edit/i });
-    await user.click(editButton);
+    await user.click(screen.getByRole('button', { name: /edit task/i }));
 
     expect(handleEdit).toHaveBeenCalledWith(mockTask);
   });
@@ -72,14 +76,14 @@ describe('TaskCard', () => {
   it('calls onDelete when delete button is clicked', async () => {
     const handleDelete = vi.fn();
     const user = userEvent.setup();
+
     render(
       <BrowserRouter>
         <TaskCard task={mockTask} onEdit={() => {}} onDelete={handleDelete} />
       </BrowserRouter>
     );
 
-    const deleteButton = screen.getByRole('button', { name: /delete/i });
-    await user.click(deleteButton);
+    await user.click(screen.getByRole('button', { name: /delete task/i }));
 
     expect(handleDelete).toHaveBeenCalledWith(mockTask.id, mockTask.title);
   });
@@ -90,7 +94,8 @@ describe('TaskCard', () => {
         <TaskCard task={mockTask} onEdit={() => {}} onDelete={() => {}} />
       </BrowserRouter>
     );
-    const link = screen.getByRole('link', { name: 'Complete Project Report' });
+
+    const link = screen.getByRole('link', { name: /complete project report/i });
     expect(link).toHaveAttribute('href', '/tasks/task-1');
   });
 });

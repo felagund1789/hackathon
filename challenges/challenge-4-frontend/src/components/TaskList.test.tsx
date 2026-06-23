@@ -64,14 +64,12 @@ describe('TaskList', () => {
   it('applies selected class to highlighted task', () => {
     const { container } = render(
       <BrowserRouter>
-        <TaskList tasks={mockTasks} isLoading={false} selectedIndex={0} onEdit={() => {}} onDelete={() => {}} />
+        <TaskList tasks={mockTasks} isLoading={false} selectedTaskIndex={0} onEdit={() => {}} onDelete={() => {}} />
       </BrowserRouter>
     );
 
-    const articles = container.querySelectorAll('article:not([aria-hidden])');
-    if (articles.length > 0) {
-      expect(articles[0]).toHaveClass('ring-2', 'ring-blue-500');
-    }
+    const selected = container.querySelector('article.ring-2.ring-blue-500');
+    expect(selected).toBeInTheDocument();
   });
 
   it('renders grid layout', () => {

@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';
@@ -29,31 +29,25 @@ describe('Header', () => {
 
   it('renders help button', () => {
     setup();
-    const helpButton = screen.getByRole('button', { name: /help|shortcuts|\?/i });
-    expect(helpButton).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /show keyboard shortcuts/i })).toBeInTheDocument();
   });
 
   it('opens shortcut help modal when help button is clicked', async () => {
     const user = userEvent.setup();
     setup();
 
-    const helpButton = screen.getByRole('button', { name: /help|shortcuts|\?/i });
-    await user.click(helpButton);
+    await user.click(screen.getByRole('button', { name: /show keyboard shortcuts/i }));
 
-    await waitFor(() => {
-      expect(screen.queryByText(/keyboard shortcut|help/i)).toBeInTheDocument();
-    });
+    expect(await screen.findByRole('heading', { name: /keyboard shortcuts/i })).toBeInTheDocument();
   });
 
   it('renders theme toggle button', () => {
     setup();
-    const themeButton = screen.getByRole('button', { name: /theme|light|dark|sun|moon/i });
-    expect(themeButton).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /switch to .* mode/i })).toBeInTheDocument();
   });
 
   it('renders undo button', () => {
     setup();
-    const undoButton = screen.getByRole('button', { name: /undo|ctrl/i });
-    expect(undoButton).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /undo last action/i })).toBeInTheDocument();
   });
 });

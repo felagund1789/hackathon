@@ -38,7 +38,12 @@ interface ToastContainerProps {
 
 export function ToastContainer({ toasts, onDismiss }: ToastContainerProps) {
   return (
-    <div className="fixed top-16 right-4 z-50 flex flex-col gap-2">
+    <div
+      className="fixed top-16 right-4 z-50 flex flex-col gap-2"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
       {toasts.map((toast) => (
         <Toast
           key={toast.id}

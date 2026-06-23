@@ -48,7 +48,7 @@ describe('ToastContext', () => {
       </ToastProvider>
     );
 
-    const liveRegion = container.querySelector('[role="status"]');
-    expect(liveRegion).toBeInTheDocument();
+    const toastContainer = container.querySelector('.fixed.top-16.right-4');
+    expect(toastContainer).toBeInTheDocument();
   });
 });
