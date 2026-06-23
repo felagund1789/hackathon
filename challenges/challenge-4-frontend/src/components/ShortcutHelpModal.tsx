@@ -1,8 +1,14 @@
+import { useRef } from 'react';
+import { useModalFocusTrap } from '../hooks/useModalFocusTrap';
+
 interface ShortcutHelpModalProps {
   onClose: () => void;
 }
 
 export function ShortcutHelpModal({ onClose }: ShortcutHelpModalProps) {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useModalFocusTrap(dialogRef, onClose);
+
   const shortcuts = [
     { key: 'n', description: 'Create a new task' },
     { key: 'e', description: 'Edit focused task' },
@@ -15,10 +21,18 @@ export function ShortcutHelpModal({ onClose }: ShortcutHelpModalProps) {
 
   return (
     <div className="fixed inset-0 bg-black/50 dark:bg-black/60 flex items-center justify-center z-50">
-      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg dark:shadow-black/40 max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto transition-colors">
-        {/* Header */}
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="shortcut-help-title"
+        tabIndex={-1}
+        className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg dark:shadow-black/40 max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto transition-colors"
+      >
         <div className="flex justify-between items-center p-6 border-b border-gray-200 dark:border-gray-700">
-          <h2 className="text-lg font-bold text-gray-900 dark:text-white">Keyboard Shortcuts</h2>
+          <h2 id="shortcut-help-title" className="text-lg font-bold text-gray-900 dark:text-white">
+            Keyboard Shortcuts
+          </h2>
           <button
             type="button"
             onClick={onClose}
@@ -29,7 +43,6 @@ export function ShortcutHelpModal({ onClose }: ShortcutHelpModalProps) {
           </button>
         </div>
 
-        {/* Content */}
         <div className="p-6">
           <table className="w-full">
             <tbody>
@@ -47,7 +60,6 @@ export function ShortcutHelpModal({ onClose }: ShortcutHelpModalProps) {
           </table>
         </div>
 
-        {/* Footer */}
         <div className="border-t border-gray-200 dark:border-gray-700 px-6 py-4 flex justify-end">
           <button
             type="button"

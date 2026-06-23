@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Task, TaskStatus, TaskPriority } from '../types/task';
 import { useTask } from '../context/TaskContext';
 import { useToast } from '../context/ToastContext';
+import { useModalFocusTrap } from '../hooks/useModalFocusTrap';
 
 interface TaskCreateFormProps {
   onClose: () => void;
@@ -10,6 +11,7 @@ interface TaskCreateFormProps {
 export function TaskCreateForm({ onClose }: TaskCreateFormProps) {
   const { createTask, setError, clearError, state } = useTask();
   const { addToast } = useToast();
+  const dialogRef = useRef<HTMLDivElement>(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState<TaskPriority>(TaskPriority.MEDIUM);
@@ -17,18 +19,9 @@ export function TaskCreateForm({ onClose }: TaskCreateFormProps) {
   const [dueDate, setDueDate] = useState('');
   const [assignee, setAssignee] = useState('Alice Johnson');
   const [titleError, setTitleError] = useState('');
+  const titleErrorId = 'create-task-title-error';
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        event.preventDefault();
-        onClose();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose]);
+  useModalFocusTrap(dialogRef, onClose);
 
   const assignees = ['Alice Johnson', 'Bob Smith', 'Carol Davis', 'Diana Wong', 'Evan Martinez'];
 
@@ -68,10 +61,17 @@ export function TaskCreateForm({ onClose }: TaskCreateFormProps) {
 
   return (
     <div className="fixed inset-0 bg-black/50 dark:bg-black/60 flex items-center justify-center z-40">
-      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg dark:shadow-black/40 max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto transition-colors">
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="create-task-title"
+        tabIndex={-1}
+        className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg dark:shadow-black/40 max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto transition-colors"
+      >
         {/* Header */}
         <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
-          <h2 className="text-lg font-bold text-gray-900 dark:text-white">Create Task</h2>
+          <h2 id="create-task-title" className="text-lg font-bold text-gray-900 dark:text-white">Create Task</h2>
           <button
             onClick={onClose}
             type="button"
@@ -117,9 +117,15 @@ export function TaskCreateForm({ onClose }: TaskCreateFormProps) {
               className={`w-full px-3 py-2 border rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 ${
                 titleError ? 'border-red-500 dark:border-red-700 focus:ring-red-500' : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500'
               }`}
+              aria-invalid={titleError ? 'true' : 'false'}
+              aria-describedby={titleError ? titleErrorId : undefined}
               disabled={state.isLoading}
             />
-            {titleError && <p className="text-red-600 text-sm mt-1">{titleError}</p>}
+            {titleError && (
+              <p id={titleErrorId} className="text-red-600 text-sm mt-1">
+                {titleError}
+              </p>
+            )}
           </div>
 
           {/* Description */}

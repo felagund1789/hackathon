@@ -32,9 +32,12 @@ export function Header({ onAddClick }: HeaderProps): JSX.Element {
   // Handle keyboard shortcuts: Ctrl+Z for undo, T for theme toggle, N for new task, ? for help
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Skip if typing in input or textarea (except for Escape)
-      const isTyping = e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement;
-      const isContentEditable = (e.target as HTMLElement).isContentEditable;
+      // Skip global shortcuts while users interact with editable/form controls (except Escape).
+      const target = e.target as HTMLElement | null;
+      const isTextInput = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement;
+      const isFormControl = target instanceof HTMLSelectElement || target instanceof HTMLButtonElement;
+      const isContentEditable = target?.isContentEditable ?? false;
+      const hasInteractiveRole = !!target?.closest('[role="textbox"], [role="combobox"], [role="listbox"]');
 
       // Escape always works - close help modal if open, otherwise let component handle it
       if (e.key === 'Escape') {
@@ -45,7 +48,7 @@ export function Header({ onAddClick }: HeaderProps): JSX.Element {
         return;
       }
 
-      if (isTyping || isContentEditable) {
+      if (isTextInput || isFormControl || isContentEditable || hasInteractiveRole) {
         return;
       }
 

@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useRef } from 'react';
 import { useTask } from '../context/TaskContext';
 import { useToast } from '../context/ToastContext';
+import { useModalFocusTrap } from '../hooks/useModalFocusTrap';
 
 interface TaskDeleteConfirmProps {
   taskId: string;
@@ -12,18 +13,9 @@ interface TaskDeleteConfirmProps {
 export function TaskDeleteConfirm({ taskId, taskTitle, onClose, onDeleteComplete }: TaskDeleteConfirmProps) {
   const { deleteTask } = useTask();
   const { addToast } = useToast();
+  const dialogRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        event.preventDefault();
-        onClose();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose]);
+  useModalFocusTrap(dialogRef, onClose);
 
   const handleDelete = () => {
     try {
@@ -38,9 +30,16 @@ export function TaskDeleteConfirm({ taskId, taskTitle, onClose, onDeleteComplete
 
   return (
     <div className="fixed inset-0 bg-black/50 dark:bg-black/60 flex items-center justify-center z-40">
-      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg dark:shadow-black/40 max-w-sm w-full mx-4 transition-colors">
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="delete-task-title"
+        tabIndex={-1}
+        className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg dark:shadow-black/40 max-w-sm w-full mx-4 transition-colors"
+      >
         <div className="p-6">
-          <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Delete Task</h2>
+          <h2 id="delete-task-title" className="text-lg font-bold text-gray-900 dark:text-white mb-4">Delete Task</h2>
           <p className="text-gray-700 dark:text-gray-300 mb-6">
             Delete task <span className="font-semibold">"{taskTitle}"</span>? This cannot be undone.
           </p>
