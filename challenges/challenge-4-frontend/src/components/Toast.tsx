@@ -17,7 +17,7 @@ export function Toast({ message, type, duration = 4000, onDismiss }: ToastProps)
   const icon = type === 'success' ? '✓' : '⚠';
 
   return (
-    <div className={`${bgColor} text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 animate-slide-in`}>
+    <div className={`${bgColor} text-white px-4 py-3 rounded-lg shadow-lg dark:shadow-black/40 ring-1 ring-black/10 dark:ring-white/10 flex items-center gap-3 animate-slide-in`}>
       <span className="text-lg font-bold">{icon}</span>
       <p className="flex-1">{message}</p>
       <button

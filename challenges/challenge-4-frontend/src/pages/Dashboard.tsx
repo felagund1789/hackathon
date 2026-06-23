@@ -36,8 +36,8 @@ export function Dashboard(): JSX.Element {
       <main className="flex-1 pt-16 md:ml-60 lg:ml-60">
         <div className="p-3 sm:p-6 lg:p-8">
           <div className="mb-8">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
-            <p className="text-gray-600">Welcome to your task management system</p>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">Dashboard</h1>
+            <p className="text-gray-600 dark:text-gray-400">Welcome to your task management system</p>
           </div>
 
           {/* Summary Cards */}

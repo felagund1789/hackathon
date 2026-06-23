@@ -769,21 +769,491 @@ Task creators and task managers who need to quickly add, modify, and remove task
 
 ## Stage 3: Advanced Interactions
 
-**Status:** Not started
+**Status:** 🎯 UX Brief Ready for Implementation
 
 ### UX Brief
-[Paste output from `UX Brief To Handoff` prompt with input: "Theme toggle UI, Kanban board columns with drag-and-drop, keyboard shortcut help, toast notifications for task events"]
 
-### Design Decisions
-- Theme management: [To be decided]
-- Drag-and-drop library/approach: [To be decided]
-- Keyboard shortcut strategy: [To be decided]
+#### Objective
+Build advanced interactivity features that improve user productivity and experience: dark/light theme support with system preference detection, Kanban board view for visual task organization, keyboard shortcuts for power users, toast notifications for task feedback, and skeleton loaders for perceived performance.
+
+#### Target Users
+- Power users who want keyboard shortcuts for speed
+- Users with accessibility needs (theme switching for visual comfort)
+- Visual learners who prefer Kanban board layout
+- Users who want instant feedback on actions (toasts)
+
+#### Key Features
+
+##### 1. Theme Switching (Dark/Light Mode)
+
+**Theme Context**
+- Create `ThemeContext` with two values: "light" and "dark"
+- Derive initial theme from:
+  1. localStorage `theme` preference if set
+  2. System preference via `prefers-color-scheme` media query if localStorage empty
+  3. Default to "light" if system preference unavailable
+- Store theme in localStorage when user changes it
+
+**Theme UI Toggle**
+- Location: Header (right side, next to navigation or in dropdown menu)
+- Button: Sun/Moon icon or "Light/Dark" text
+- Behavior:
+  - Click to toggle between light and dark
+  - Save to localStorage immediately
+  - Apply theme to entire app
+  - Icon changes to show current theme (sun icon when light mode, moon icon when dark)
+
+**Theme Colors (Tailwind Dark Mode)**
+- Dark mode class: `dark:` prefix on Tailwind utilities
+- Background colors:
+  - Light: `bg-white` (main), `bg-gray-100` (secondary)
+  - Dark: `dark:bg-gray-900` (main), `dark:bg-gray-800` (secondary)
+- Text colors:
+  - Light: `text-gray-900` (primary), `text-gray-600` (secondary)
+  - Dark: `dark:text-gray-100` (primary), `dark:text-gray-400` (secondary)
+- Borders:
+  - Light: `border-gray-200`
+  - Dark: `dark:border-gray-700`
+- Task status badge colors adjusted for contrast in dark mode
+
+**Theme Persistence**
+- On app load: Check localStorage for `theme` key
+- If found and valid ("light" or "dark"): Apply theme
+- If not found: Check `prefers-color-scheme` media query
+- If user changes theme: Update localStorage and apply immediately
+- No server sync needed (client-side persistence only)
+
+**System Preference Detection**
+- Listen to `prefers-color-scheme` changes via matchMedia
+- Update theme if user changes OS dark mode setting
+- Only applies if user hasn't set localStorage preference
+- Use `window.matchMedia('(prefers-color-scheme: dark)').matches` to detect
+
+---
+
+##### 2. Kanban Board View
+
+**New Route**
+- Add route: `/kanban` (alongside `/`, `/tasks`, `/tasks/:id`)
+- Navigation: Add link in sidebar "Kanban Board"
+- Layout: Same header and sidebar as other pages
+
+**Kanban Layout**
+- Column-based layout with 4 columns (one per status):
+  1. **To Do** (blue accent)
+  2. **In Progress** (cyan accent)
+  3. **Blocked** (pink accent)
+  4. **Done** (green accent)
+
+**Kanban Column Structure**
+- Desktop (1440px): 4 columns side-by-side in a row
+  - Column width: Flexible, each gets ~25% of available space
+  - Min-width: 16rem (256px) per column to prevent cramping
+  - Gap: 1rem between columns
+- Tablet (768px): 2 columns per row, stacked vertically
+  - Each column width: ~50% of available space
+- Mobile (375px): 1 column per row, scrollable horizontally
+  - Full width columns that scroll horizontally
+  - Snap scrolling for smooth experience
+
+**Column Header**
+- Title: Status name (e.g., "To Do", "In Progress")
+- Subtitle: Count of tasks in column (e.g., "5 tasks")
+- Background: Light tint matching status color (e.g., blue-50 for To Do)
+- Border: Colored top border (2-3px) in status color
+- Padding: 1rem horizontal, 0.75rem vertical
+
+**Task Cards in Kanban**
+- Same TaskCard component but without the link wrapper (not navigable)
+- Cards are draggable (see Drag-and-Drop below)
+- Visual feedback: Hover shadow on card, cursor: grab
+- Dragging state: Cursor: grabbing, opacity-75 on card being dragged
+
+**Empty Column State**
+- If column has 0 tasks: Show "No tasks" placeholder text (gray, italic)
+- Placeholder is drop zone (visual indicator)
+- Drag task onto empty column to populate it
+
+**Drop Zones**
+- Each column is a drop zone (entire column acts as droppable area)
+- On hover with dragged task: Highlight drop zone with dashed border and light background color
+- After drop: Task moves to new column (status updates), task list re-renders
+
+---
+
+##### 3. Drag-and-Drop Implementation
+
+**Drag Library Choice**
+- Use `react-beautiful-dnd` OR `@dnd-kit` for accessibility and features
+- Alternative: Vanilla HTML5 Drag and Drop API (simpler, built-in)
+- Recommendation: `react-beautiful-dnd` for better UX and keyboard support
+
+**Drag Workflow**
+1. User clicks and holds on a task card in Kanban view
+2. Card becomes draggable (opacity-75, cursor changes)
+3. User drags card over column
+4. Target column highlights (dashed border, light background)
+5. User releases: Card moves to new column
+6. State updates: Task status changes to target column status
+7. Undo available: Can undo drag-and-drop action
+
+**Drop Behavior**
+- If dropped on same column: No change (task returns to original position)
+- If dropped on different column: Update task.status, state updates immediately
+- Optimistic update: Task moves visually before API call
+- On error: Toast shows error, task returns to original column
+
+**Keyboard Support for Drag-and-Drop**
+- Use library that supports keyboard (Tab to select card, arrow keys to move, Enter to drop)
+- Fallback: Edit button on card to manually change status in modal
+
+**Visual Feedback**
+- Dragging: Card opacity-75, shadow increases, z-index increases
+- Drop zone hover: Dashed border, light background tint
+- Drop zone active: More prominent border, background color
+- Drop animation: Smooth transition as cards re-arrange in column
+
+---
+
+##### 4. Keyboard Shortcuts
+
+**Shortcut List**
+1. `n` — Open new task form (same as "Add Task" button)
+2. `Escape` — Close any open modal (create, edit, delete)
+3. Arrow Keys (↑/↓/←/→) — Navigate through task list or Kanban columns
+4. `d` — Delete selected task (when task is focused/selected)
+5. `e` — Edit selected task (when task is focused/selected)
+6. `?` or `Ctrl+/` — Show keyboard shortcut help modal
+7. `t` — Toggle theme (light/dark)
+
+**Shortcut Implementation**
+- Global keyboard listener in App.tsx or Header component
+- Event listener: `window.addEventListener('keydown', handleKeyPress)`
+- Prevent conflicts:
+  - Don't trigger shortcuts while typing in form inputs (check `event.target.tagName`)
+  - Don't trigger `Escape` if already handled by modal
+  - Don't trigger number/letter shortcuts in contenteditable elements
+
+**Focus Management for Navigation**
+- Arrow keys: Move focus up/down through task list (or left/right in Kanban columns)
+- Focus management: Use `querySelector` or ref to manage active task
+- Visual indicator: Highlight focused task with focus ring (2px blue outline)
+- On navigation: Scroll focused task into view
+
+**Shortcut Help Modal**
+- Trigger: Press `?` or `Ctrl+/`
+- Modal shows table with:
+  - Column 1: Shortcut key(s) (e.g., "Ctrl+Z")
+  - Column 2: Action (e.g., "Undo")
+  - Column 3: Description (e.g., "Revert last action")
+- List all 7 shortcuts
+- Close with Escape or click X
+- Accessible: Proper focus management, readable layout
+
+---
+
+##### 5. Toast Notification System
+
+**Toast Variants**
+1. **Success** — Green background (bg-green-500), white text, checkmark icon
+2. **Error** — Red background (bg-red-500), white text, alert icon
+3. **Info** — Blue background (bg-blue-500), white text, info icon
+4. **Warning** — Yellow background (bg-yellow-500), text gray-900, warning icon
+
+**Toast Component**
+- Reusable Toast component already exists, needs to be hooked into actions
+- Update reducer actions to dispatch toast messages (via separate action or state)
+
+**Toast Container**
+- Position: Fixed top-right corner
+- Offset: 1rem from top, 1rem from right (below header: top-16 for 64px header)
+- Stack: Multiple toasts stack vertically with 0.5rem gap
+- Max toasts: Show up to 3 at once (queue additional ones)
+
+**Toast Lifecycle**
+- Appear: Fade-in animation (100ms)
+- Persist: Display for 3-5 seconds (success), 5-7 seconds (error)
+- Dismiss: Fade-out animation when time expires or user clicks X
+- Manual dismiss: X button always available (top-right of toast)
+
+**Toast Messages**
+- **Create Success**: "✅ Task created successfully"
+- **Create Error**: "❌ Failed to create task"
+- **Edit Success**: "✅ Task updated successfully"
+- **Edit Error**: "❌ Failed to update task"
+- **Delete Success**: "✅ Task deleted successfully"
+- **Delete Error**: "❌ Failed to delete task"
+- **Undo**: "⟲ Undo successful"
+- **Drag Success**: "✅ Task moved to [Status]"
+- **Drag Error**: "❌ Failed to move task"
+- **Theme Changed**: "✅ Theme changed to [Light/Dark]"
+
+**Toast Accessibility**
+- Position: `role="status"` or `role="alert"` (for errors)
+- Announcement: `aria-live="polite"` (success/info), `aria-live="assertive"` (errors/warnings)
+- Visibility: `aria-atomic="true"` (announce entire toast content)
+- Auto-dismiss: Announce when toast is about to dismiss
+- Close button: `aria-label="Dismiss notification"`
+
+---
+
+##### 6. Loading Skeleton Components
+
+**Skeleton Types**
+1. **Task Card Skeleton** — Placeholder for each task while loading
+2. **Column Header Skeleton** — Placeholder for Kanban column headers
+3. **Task List Skeleton** — Multiple card skeletons stacked
+
+**Skeleton Design**
+- Background: Light gray (gray-200 in light mode, gray-700 in dark mode)
+- Shimmer effect: Subtle animation (wave effect across skeleton)
+- Height/width: Match real component dimensions
+- Rounded corners: Match real component (0.5rem)
+- Spacing: Same padding/margin as real component
+
+**Task Card Skeleton**
+- Title bar: 70% width, 1rem height
+- Subtitle bar: 50% width, 0.75rem height
+- Description line 1: 100% width, 0.75rem height
+- Description line 2: 80% width, 0.75rem height
+- Footer info: Two small bars (20% and 30% width each)
+- Total height: ~200px (same as real card)
+
+**Shimmer Animation**
+- CSS: Background gradient that moves left-to-right (1-2 second duration)
+- Keyframes: Start gray, transition to lighter gray, back to gray
+- Repeat: Infinite loop while loading
+
+**Loading States**
+- Initial page load: Show 5-10 task skeletons while data loads
+- Kanban initial load: Show skeleton for each column header + 3-5 card skeletons per column
+- Simulate delay: Use setTimeout to show skeletons for 1-2 seconds (for demo purposes)
+
+**Accessibility**
+- Skeletons have `aria-busy="true"`
+- Announce loading state: "Loading tasks..." in `aria-live` region
+- Once data loads: Announce "Tasks loaded" and replace skeletons
+
+---
+
+#### UI Component Updates
+
+**Header Theme Toggle Button**
+- Location: Header (right side, left of navigation or in menu)
+- Icon: Sun (light mode) or Moon (dark mode)
+- Tooltip: "Switch to [Dark/Light] mode"
+- Keyboard shortcut: `t` key
+- Focus state: 2px blue outline
+
+**Kanban Board Page**
+- Route: `/kanban`
+- Layout: Header + Sidebar + Main content
+- Main content: Column grid with draggable task cards
+- Responsive: 4 cols (desktop), 2 cols (tablet), 1 col (mobile with horizontal scroll)
+
+**Keyboard Shortcut Help Modal**
+- Trigger: `?` or `Ctrl+/`
+- Table format with shortcuts and descriptions
+- Close with Escape or X button
+- Focus management: Focus first shortcut on open, return to trigger on close
+
+**Task Cards (Updated)**
+- When in Kanban: Draggable, no link wrapper, show drag handle
+- When in List: Same as before (clickable, linked to detail page)
+- Visual feedback on drag: opacity-75, shadow increase
+
+---
+
+#### Responsive Design
+
+**Desktop (1440px)**
+- Kanban: 4 columns side-by-side, min-width 256px each
+- Theme toggle: Icon button in header
+- Keyboard shortcuts: All available
+- Toast: Top-right corner, max 3 visible
+
+**Tablet (768px)**
+- Kanban: 2 columns per row (1x2 grid), wraparound
+- Theme toggle: Icon button (may be in menu)
+- Drag-and-drop: Works but may require more scrolling
+- Skeleton: Adjusted height to fit 2-column layout
+
+**Mobile (375px)**
+- Kanban: Single column, horizontal scroll enabled
+- Column width: Full viewport width
+- Drag-and-drop: Touch-friendly with visual feedback
+- Theme toggle: Icon button in header (accessible)
+- Toast: Adjusted position (smaller offset)
+- Keyboard shortcuts: Limited (arrow keys, n, Escape, ?)
+
+---
+
+#### Keyboard Navigation
+
+- **Tab**: Navigate through focusable elements (buttons, cards, etc.)
+- **Shift+Tab**: Navigate backward
+- **Arrow Keys**: Move through task list / Kanban columns (with focus management)
+- **Enter**: Activate focused task (navigate to detail or show menu)
+- **n**: Open new task form
+- **e**: Edit focused task
+- **d**: Delete focused task
+- **Escape**: Close any open modal
+- **?**: Show keyboard shortcuts
+- **t**: Toggle theme
+- **Space**: On draggable card, initiate drag (if using keyboard drag-and-drop)
+
+---
+
+#### State Management Updates
+
+**New State**
+- `theme`: "light" | "dark" (in ThemeContext or AppContext)
+- `selectedTaskId`: string | null (for keyboard navigation focus)
+- `toasts`: Toast[] array (for toast notifications)
+- `isDragging`: boolean (for drag-and-drop state)
+
+**New Actions**
+- `SET_THEME` — Update theme and localStorage
+- `SET_SELECTED_TASK` — Set focused task for keyboard navigation
+- `ADD_TOAST` — Add notification to toast array
+- `REMOVE_TOAST` — Remove notification by ID
+- `REORDER_TASK` — Update task status (from Kanban drag-and-drop)
+
+**Existing Actions (Updated)**
+- `UPDATE` — Now includes `REORDER_TASK` (drag-and-drop sets status)
+
+---
+
+#### Accessibility Considerations
+
+**Theme**
+- Theme toggle button has descriptive label and tooltip
+- Theme change announcement via toast or aria-live
+- Sufficient contrast in both light and dark modes
+- Respect `prefers-color-scheme` system setting
+
+**Kanban Drag-and-Drop**
+- Keyboard accessible (arrow keys to move between columns)
+- Focus visible on draggable cards (blue outline)
+- Alt text/labels for drag handle icon
+- Touch accessible (drag-and-drop works on touch devices)
+
+**Keyboard Shortcuts**
+- Shortcut help modal always accessible (`?` key)
+- Shortcuts don't conflict with browser shortcuts (test in Chrome, Firefox, Safari)
+- Shortcuts disabled in form inputs (prevent accidental triggers)
+- Shortcut descriptions clear and concise
+
+**Toast Notifications**
+- Proper ARIA roles and live regions
+- Toast content announced to screen readers
+- Color not the only indicator (include icons and text)
+- Toast doesn't obstruct important content
+
+**Focus Management**
+- Focus visible at all times (2px outline, contrasting color)
+- Focus management in modals (trap focus, return on close)
+- Focus management on Kanban navigation (scroll focused task into view)
+- Logical Tab order throughout app
+
+---
+
+#### Handoff Checklist for React Engineer
+
+**Theme System**
+- [ ] Create ThemeContext with "light" and "dark" values
+- [ ] Implement theme detection (localStorage → system preference → default)
+- [ ] Add theme toggle button to Header
+- [ ] Apply theme colors to all components (dark: prefix)
+- [ ] Test theme persistence across page reload
+- [ ] Keyboard shortcut `t` toggles theme
+
+**Kanban Board**
+- [ ] Create new KanbanBoard component
+- [ ] Add `/kanban` route to Router
+- [ ] Add "Kanban Board" link in Sidebar
+- [ ] Build 4-column layout (one per status)
+- [ ] Implement drag-and-drop using library (react-beautiful-dnd or @dnd-kit)
+- [ ] Update task status on drop
+- [ ] Show column headers with task count
+- [ ] Handle empty columns (show placeholder)
+- [ ] Test responsive layout (4 cols → 2 cols → 1 col)
+
+**Drag-and-Drop**
+- [ ] Set up drag-and-drop library and provider
+- [ ] Make task cards draggable
+- [ ] Make columns droppable
+- [ ] Update state on successful drop (task status change)
+- [ ] Show visual feedback (hover, dragging, drop zones)
+- [ ] Keyboard support for drag-and-drop (if using accessible library)
+- [ ] Optimistic update and error handling (on drop)
+
+**Keyboard Shortcuts**
+- [ ] Create global keyboard listener (useEffect in App or Header)
+- [ ] Implement `n` → open new task form
+- [ ] Implement `Escape` → close modals
+- [ ] Implement arrow keys → navigate task list / Kanban
+- [ ] Implement `d` → delete selected task
+- [ ] Implement `e` → edit selected task
+- [ ] Implement `?` → show shortcuts help
+- [ ] Implement `t` → toggle theme
+- [ ] Prevent shortcuts in form inputs (check target.tagName, contenteditable)
+- [ ] Test each shortcut in context
+
+**Keyboard Shortcut Help Modal**
+- [ ] Create ShortcutHelpModal component
+- [ ] Table or list format showing all shortcuts
+- [ ] Close with Escape or X button
+- [ ] Focus management (focus first item on open)
+- [ ] Trigger with `?` or `Ctrl+/`
+
+**Toast Notification System**
+- [ ] Connect Toast component to reducer (actions dispatch toast messages)
+- [ ] Create toast dispatch action (ADD_TOAST, REMOVE_TOAST)
+- [ ] Create ToastContainer component to manage toast array
+- [ ] Auto-dismiss toasts after delay (3-5 sec success, 5-7 sec error)
+- [ ] Manual dismiss with X button
+- [ ] Stack multiple toasts (max 3 visible)
+- [ ] Show toasts for: create success/error, edit success/error, delete success/error, undo, drag success/error, theme change
+- [ ] Proper positioning (top-right, fixed)
+- [ ] Accessibility: role, aria-live, aria-atomic
+
+**Loading Skeletons**
+- [ ] Create TaskCardSkeleton component
+- [ ] Create ColumnHeaderSkeleton component
+- [ ] Shimmer animation (CSS or library)
+- [ ] Show skeletons during initial load
+- [ ] Simulate delay with setTimeout (for demo)
+- [ ] Skeleton height/width matches real component
+- [ ] Accessibility: aria-busy, aria-live announcements
+
+**Integration**
+- [ ] All pages can toggle theme (persists)
+- [ ] Kanban drag-and-drop updates task state (undo available)
+- [ ] Keyboard shortcuts work globally (not conflicting with browser)
+- [ ] Toasts appear for all task actions
+- [ ] Skeletons show during data load
+- [ ] No TypeScript errors (strict mode)
+- [ ] Responsive at all breakpoints
+
+---
+
+#### Design Decisions
+
+- **Theme Management**: Client-side localStorage + system preference detection (no server sync for Stage 3)
+- **Drag-and-Drop**: Use `react-beautiful-dnd` for accessibility and smooth UX (keyboard support built-in)
+- **Keyboard Shortcuts**: Global listener in App, but disabled in form inputs (prevent accidental triggers)
+- **Toast Queue**: Max 3 visible toasts, additional ones queued (prevent spam)
+- **Skeleton Library**: CSS-based shimmer (no external library, keep bundle small)
+- **Focus Management**: Manual focus management for Kanban navigation (arrow keys move focus between cards)
+
+---
 
 ### A11y Findings
-[After Frontend Accessibility Reviewer audit]
+[Pending Frontend Accessibility Reviewer audit]
 
 ### Implementation Notes
-[Record what worked, what didn't, key patterns discovered]
+[Record what worked, what didn't, key patterns discovered, testing readiness]
 
 ---
 

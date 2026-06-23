@@ -62,13 +62,14 @@ export function TaskEditForm({ task, onClose }: TaskEditFormProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-40">
-      <div className="bg-white rounded-lg shadow-lg max-w-md w-full mx-4 max-h-90vh overflow-y-auto">
-        <div className="flex justify-between items-center p-4 border-b border-gray-200">
-          <h2 className="text-lg font-bold text-gray-900">Edit Task</h2>
+    <div className="fixed inset-0 bg-black/50 dark:bg-black/60 flex items-center justify-center z-40">
+      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg dark:shadow-black/40 max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto transition-colors">
+        <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
+          <h2 className="text-lg font-bold text-gray-900 dark:text-white">Edit Task</h2>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 text-2xl leading-none"
+            type="button"
+            className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 text-2xl leading-none"
             aria-label="Close dialog"
           >
             ×
@@ -77,14 +78,15 @@ export function TaskEditForm({ task, onClose }: TaskEditFormProps) {
 
         <form onSubmit={handleSubmit} className="p-4 space-y-4">
           {state.error && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-3 flex gap-2">
+            <div className="bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 rounded-lg p-3 flex gap-2">
               <span className="text-red-600 font-bold">!</span>
               <div className="flex-1">
-                <p className="text-sm text-red-700">{state.error}</p>
+                <p className="text-sm text-red-700 dark:text-red-300">{state.error}</p>
               </div>
               <button
+                type="button"
                 onClick={() => clearError()}
-                className="text-red-600 hover:text-red-800"
+                className="text-red-600 dark:text-red-300 hover:text-red-800 dark:hover:text-red-200"
                 aria-label="Dismiss error"
               >
                 ×
@@ -93,7 +95,7 @@ export function TaskEditForm({ task, onClose }: TaskEditFormProps) {
           )}
 
           <div>
-            <label htmlFor="title" className="block text-sm font-bold text-gray-700 mb-1">
+            <label htmlFor="title" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">
               Title *
             </label>
             <input
@@ -103,8 +105,8 @@ export function TaskEditForm({ task, onClose }: TaskEditFormProps) {
               onChange={(e) => setTitle(e.target.value)}
               onBlur={validateForm}
               placeholder="Task title"
-              className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
-                titleError ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+              className={`w-full px-3 py-2 border rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 ${
+                titleError ? 'border-red-500 dark:border-red-700 focus:ring-red-500' : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500'
               }`}
               disabled={state.isLoading}
             />
@@ -112,7 +114,7 @@ export function TaskEditForm({ task, onClose }: TaskEditFormProps) {
           </div>
 
           <div>
-            <label htmlFor="description" className="block text-sm font-bold text-gray-700 mb-1">
+            <label htmlFor="description" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">
               Description
             </label>
             <textarea
@@ -121,22 +123,22 @@ export function TaskEditForm({ task, onClose }: TaskEditFormProps) {
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Add details..."
               maxLength={500}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
               rows={3}
               disabled={state.isLoading}
             />
-            <p className="text-xs text-gray-500 mt-1">{description.length}/500</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{description.length}/500</p>
           </div>
 
           <div>
-            <label htmlFor="priority" className="block text-sm font-bold text-gray-700 mb-1">
+            <label htmlFor="priority" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">
               Priority
             </label>
             <select
               id="priority"
               value={priority}
               onChange={(e) => setPriority(e.target.value as TaskPriority)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
               disabled={state.isLoading}
             >
               <option value={TaskPriority.LOW}>Low</option>
@@ -146,14 +148,14 @@ export function TaskEditForm({ task, onClose }: TaskEditFormProps) {
           </div>
 
           <div>
-            <label htmlFor="status" className="block text-sm font-bold text-gray-700 mb-1">
+            <label htmlFor="status" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">
               Status
             </label>
             <select
               id="status"
               value={status}
               onChange={(e) => setStatus(e.target.value as TaskStatus)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
               disabled={state.isLoading}
             >
               <option value={TaskStatus.TODO}>To Do</option>
@@ -164,7 +166,7 @@ export function TaskEditForm({ task, onClose }: TaskEditFormProps) {
           </div>
 
           <div>
-            <label htmlFor="dueDate" className="block text-sm font-bold text-gray-700 mb-1">
+            <label htmlFor="dueDate" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">
               Due Date
             </label>
             <input
@@ -172,20 +174,20 @@ export function TaskEditForm({ task, onClose }: TaskEditFormProps) {
               type="date"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
               disabled={state.isLoading}
             />
           </div>
 
           <div>
-            <label htmlFor="assignee" className="block text-sm font-bold text-gray-700 mb-1">
+            <label htmlFor="assignee" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">
               Assignee
             </label>
             <select
               id="assignee"
               value={assignee}
               onChange={(e) => setAssignee(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
               disabled={state.isLoading}
             >
               {assignees.map((name) => (
@@ -200,14 +202,14 @@ export function TaskEditForm({ task, onClose }: TaskEditFormProps) {
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2 bg-gray-200 text-gray-900 font-medium rounded-lg hover:bg-gray-300 disabled:opacity-50"
+              className="flex-1 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white font-medium rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 disabled:opacity-50 transition-colors"
               disabled={state.isLoading}
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="flex-1 px-4 py-2 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 disabled:opacity-50"
+              className="flex-1 px-4 py-2 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 disabled:opacity-50 transition-colors"
               disabled={state.isLoading}
             >
               {state.isLoading ? 'Saving...' : 'Save'}
